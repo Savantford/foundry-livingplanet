@@ -1,0 +1,36 @@
+<form class="{{cssClass}} item-sheet" autocomplete="off">
+
+  {{!-- Header --}}
+  <header class="sheet-header">
+    <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize "WW.ItemName"}}"/></h1>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    <div class="stat-inline">
+      <div>
+        <label>{{localize "LP.Progress.Connection.Type"}}</label>
+
+        <select name="system.type">
+          {{selectOptions connectionTypes selected=system.type localize=true}} {{!--nameAttr="key" labelAttr="label"--}}
+        </select>
+
+      </div>
+
+      <div>
+        <label>{{localize "LP.Progress.Connection.Level"}}</label>
+
+        <select name="system.progress.max">
+          {{selectOptions connectionLevels selected=system.progress.max localize=true}} {{!--nameAttr="key" labelAttr="label"--}}
+        </select>
+
+        ({{system.progress.max}} {{localize "LP.Progress.Segments"}})
+
+      </div>
+
+    </div>
+  
+  </section>
+
+</form>

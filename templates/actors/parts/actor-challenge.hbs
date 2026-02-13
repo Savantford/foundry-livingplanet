@@ -1,0 +1,51 @@
+<li class="item flexrow" data-item-id="{{item._id}}">
+
+    <div class="flexcol" style="width: 100%;">
+
+        <div class="item-name">
+            {{!-- Name --}}
+            <label>{{item.name}}</label>
+
+            <span class="buttons">
+
+                {{!-- Edit Button --}}
+                <a class="item-button" data-action="item-edit" data-item-id="{{item._id}}"
+                    title="{{localize (concat "WW.Item.Edit." item.type)}}">
+                <i class="fas fa-edit"></i></a>
+
+                {{!-- Delete Button --}}
+                <a class="item-button" data-action="item-delete" data-item-id="{{item._id}}"
+                    title="{{localize (concat "WW.Item.Delete." item.type)}}">
+                <i class="fas fa-trash"></i></a>
+                
+            </span>
+
+        </div>
+        
+        <div class="nowrap">
+            
+            {{!-- Type --}}
+            {{#if (eq item.system.type "shared")}}{{localize "LP.Progress.Challenge.Shared"}}
+            {{else}}{{localize "LP.Progress.Challenge.Personal"}}
+            {{/if}}
+
+            •
+
+            {{!-- Difficulty --}}
+            {{#if (eq item.system.progress.max 8)}}{{localize "LP.Progress.Challenge.Epic"}}
+            {{else if (eq item.system.progress.max 6)}}{{localize "LP.Progress.Challenge.Hard"}}
+            {{else if (eq item.system.progress.max 4)}}{{localize "LP.Progress.Challenge.Troublesome"}}
+            {{else if (eq item.system.progress.max 3)}}{{localize "LP.Progress.Challenge.Significant"}}
+            {{else}}{{localize "LP.Progress.Challenge.Easy"}}
+            {{/if}}
+
+        </div>
+        
+    </div>
+
+    {{!-- Impatience Clock --}}
+    <div class="progress-container">
+        {{> "systems/livingplanet/templates/progress-clock.hbs" arr=item.progressArr data=item.system.progress}}
+    </div>
+
+</li>

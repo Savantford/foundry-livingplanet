@@ -1,0 +1,96 @@
+<section class="sheet-body flexcol gap-10">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header crew-header">
+
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "LP.ActorName"}}" /></h1>
+
+        {{!-- Profile Image --}}
+        <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+
+    </header>
+
+    {{!-- Lists --}}
+    <div class="flexrow gap-10">
+
+        {{!-- Goals --}}
+        <fieldset class="stat stat-box">
+            <legend class="flexrow flex-group-left">
+                {{localize "LP.Goal.Plural"}}
+        
+                {{!-- Item Create Button --}}
+                <a class="item-create ml-1" title="{{localize "LP.Item.Create.Asset"}}" data-action="itemCreate"
+                    data-type="goal"><i class="fa-solid fa-square-plus"></i></a>
+            </legend>
+        
+            <ol class="item-list assets">
+                {{#each assets as |item id|}}
+                {{> "systems/livingplanet/templates/actors/item/asset.hbs" item=item id=id}}
+                {{/each}}
+            </ol>
+        
+        </fieldset>
+        
+        {{!-- Connections --}}
+        <fieldset class="stat stat-box">
+            <legend class="flexrow flex-group-left">
+                {{localize "LP.Connection.Plural"}}
+        
+                {{!-- Item Create Button --}}
+                <a class="item-create ml-1" title="{{localize "LP.Item.Create.Connection"}}" data-action="itemCreate" data-type="connection"><i class="fa-solid fa-square-plus"></i></a>
+            </legend>
+        
+            <ol class="item-list connections">
+                {{#each connections as |item id|}}
+                {{> "systems/livingplanet/templates/actors/item/connection.hbs" item=item id=id}}
+                {{/each}}
+            </ol>
+        
+        </fieldset>
+
+    </div>
+
+    {{!-- Assets --}}
+    <div class="flexrow gap-10">
+        
+        <fieldset class="stat stat-box">
+            <legend class="flexrow flex-group-left">
+                {{localize "LP.Asset.Plural"}}
+        
+                {{!-- Item Create Button --}}
+                <a class="item-create ml-1" title="{{localize " LP.Item.Create.Asset"}}" data-action="itemCreate"
+                    data-type="asset"><i class="fa-solid fa-square-plus"></i></a>
+            </legend>
+        
+            <ol class="item-list assets">
+                {{#each assets as |item id|}}
+                {{> "systems/livingplanet/templates/actors/item/asset.hbs" item=item id=id}}
+                {{/each}}
+            </ol>
+        
+        </fieldset>
+
+    </div>
+
+    {{!-- Timeline --}}
+    <fieldset class="timeline stat stat-box">
+        <legend class="flexrow flex-group-left">{{localize "LP.Crew.Timeline.Label"}}</legend>
+    
+        <ol class="item-list timeline-entries">
+            <li class="timeline-entry timeline-header">
+                <div class="cycle">{{localize "LP.Crew.Timeline.Cycle"}}</div>
+                <div class="expedition">{{localize "LP.Crew.Timeline.Expedition"}}</div>
+                <div class="base-event">{{localize "LP.Crew.Timeline.BaseEvent"}}</div>
+                <div class="local-event">{{localize "LP.Crew.Timeline.LocalEvent"}}</div>
+                <div class="connections">{{localize "LP.Crew.Timeline.Connections"}}</div>
+                <div class="other">{{localize "LP.Crew.Timeline.Other"}}</div>
+            </li>
+    
+            {{#each timeline as |item id|}}
+            {{> "systems/livingplanet/templates/actors/item/timeline-entry.hbs" item=item id=id}}
+            {{/each}}
+        </ol>
+    
+    </fieldset>
+
+</section>

@@ -1,0 +1,42 @@
+{
+  "id": "livingplanet",
+  "title": "Heirs of the Living Planet",
+  "description": "System built for the upcoming Heirs of the Living Planet game by GADO Publishing.",
+  "version": "#{VERSION}#",
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "readme": "https://github.com/Savantford/foundry-livingplanet#readme",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12",
+    "maximum": ""
+  },
+  "authors": [
+    {
+      "name": "Friend (Savantford)",
+      "discord": "@violencia",
+      "url": "https://github.com/Savantford",
+      "flags": {}
+    }
+  ],
+  "esmodules": ["module/livingplanet.mjs"],
+  "styles": ["styles/livingplanet.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
+  "primaryTokenAttribute": "",
+  "secondaryTokenAttribute": "",
+  "hotReload": true,
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["templates/", "styles/", "lang/"]
+    }
+  }
+}

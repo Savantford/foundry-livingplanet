@@ -1,0 +1,130 @@
+<div class="afflictions">
+  {{#*inline "HotLPAffliction"}}
+    <div class="affliction selectable {{#if value}}selected{{/if}}"
+        style="width: auto; margin: 2px"
+        {{#if tooltip}}title="{{localize tooltip}}"{{/if}}>
+      <input type="checkbox" id="data.{{name}}" data-name="{{name}}" {{checked value}}/>
+      <i class="icon-{{name}}"></i>
+      <span class="sep"></span>
+      <span style="margin-left: 4px">{{localize label}}</span>
+    </div>
+  {{/inline}}
+
+  {{!-- 
+  <div class="dl-text-header-upper dl-underline-red dl-item-row-header">
+    <div class="col-12">{{localize "HotLP.Actions"}}</div>
+  </div>
+
+  <div class="grid-5">
+    {{> HotLPAffliction name="concentrate" value=flags.weirdwizard.concentrate label="HotLP.concentrate" tooltip="HotLP.AfflictionsConcentrate"}}
+    {{> HotLPAffliction name="defend"      value=flags.weirdwizard.defend      label="HotLP.defend"      tooltip="HotLP.AfflictionsDefend"}}
+    {{> HotLPAffliction name="help"        value=flags.weirdwizard.help        label="HotLP.help"        tooltip="HotLP.AfflictionsHelp"}}
+    {{> HotLPAffliction name="prepare"     value=flags.weirdwizard.prepare     label="HotLP.prepare"     tooltip="HotLP.AfflictionsPrepare"}}
+    {{> HotLPAffliction name="reload"      value=flags.weirdwizard.reload      label="HotLP.reload"      tooltip="HotLP.AfflictionsReload"}}
+    {{> HotLPAffliction name="retreat"     value=flags.weirdwizard.retreat     label="HotLP.retreat"     tooltip="HotLP.AfflictionsRetreat"}}
+    {{> HotLPAffliction name="rush"        value=flags.weirdwizard.rush        label="HotLP.rush"        tooltip="HotLP.AfflictionsRush"}}
+    {{> HotLPAffliction name="stabilize"   value=flags.weirdwizard.stabilize   label="HotLP.stabilize"   tooltip="HotLP.AfflictionsStabilize"}}
+  </div> --}}
+
+  <h2>{{localize "HotLP.Afflictions"}}</h2>
+
+  <div class="grid-3">
+    {{> HotLPAffliction name="Blinded"      value=hasEffect.Blinded      label="HotLP.Blinded"     tooltip="HotLP.BlindedDesc"     }}
+    {{> HotLPAffliction name="Confused"     value=hasEffect.Confused     label="HotLP.Confused"    tooltip="HotLP.ConfusedDesc"    }}
+    {{> HotLPAffliction name="Controlled"   value=hasEffect.Controlled   label="HotLP.Controlled"  tooltip="HotLP.ControlledDesc"  }}
+    {{> HotLPAffliction name="Cursed"       value=hasEffect.Cursed       label="HotLP.Cursed"      tooltip="HotLP.CursedDesc"      }}
+    {{> HotLPAffliction name="Deafened"     value=hasEffect.Deafened     label="HotLP.Deafened"    tooltip="HotLP.DeafenedDesc"    }}
+    {{> HotLPAffliction name="Frightened"   value=hasEffect.Frightened   label="HotLP.Frightened"  tooltip="HotLP.FrightenedDesc"  }}
+    {{> HotLPAffliction name="Held"         value=hasEffect.Held         label="HotLP.Held"        tooltip="HotLP.HeldDesc"        }}
+    {{> HotLPAffliction name="ImpairedStr"  value=hasEffect.ImpairedStr  label="HotLP.ImpairedStr" tooltip="HotLP.ImpairedDesc"    }}
+    {{> HotLPAffliction name="ImpairedAgi"  value=hasEffect.ImpairedAgi  label="HotLP.ImpairedAgi" tooltip="HotLP.ImpairedDesc"    }}
+    {{> HotLPAffliction name="ImpairedInt"  value=hasEffect.ImpairedInt  label="HotLP.ImpairedInt" tooltip="HotLP.ImpairedDesc"    }}
+    {{> HotLPAffliction name="ImpairedWil"  value=hasEffect.ImpairedWil  label="HotLP.ImpairedWil" tooltip="HotLP.ImpairedDesc"    }}
+    {{> HotLPAffliction name="OnFire"       value=hasEffect.OnFire       label="HotLP.OnFire"      tooltip="HotLP.OnFireDesc"      }}
+    {{> HotLPAffliction name="Poisoned"     value=hasEffect.Poisoned     label="HotLP.Poisoned"    tooltip="HotLP.PoisonedDesc"    }}
+    {{> HotLPAffliction name="Prone"        value=hasEffect.Prone        label="HotLP.Prone"       tooltip="HotLP.ProneDesc"       }}
+    {{> HotLPAffliction name="Stunned"      value=hasEffect.Stunned      label="HotLP.Stunned"     tooltip="HotLP.StunnedDesc"     }}
+    {{> HotLPAffliction name="Unconscious"  value=hasEffect.Unconscious  label="HotLP.Unconscious" tooltip="HotLP.UnconsciousDesc" }}
+    {{> HotLPAffliction name="Asleep"       value=hasEffect.Asleep       label="HotLP.Asleep"      tooltip="HotLP.AsleepDesc"      }}
+    {{> HotLPAffliction name="Weakened"     value=hasEffect.Weakened     label="HotLP.Weakened"    tooltip="HotLP.WeakenedDesc"    }}
+  </div>
+  {{!--
+  <div class="dl-text-header-upper dl-underline-red dl-item-row-header" style="margin-top: 8px">
+    <div class="col-12">{{localize "HotLP.ModsDamage"}}</div>
+  </div>
+  <div class="grid-5">
+    {{> HotLPAffliction name="injured"       value=flags.weirdwizard.injured       label="HotLP.injured"       tooltip="HotLP.injuredText"}}
+    {{> HotLPAffliction name="incapacitated" value=flags.weirdwizard.incapacitated label="HotLP.incapacitated" tooltip="HotLP.incapacitatedText"}}
+    {{> HotLPAffliction name="disabled"      value=flags.weirdwizard.disabled      label="HotLP.disabled"      tooltip="HotLP.disabledText"     }}
+    {{> HotLPAffliction name="dying"         value=flags.weirdwizard.dying         label="HotLP.dying"         tooltip="HotLP.dyingText"        }}
+  </div>
+
+  <div class="dl-text-header-upper dl-underline-red dl-item-row-header" style="margin-top: 8px">
+    <div class="col-12">{{localize "Token"}}</div>
+  </div>
+  <div class="grid-5">
+    {{> HotLPAffliction name="invisible"   value=flags.weirdwizard.invisible   label="EFFECT.StatusInvisible" tooltip="HotLP.invisibleText"}}
+  </div>
+  --}}
+  <div class="grid-3 mt-2">
+    <div></div>
+    <div class="affliction remove-afflictions" style="width: auto">
+      <span class="px-2 align-center" style="width: 100%">{{localize "HotLP.AfflictionsRemove"}}</span>
+    </div>
+  </div>
+</div>
+
+<h2>{{localize "HotLP.EffectsAll"}}</h2>
+<ol class="item-list effects-list">
+  {{#each effects as |section sid|}}
+    <li class="item items-header flexrow" data-effect-type="{{section.type}}">
+      <div class="item-image"></div>
+      <div class="item-name">{{localize section.name}}</div>
+      <div class="effect-changes">Changes</div>
+      <div class="effect-duration">Duration</div>
+      <div class="effect-source">Source</div>
+      <div class="item-controls effect-controls flexrow">
+        <a class="effect-control" data-action="create" title="{{localize 'HotLP.EffectCreate'}}">
+          <i class="fas fa-plus"></i> {{localize "HotLP.Add"}}
+        </a>
+      </div>
+    </li>
+
+    <ol class="item-list">
+    {{#each section.effects as |effect|}}
+      <li class="item effect flexrow" data-effect-id="{{effect.id}}">
+        <div class="item-image">
+          <img src="{{effect.icon}}" width="24" height="24"/>
+        </div>
+        <div class="item-name">{{effect.name}}</div>
+
+        <div class="effect-changes mb-1">
+          {{#each effect.changes as |change|}}
+            <div class="nowrap">
+              {{lookup ../../../effectChangeKeys change.key}} 
+              {{#if (eq change.mode 1)}}× {{change.value}}
+              {{else if (eq change.mode 2)}}{{numberFormat change.value decimals=0 sign=true}}
+              {{else}}= {{change.value}}
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+        
+        <div class="effect-duration">{{effect.duration.name}}</div>
+        <div class="effect-source">{{effect.sourceName}}</div>
+        <div class="item-controls effect-controls flexrow">
+          <a class="effect-control" data-action="toggle" title="{{localize 'HotLP.EffectToggle'}}">
+            <i class="fas {{#if effect.disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i>
+          </a>
+          <a class="effect-control" data-action="edit" title="{{localize 'HotLP.EffectEdit'}}">
+            <i class="fas fa-edit"></i>
+          </a>
+          <a class="effect-control" data-action="delete" title="{{localize 'HotLP.EffectDelete'}}">
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+      </li>
+    {{/each}}
+    </ol>
+  {{/each}}
+</ol>

@@ -1,0 +1,373 @@
+{
+    "TYPES.Actor.deviant": "Deviant",
+    
+    "LP.ActorName": "Actor's Name",
+
+    "LP.Frame": "Frame",
+    "LP.Power": "Power",
+    "LP.Speed": "Speed",
+    "LP.Strategy": "Strategy",
+    "LP.Experience": "Experience",
+    
+    "LP.Damage.Label": "Health",
+    "LP.Damage.Total": "Total Damage",
+    "LP.Damage.Lasting": "Lasting",
+    "LP.Damage.Fleeting": "Fleeting",
+    "LP.Damage.Stress": "Stress",
+    "LP.Damage.Destroyed": "Dead / Destroyed",
+    "LP.Damage.Disabled": "Disabled / Incapacitated",
+    "LP.Damage.Panicked": "Panicked",
+
+    "LP.Advantage.Label": "Advantage",
+    "LP.Advantage.Scene": "Scene Adv.",
+    "LP.Advantage.Disadvantage": "Disadvantage",
+
+    "LP.Item": {
+        "Name": "Item's Name",
+        "Roll": {
+            "Attribute": "Roll Attribute/Luck",
+            "Damage": "Roll Damage Dice",
+            "Healing": "Roll Healing Dice"
+        },
+        "Create": {
+            "Strength": "New Strength",
+            "Weakness": "New Weakness",
+            "Asset": "New Asset",
+            "Challenge": "New Challenge",
+            "Connection": "New Connection"
+        },
+        "Edit": {
+            "Strength or Weakness": "Edit Strength/Weakness",
+            "Asset": "Edit Asset",
+            "Challenge": "Edit Challenge",
+            "Connection": "Edit Connection"
+        },
+        "Delete": {
+            "Label": "Delete",
+            "Title": "Delete Item",
+            "Msg": "You are about to delete",
+            "Msg2": "This action is irreversible.",
+            "Confirm": "Are you sure you want to delete",
+            "Strength or Weakness": "Delete Strength/Weakness",
+            "Asset": "Delete Asset",
+            "Challenge": "Delete Challenge",
+            "Connection": "Delete Connection"
+        },
+        "Uses": {
+            "TalentSpend": "Spend use/token",
+            "TalentRecover": "Recover use/token",
+            "EquipmentSpend": "Spend use/charge/token",
+            "EquipmentRecover": "Recover use/charge/token",
+            "SpellSpend": "Spend casting",
+            "SpellRecover": "Recover casting",
+            "ActionSpend": "Spend use/casting/token",
+            "ActionRecover": "Recover use/casting/token",
+            "FurySpend": "Spend fury token",
+            "FuryRecover": "Recover fury token",
+            "OnRest": "Recover on rest?"
+        },
+        
+        "ShowDesc": "Show description",
+        "HideDesc": "Hide description",
+        "Send": "Send description to chat",
+        "EnableEffects": "Enable passive effects",
+        "DisableEffects": "Disable passive effects",
+        "Equip": "Wear equipment",
+        "Unequip": "Remove equipment"
+    },
+
+    "LP.Strength": {
+        "Strengths": "Strengths",
+        "Weaknesses": "Weaknesses",
+        "YouAre": "You are",
+        "Good": "Good",
+        "VeryGood": "Very good",
+        "Amazing": "Amazing",
+        "Bad": "Bad",
+        "VeryBad": "Very bad",
+        "Terrible": "Terrible"
+    },
+
+    "LP.Asset": {
+        "Plural": "Assets",
+        "Source": "Source",
+        "Modification": "Frame Modification",
+        "Knowledge": "Knowledge",
+        "Equipment": "Equipment"
+    },
+
+    "LP.Progress": {
+        "Clear": "Clear Progress",
+        "Segments": "progress segments",
+        "Hint": "Left click to assign the progress; right click to reset the clock.",
+        "Impatience": "Impatience",
+
+        "Challenge": {
+            "Plural": "Challenges",
+            "Type": "Type",
+            "Personal": "Personal",
+            "Shared": "Shared",
+            "Difficulty": "Difficulty",
+            "Easy": "Easy",
+            "Significant": "Significant",
+            "Troublesome": "Troublesome",
+            "Hard": "Hard",
+            "Epic": "Epic"
+        },
+
+        "Connection": {
+            "Plural": "Connections",
+            "Type": "Type",
+            "Personal": "Personal",
+            "Regional": "Regional",
+            "Cultural": "Cultural",
+            "Level": "Level",
+            "Weak": "Weak",
+            "Relevant": "Relevant",
+            "Strong": "Strong",
+            "Crucial": "Crucial",
+            "Essential": "Essential"
+        },
+
+        "Event": {
+            "Duration": "Duration",
+            "Brief": "Brief",
+            "Short": "Short",
+            "Moderate": "Moderate",
+            "Long": "Long",
+            "VeryLong": "Very Long"
+        }
+        
+    },
+
+    "LP.Dont": "Don't Roll",
+
+    "LP.Stats": "Stats",
+    "LP.Traits": "Traits",
+    "LP.Level": "Level",
+    "LP.Solitary": "Solitary",
+    "LP.Type": "Type",
+    "LP.Senses": "Senses",
+    "LP.Languages": "Languages",
+    "LP.LanguagesPH": "Common, Sylvan",
+    "LP.Immune": "Immune",
+    "LP.ImmunePH": "poisoned",
+    "LP.Size": "Size",
+        
+    "LP.SpeedScore": "Speed Score",
+    "LP.SpeedPH": "fly",
+    "LP.SpeedTip": "special form of movement",
+    "LP.Healing": "Healing",
+    "LP.HealingOf": "Healing of",
+
+    "LP.LevelAt": "At Level",
+
+    "LP.Defense": {
+        "Title": "Defense",
+        "Score": "Defense Score",
+        "Total": "Defense Total",
+        "Natural": "Natural Defense",
+        "Details": "(armor, if any, shield, if any)"
+    },
+
+    "LP.Armor": {
+        "Title": "Armor",
+        "Type": "Armor Type",
+        "Light": "Light",
+        "Medium": "Medium",
+        "Heavy": "Heavy",
+        "Unarmored": "Unarmored",
+        "Padded": "Padded Armor",
+        "Leather": "Leather Armor",
+        "Brigandine": "Brigandine",
+        "Ring": "Ring Armor",
+        "Mail": "Mail Armor",
+        "PlateAndMail": "Plate and Mail",
+        "Breastplate": "Breastplate Armor",
+        "Plate": "Plate Armor",
+        "FullPlate": "Full Plate Armor"
+    },
+    
+    "LP.Value": "Value",
+    "LP.New": "New",
+    "LP.Remove": "Remove",
+    "LP.Save": "Save",
+    "LP.Reset": "Reset",
+    "LP.Cancel": "Cancel",
+    "LP.Settings": "Settings",
+
+    "LP.Boons": {
+        "Total": "Total Boons or Banes",
+        "Afflictions": "Boons/banes imposed by afflictions/effects",
+        "Fixed": "Boons/banes specified by the weapon/talent/spell",
+        "Situational": "Situational boons or banes",
+        "Roll": "Roll",
+        "AlwaysRoll": "Always roll",
+        "With": "with",
+        "Boon": "boon",
+        "Boons": "boons",
+        "Bane": "bane",
+        "Banes": "banes",
+        "Or": "boons(s)/bane(s)"
+    },
+
+    "LP.Summary": "Summary",
+    "LP.Attacks": "Attacks",
+    
+    "LP.Paths": "Paths",
+    "LP.Ancestry": "Ancestry",
+    "LP.Starting": "Starting",
+    "LP.Novice": "Novice",
+    "LP.NovicePath": "Novice Path",
+    "LP.Expert": "Expert",
+    "LP.ExpertPath": "Expert Path",
+    "LP.Master": "Master",
+    "LP.MasterPath": "Master Path",
+
+    "LP.Details": "Details",
+    "LP.Identity": "Identity",
+    "LP.Features": "Distinctive Features",
+    "LP.Personality": "Personality",
+    "LP.Belief": "Religious Beliefs",
+
+    "LP.Knowledge": "Knowledge",
+    "LP.Professions": "Professions",
+    "LP.ProfessionsPH": "Laborer (Common)",
+    "LP.Information": "Information",
+    
+    "LP.Background": "Background",
+    "LP.Deeds": "Notable Deeds",
+    "LP.Reputation": "Reputation",
+
+    "LP.Equipment": "Equipment",
+    "LP.Price": "Price",
+    "LP.Coins": {
+        "Title": "Coins",
+        "GP": "gp",
+        "SP": "sp",
+        "CP": "cp"
+    },
+    "LP.NewItem": "New {itemType}",
+    "LP.Generic": "Generic",
+    "LP.Weapon": "Weapon",
+    "LP.WeaponDetails": "Weapon Details",
+    "LP.Consumable": "Consumable",
+    "LP.Container": "Container",
+    "LP.Weight": "Weight",
+    "LP.WeightTotal": "Total Weight",
+    "LP.Quantity": "Quantity",
+    "LP.WeightUnit": "Weight per Unit",
+    "LP.Quality": "Quality",
+    "LP.QualityStandard": "Standard",
+    "LP.QualitySuperior": "Superior",
+    "LP.QualityInferior": "Inferior",
+
+    "LP.Talents": "Traits and Talents",
+    "LP.TalentSubtypes": {
+        "Trait": "Trait or Talent",
+        "Aura": "Aura",
+        "Action": "Action",
+        "Reaction": "Reaction",
+        "End": "End of The Round",
+        "Fury": "Fury"
+    },
+    
+    "LP.Auras": "Auras",
+    "LP.Aura": "Aura",
+    "LP.AuraRange": "Aura Range",
+    "LP.Actions": "Actions",
+    "LP.Reactions": "Reactions",
+    "LP.Ends": "End of The Round",
+    "LP.Fury": "Fury",
+
+    "LP.Name": "Name",
+    "LP.Source": "Source",
+    "LP.TalentSources": {
+        "None": "None (NPC)",
+        "Ancestry": "Ancestry",
+        "Novice": "Novice Path",
+        "Expert": "Expert Path",
+        "Master": "Master Path",
+        "Magical": "Magical Talent",
+        "Other": "Other"
+    },
+    "LP.Condition": "Condition",
+    "LP.ConditionPH": "when a creature in your zone makes an attribute roll",
+    "LP.UsesTalent": "Uses/Tokens",
+    "LP.UsesEquipment": "Uses/Charges",
+    "LP.Per": "per",
+    "LP.FrequencyChoices": {
+        "Day": "Day",
+        "Hour": "Hour",
+        "Minute": "Minute",
+        "Round": "Round"
+    },
+    "LP.Description": "Description",
+
+    "LP.Spells": "Spells",
+    "LP.Traditions": "Magical Traditions",
+    "LP.TraditionsPH": "Aeromancy, Alteration, etc",
+    "LP.Tier": "Tier",
+    "LP.Tradition": "Tradition",
+    "LP.Requirement": "Requirement",
+    "LP.Casting": "Casting",
+    "LP.Castings": "Castings",
+    "LP.Target": "Target",
+    "LP.Duration": "Duration",
+
+    "LP.Weapons": "Weapons",
+    "LP.Grip": "Grip",
+    "LP.GripOne": "One-Handed",
+    "LP.GripTwo": "Two-Handed",
+    "LP.GripOff": "Off-Hand",
+    "LP.Range": "Range",
+    "LP.Properties": "Properties",
+    "LP.PropertiesPH": "Brutal, Keen, etc",
+    "LP.Reload": "Reload",
+
+    "LP.Effects": "Effects",
+    "LP.EffectsAll": "All Effects",
+    "LP.Add": "Add",
+    "LP.EffectCreate": "Create Effect",
+    "LP.EffectToggle": "Toggle Effect On/Off",
+    "LP.EffectEdit": "Edit Effect",
+    "LP.EffectDelete": "Delete Effect",
+    "LP.NewEffect": "New Effect",
+
+    "LP.Afflictions": "Afflictions",
+    "LP.AfflictionsRemove": "Remove All Afflictions",
+    "LP.Blinded": "Blinded",
+    "LP.Confused": "Confused",
+    "LP.Controlled": "Controlled",
+    "LP.Cursed": "Cursed",
+    "LP.Deafened": "Deafened",
+    "LP.Frightened": "Frightened",
+    "LP.Held": "Held",
+    "LP.ImpairedStr": "Strength Impaired",
+    "LP.ImpairedAgi": "Agility Impaired",
+    "LP.ImpairedInt": "Intellect Impaired",
+    "LP.ImpairedWil": "Will Impaired",
+    "LP.OnFire": "On Fire",
+    "LP.Poisoned": "Poisoned",
+    "LP.Prone": "Prone",
+    "LP.Stunned": "Stunned",
+    "LP.Unconscious": "Unconscious",
+    "LP.Asleep": "Asleep",
+    "LP.Weakened": "Weakened",
+
+    "LP.BlindedDesc": "You cannot see and thus have line of sight to nothing. If you would attack or interact with anything, you must guess the target’s location or locate the target using other senses. Finally, you halve your Speed.",
+    "LP.ConfusedDesc": "You become unable to make sense of what is happening around you. You cannot use reactions, you grant 1 boon on rolls against you, and you make Intellect and Will rolls with 1 bane.",
+    "LP.ControlledDesc": "You fall under control of the source of this affliction. You take your turn when your controller does and it decides what you do on your turn. If you have already taken a turn when you gain this affliction, you take a turn as described during the next round.",
+    "LP.CursedDesc": "You make luck rolls with 1 bane.",
+    "LP.DeafenedDesc": "You cannot hear.",
+    "LP.FrightenedDesc": "You fear the source of this affliction—a creature, an object, a space, or something else. While you have line of sight to the source of your fear, you make attribute rolls with 1 bane, and you grant 1 boon on attribute rolls against you.",
+    "LP.HeldDesc": "Your Speed drops to 0 and you cannot benefit from increases to your Speed until this affliction ends.",
+    "LP.ImpairedDesc": "The impaired affliction affects the attribute specified by the harmful effect, so you might be Strength impaired or Intellect impaired, for instance. You roll with 1 bane when using the specified attribute, and you grant 1 boon on rolls against the specified attribute.",
+    "LP.OnFireDesc": "You catch fire. You take 1d6 damage at the end of each round until the fire is extinguished, which is normally accomplished with a successful luck roll (see Luck Rolls). You can also use an action to overcome the flames by making a successful Agility roll or by using an action to douse the flames with water or smother them with a blanket or similar object. A creature that drops prone before trying to overcome the flames makes the roll with 1 boon.",
+    "LP.PoisonedDesc": "You have been exposed to venom, poison, or some other toxin. You make attribute rolls with 1 bane, and you grant 1 boon on rolls against you. In addition, at the end of each round, you lose 1d6 Health.",
+    "LP.ProneDesc": "You are lying on the ground. You cannot use reactions. You grant 1 boon on rolls made to attack you with melee weapons, but impose 1 bane on rolls made to attack you with ranged weapons. You can use your move to crawl or stand up only.",
+    "LP.StunnedDesc": "You cannot use actions or reactions. Your Speed drops to 0 and you cannot benefit from increases to Speed until this affliction ends. You grant 2 boons on rolls against you, and you make attribute rolls with 2 banes.",
+    "LP.UnconsciousDesc": "You cannot use actions or reactions. Your Speed drops 0 and you cannot benefit from increases to Speed until this affliction ends. You receive no information from your senses. You grant 3 boons on rolls against you, and you automatically fail all attribute rolls.\nWhen you take damage, you first lose Health equal to the amount of damage you would take and then take the damage. For example, if you have Health 12 and take 6 damage while you are unconscious, you would reduce your Health to 6 and then take 6 damage, which would cause you to become incapacitated.",
+    "LP.AsleepDesc": "If you are unconscious because you are sleeping naturally, you stop being unconscious when a creature uses an action to shake you, kick you, or do something else to waken you. A loud noise might remove the affliction if you succeed on a luck roll. Time spent sleeping counts as resting for the purpose of healing damage (see “Rest” below). If your sleep is uninterrupted, you wake up naturally whenever you choose after you fall asleep.",
+    "LP.WeakenedDesc": "You make Strength and Agility rolls with 1 bane, and you grant 1 boon on rolls against your Strength and Agility. In addition, you halve your Speed, and you derive no benefit from increases to your Speed."
+}

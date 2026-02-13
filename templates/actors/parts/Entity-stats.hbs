@@ -1,0 +1,281 @@
+<div class="stats grid-2">
+
+    <div class="details-col flex-group-center">{{!-- Left Column --}}
+        <h2>{{localize "HotLP.Stats"}}</h2>
+
+        
+        <div class="flex-row stat-inline flex-group-left">{{!-- Level, Solitary --}}
+            <label>{{localize "HotLP.Level"}}</label>
+            <select name="system.stats.level">
+                {{selectOptions numbersObj selected=system.stats.level localize=true}}
+            </select>
+            {{system.stats.level.value}}
+
+            <label class="ml-2">{{localize "HotLP.Solitary"}}</label>
+            <input type="checkbox" name="system.stats.solitary" {{checked system.stats.solitary}} />
+        </div>
+
+        {{!-- Type --}}
+        <div class="flex-row stat-inline flex-group-left">
+            <label>{{localize "HotLP.Type"}}</label>
+            <input type="text" name="system.details.type" value="{{system.details.type}}" data-dtype="String" />
+            {{system.details.type.value}}
+        </div>
+
+        <div class="mb-2">
+            <div class="mt-2 flex-row stat-inline flex-group-left">{{!-- Defense --}}
+                <label>{{localize "HotLP.Defense"}}</label>
+                <input class="mr-1" type="number" name="system.stats.defense.total"
+                    value="{{system.stats.defense.total}}" min="0" data-dtype="Number" />
+                <input type="text" name="system.stats.defense.details" value="{{system.stats.defense.details}}"
+                    data-dtype="String" placeholder="{{localize "HotLP.DefenseDetails"}}" />
+            </div>
+            <div class="flex-row stat-inline flex-group-left">{{!-- Damage / Health --}}
+                <label>{{localize "HotLP.Health.Title"}}</label>
+                <input type="number" name="system.stats.health.total" value="{{system.stats.health.total}}" min="0"
+                    data-dtype="Number" />
+
+                <label class="ml-2">{{localize "HotLP.Damage.Title"}}</label>
+                {{system.stats.damage.value}}
+            </div>
+
+            <div class="mt-1 flex-row stat-inline flex-group-left">{{!-- Attributes 1 --}}
+                <label>{{localize "HotLP.Strength"}}</label>
+                <input class="mr-1" type="number" name="system.attributes.str.value"
+                    value="{{system.attributes.str.value}}" min="0" data-dtype="Number" /> 
+                    
+                <a class="attribute-mod rollable" data-label="Strength" title="Roll Strength">
+                    {{#if system.attributes.str.value}}
+                    {{numberFormat system.attributes.str.mod decimals=0 sign=true}}
+                    {{/if}}
+                </a>
+
+                <label class="ml-1">{{localize "HotLP.Agility"}}</label>
+                <input class="mr-1" type="number" name="system.attributes.agi.value"
+                    value="{{system.attributes.agi.value}}" min="0" data-dtype="Number" /> 
+                    
+                <a class="attribute-mod rollable" data-label="Agility" title="Roll Agility">
+                    {{#if system.attributes.agi.value}}
+                    {{numberFormat system.attributes.agi.mod decimals=0 sign=true}}
+                    {{/if}}
+                </a>
+
+            </div>
+            <div class="mt-1 flex-row stat-inline flex-group-left">{{!-- Attributes 2 --}}
+                <label>{{localize "HotLP.Intellect"}}</label>
+                <input class="mr-1" type="number" name="system.attributes.int.value"
+                    value="{{system.attributes.int.value}}" min="0" data-dtype="Number" /> 
+                    
+                <a class="attribute-mod rollable" data-label="Intellect" title="Roll Intellect">
+                    {{#if system.attributes.int.value}}
+                    {{numberFormat system.attributes.int.mod decimals=0 sign=true}}
+                    {{/if}}
+                </a>
+
+                <label class="ml-1">{{localize "HotLP.Will"}}</label>
+                <input class="mr-1" type="number" name="system.attributes.wil.value"
+                    value="{{system.attributes.wil.value}}" min="0" data-dtype="Number" /> 
+                    
+                <a class="attribute-mod rollable" data-label="Will" title="Roll Will">
+                    {{#if system.attributes.wil.value}}
+                    {{numberFormat system.attributes.wil.mod decimals=0 sign=true}}
+                    {{/if}}
+                </a>
+            </div>
+        </div>
+
+        <h2>{{localize "HotLP.Talents"}}</h2>
+
+        {{!-- Auras --}}
+        <ol class="item-list">
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Auras"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="aura"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each auras as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        {{!-- Senses --}}
+        <div class="flex-row stat-inline flex-group-left">
+            <label>{{localize "HotLP.Senses"}}</label>
+            <input type="text" name="system.details.senses" value="{{system.details.senses}}"
+                data-dtype="String" />
+            {{system.details.senses.value}}
+        </div>
+
+        {{!-- Languages --}}
+        <div class="flex-row stat-inline flex-group-left">
+            <label>{{localize "HotLP.Languages"}}</label>
+            <input type="text" name="system.details.languages" value="{{system.details.languages}}"
+                data-dtype="String" placeholder="{{localize "HotLP.LanguagesPH"}}" />
+            {{system.details.languages.value}}
+        </div>
+
+        {{!-- Immune --}}
+        <div class="flex-row stat-inline flex-group-left">
+            <label>{{localize "HotLP.Immune"}}</label>
+            <input type="text" name="system.details.immune" value="{{system.details.immune}}"
+                data-dtype="String" placeholder="{{localize "HotLP.ImmunePH"}}" />
+            {{system.details.immune.value}}
+        </div>
+
+        {{!-- Size, Speed --}}
+        <div class="mt-1 flex-row stat-inline flex-group-left">
+            <label>{{localize "HotLP.Size"}}</label>
+            <select name="system.stats.size">
+                {{selectOptions numbersObj selected=system.stats.size localize=true}}
+            </select>
+            {{system.stats.size.value}}
+
+            <label class="ml-2">{{localize "HotLP.Speed"}}</label>
+            <input class="mr-1" type="number" name="system.stats.speed.value" value="{{system.stats.speed.value}}"
+                data-dtype="Number" min="0" / placeholder="#">
+            <input type="text" name="system.stats.speed.special" value="{{system.stats.speed.special}}"
+                data-dtype="String" placeholder="{{localize "HotLP.SpeedPH"}}" title="{{localize "HotLP.SpeedTip"}}" />
+        </div>
+
+    </div>
+
+    <div class="details-col flex-group-center">{{!-- Right Column --}}
+
+        <ol class="item-list">{{!-- Talents --}}
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Talents"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="trait"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each talents as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        <ol class="item-list">{{!-- Weapons --}}
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Attacks"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Equipment" data-subtype="weapon"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each weapons as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        <ol class="item-list">{{!-- Actions --}}
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Actions"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="action"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each actions as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        <ol class="item-list">{{!-- Reactions --}}
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Reactions"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="reaction"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each reactions as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        <ol class="item-list">{{!-- End of Round Effects --}}
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Ends"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="end"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each end as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+
+        {{!-- Fury --}}
+        <ol class="item-list">
+            <li class="item flexrow items-header">
+                <div class="item-image"></div>
+                <div class="item-name">{{localize "HotLP.Fury"}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="Trait or Talent" data-subtype="fury"><i
+                            class="fas fa-plus"></i> {{localize "HotLP.Add"}}</a>
+                </div>
+            </li>
+            {{#each fury as |item id|}}
+            <li class="item flexrow flex-group-left" data-item-id="{{item._id}}">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24" /></div>
+                <label class="item-name">{{item.name}}</label>
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</div>

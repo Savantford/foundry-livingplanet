@@ -1,0 +1,27 @@
+<form class="{{cssClass}} item-sheet" autocomplete="off">
+
+  {{!-- Header --}}
+  <div class="flex-row stat-inline nowrap">
+  
+    {{localize "LP.Strength.YouAre"}}
+
+    <select name="system.degree">
+      {{selectOptions strengthDegrees selected=system.degree nameAttr="key" labelAttr="label" localize=true}}
+    </select>
+  
+    <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "LP.Item.Name"}}" />
+  
+    <span>
+      (
+      {{#if (eq system.degree "3")}}3 <i class="fas fa-up"></i>
+      {{else if (eq system.degree "2")}}2 <i class="fas fa-up"></i>
+      {{else if (eq system.degree "1")}}1 <i class="fas fa-up"></i>
+      {{else if (eq system.degree "-1")}}1 <i class="fas fa-down"></i>
+      {{else if (eq system.degree "-2")}}2 <i class="fas fa-down"></i>
+      {{else if (eq system.degree "-3")}}3 <i class="fas fa-down"></i>
+      {{/if}}
+      )
+    </span>
+  
+  </div>
+</form>
