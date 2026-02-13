@@ -5,7 +5,7 @@ import {
   makeHtmlField
 } from './common.mjs'
 
-export default class AssetData extends foundry.abstract.DataModel {
+export default class AssetModel extends foundry.abstract.DataModel {
 
   static defineSchema() {
     

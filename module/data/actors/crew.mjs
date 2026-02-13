@@ -4,7 +4,7 @@ import {
   makeStrField
 } from './common.mjs'
 
-export default class CrewData extends foundry.abstract.DataModel {
+export default class CrewModel extends foundry.abstract.DataModel {
 
   static defineSchema() {
     const type = 'crew';

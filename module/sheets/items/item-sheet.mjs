@@ -21,16 +21,7 @@ export class LPItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    let file = '';
-    
-    switch (this.item.type) {
-      case 'Strength or Weakness': file = 'strength'; break;
-      case 'Asset': file = 'asset'; break;
-      case 'Challenge': file = 'challenge'; break;
-      case 'Connection': file = 'connection'; break;
-    }
-
-    return `systems/livingplanet/templates/items/${file}.hbs`;
+    return `systems/livingplanet/templates/items/${this.item.type}.hbs`;
   }
 
   /* -------------------------------------------- */

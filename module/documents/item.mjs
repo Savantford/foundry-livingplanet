@@ -3,7 +3,7 @@
  * @extends {Item}
 */
 
-export class LPItem extends Item {
+export default class LPItem extends Item {
   /**
   * Augment the basic Item data model with additional dynamic data.
   */

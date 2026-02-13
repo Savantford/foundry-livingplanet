@@ -5,7 +5,7 @@ import LPActorSheet from "./actor-sheet.mjs";
  * @extends {LPActorSheet}
 */
 
-export default class LPCrewSheet extends LPActorSheet {
+export default class CrewSheet extends LPActorSheet {
   
   /** @override */
   static DEFAULT_OPTIONS = {

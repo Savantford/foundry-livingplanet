@@ -1,5 +1,7 @@
 {
     "TYPES.Actor.deviant": "Deviant",
+    "TYPES.Actor.entity": "Entity",
+    "TYPES.Actor.crew": "Crew",
     
     "LP.ActorName": "Actor's Name",
 
@@ -21,6 +23,8 @@
     "LP.Advantage.Label": "Advantage",
     "LP.Advantage.Scene": "Scene Adv.",
     "LP.Advantage.Disadvantage": "Disadvantage",
+
+    "TYPES.Item.asset": "Asset",
 
     "LP.Item": {
         "Name": "Item's Name",

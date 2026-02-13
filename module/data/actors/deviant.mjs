@@ -5,7 +5,7 @@ import {
   makeStrField
 } from './common.mjs'
 
-export default class DeviantData extends foundry.abstract.DataModel {
+export default class DeviantModel extends foundry.abstract.DataModel {
 
   static defineSchema() {
     const type = 'Deviant';

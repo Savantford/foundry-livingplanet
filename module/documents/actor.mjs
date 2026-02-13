@@ -3,7 +3,7 @@
 * @extends {Actor}
 */
 
-export class LPActor extends Actor {
+export default class LPActor extends Actor {
 
     /** @override */
     prepareData() {

@@ -1,4 +1,4 @@
-import { i18n, plusify, sum } from '../../helpers/utils.mjs'
+//import { i18n, plusify, sum } from '../../helpers/utils.mjs'
 //import RollAttribute from '../apps/roll-attribute.mjs'
 //import RollDamage from '../apps/roll-damage.mjs'
 //import { onManageActiveEffect, prepareActiveEffectCategories } from '../active-effects/effects.mjs';
@@ -6,16 +6,12 @@ import { i18n, plusify, sum } from '../../helpers/utils.mjs'
 
 // Similar syntax to importing, but note that
 // this is object destructuring rather than an actual import
-/*const ActorSheetV2 = foundry.applications?.sheets?.ActorSheetV2 ?? (class {});
-const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicationMixin ?? (cls => cls);*/
+const ActorSheetV2 = foundry.applications?.sheets?.ActorSheetV2 ?? (class {});
 
 /**
- * Extend the basic ActorSheetV2 with modifications tailored for SotWW
+ * Extend the basic ActorSheetV2 with modifications tailored for HotLP.
  * @extends {ActorSheetV2}
 */
-const { ActorSheetV2 } = foundry.applications.sheets;
-const { HandlebarsApplicationMixin } = foundry.applications.api;
-
 export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   /*constructor(options = {}) {
@@ -219,6 +215,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
    */
   async _prepareContext(options = {}) {
     const actorData = this.actor;
+    console.log('preparing')
     
     // Add the actor's data to context.system for easier access, as well as flags.
     const context = {

@@ -5,7 +5,7 @@ import LPActorSheet from "./actor-sheet.mjs";
  * @extends {LPActorSheet}
 */
 
-export default class LPDeviantSheet extends LPActorSheet {
+export default class DeviantSheet extends LPActorSheet {
   
   /** @override */
   static DEFAULT_OPTIONS = {
@@ -39,13 +39,13 @@ export default class LPDeviantSheet extends LPActorSheet {
   }
 
   /** @override */
-  _configureRenderOptions(options) {
+  /*_configureRenderOptions(options) {
     super._configureRenderOptions(options);
     
     // Completely overriding the parts 
     options.parts = ['main'];
     
     return options;
-  }
+  }*/
 
 }

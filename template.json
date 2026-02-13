@@ -1,10 +1,10 @@
 {
   "Actor": {
-    "types": ["deviant", "entity", "vehicle", "group"],
+    "types": ["deviant", "entity", "crew"],
     "htmlFields": ["details.biography.value", "details.biography.public", "description.full", "description.summary"]
   },
   "Item": {
-    "types": ["Strength or Weakness", "Asset", "Challenge", "Connection"],
+    "types": ["asset", "connection"],
     "htmlFields": ["description.value", "description.chat", "description.unidentified"]
   }
 }
