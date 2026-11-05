@@ -23,42 +23,16 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       contentClasses: ['scrollable']
     },
     actions: {
-      /*editImage: this.#onEditImage, // delete in V13; core functionality
-      /*embedInChat: this.#embedInChat,
-      linkInChat: this.#linkInChat,
-      startRest: this.#onRest,
-      resetSheet: this.#onSheetReset,
-
-      editModeToggle: this.#onToggleEditMode,
-      dispositionToggle: this.#onDispositionToggle,
-      incapacitatedRoll: this.#onIncapacitatedRoll,
-      attributeRoll: this.#onAttributeRoll,
-      afflictionsMenu: this.#onAfflictionsMenuOpen,
-      folderEdit: this.#onFolderEdit,
-
-      entryCreate: this.#onEntryCreate,
-      entryEdit: this.#onEntryEdit,
-      entryRemove: this.#onEntryRemove,
-
-      journalView: this.#onJournalView,
-      journalRemove: this.#onJournalRemove,
-      journalHelp: this.#onJournalHelp,*/
+      //editModeToggle: this.#onToggleEditMode,
+      //attributeRoll: this.#onAttributeRoll,
 
       itemCreate: this.#onItemCreate,
       itemEdit: this.#onItemEdit,
       itemRemove: this.#onItemRemove,
 
-      /*itemLabelClick: this.#onItemLabelClick,
-      itemScroll: this.#onItemScroll,
-      itemToggleEffects: this.#onItemToggleEffects,
-      itemToggleReloaded: this.#onItemToggleReloaded,
-      itemUpdateUses: this.#onItemUpdateUses,
-      containerCollapse: this.#onContainerCollapse,
+      updateProgress: this.#onProgressUpdate,
 
-      /*effectCreate: this.#onEffectCreate,
-      effectEdit: this.#onEffectEdit,
-      effectToggle: this.#onEffectToggle,
-      effectRemove: this.#onEffectRemove*/
+      itemUse: this.#onItemUse
     },
     form: {
       submitOnChange: true,
@@ -94,114 +68,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /* -------------------------------------------- */
-  /*  Form Submission                             */
+  /*  Rendering                                   */
   /* -------------------------------------------- */
-
-  /**
-   * Process form submission for the sheet
-   * @this {DocumentSheetV2}                      The handler is called with the application as its bound scope
-   * @param {SubmitEvent} event                   The originating form submission event
-   * @param {HTMLFormElement} form                The form element that was submitted
-   * @param {FormDataExtended} formData           Processed data for the submitted form
-   * @returns {Promise<void>}
-   */
-  static async #onSubmitDocumentForm(event, form, formData) {
-    if ( !this.isEditable ) return;
-    
-    formData.object['system.stats.damage.value'] = formData.object.damage;
-    
-    const submitData = this._prepareSubmitData(event, form, formData);
-    await this._processSubmitData(event, form, submitData);
-  }
-  
-  /* -------------------------------------------- */
-
-  /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
-  _getTabs(parts) {
-    // If you have sub-tabs this is necessary to change
-    const tabGroup = 'primary';
-    const type = this.actor.type;
-
-    // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = this.actor.limited ? 'details' : 'summary';
-    
-    // Assign tab properties
-    return parts.reduce((tabs, partId) => {
-      
-      const tab = {
-        cssClass: "",
-        group: tabGroup,
-        // Matches tab property to
-        id: '',
-        // Icon svg
-        icon: '',
-        // Run through localization
-        label: ''
-      };
-
-      switch (partId) {
-        case 'sidetabs':
-          return tabs;
-        case 'summary':
-          tab.id = 'summary';
-          tab.label = 'WW.Actor.Summary';
-          tab.icon = 'systems/weirdwizard/assets/icons/diploma.svg';
-          break;
-        case 'details':
-          if (type === 'Character') {
-            tab.id = 'details';
-            tab.label = 'WW.Actor.Details';
-            tab.icon = 'systems/weirdwizard/assets/icons/scroll-quill.svg';
-          }
-          break;
-        case 'equipment':
-          if (type === 'Character') {
-            tab.id = 'equipment';
-            tab.label = 'WW.Equipment.Label';
-            tab.icon = 'systems/weirdwizard/assets/icons/backpack.svg';
-          }
-          break;
-        case 'talents':
-          if (type === 'Character') {
-            tab.id = 'talents';
-            tab.label = 'WW.Talents.Label';
-            tab.icon = 'systems/weirdwizard/assets/icons/skills.svg';
-          }
-          break;
-        case 'spells':
-          if (type === 'Character') {
-            tab.id = 'spells';
-            tab.label = 'WW.Spells.Label';
-            tab.icon = 'systems/weirdwizard/assets/icons/spell-book.svg';
-          }
-          break;
-        case 'description':
-          if (type === 'NPC') {
-            tab.id = 'description';
-            tab.label = 'WW.Item.Description';
-            tab.icon = 'systems/weirdwizard/assets/icons/scroll-quill.svg';
-          }
-          break;
-        case 'effects':
-          tab.id = 'effects';
-          tab.label = 'WW.Effects.Label';
-          tab.icon = '/icons/svg/aura.svg';
-          break;
-        default: break;
-      }
-
-      // Activate tab
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = "active";
-      if (tab.id) tabs[partId] = tab;
-
-      return tabs;
-    }, {});
-  }
 
   /**
    * Prepare application rendering context data for a given render request.
@@ -216,29 +84,11 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     const context = {
       actor: actorData,
       system: actorData.system,
-      flags: actorData.flags,
-      dtypes: ['String', 'Number', 'Boolean']
+      flags: actorData.flags
     }
-
-    /*for (let attr of Object.values(context.system.attributes)) {
-      attr.isCheckbox = attr.dtype === 'Boolean';
-    }
-
-    // Localize attribute names
-    for (let [k, v] of Object.entries(context.system.attributes)) {
-      v.label = i18n(CONFIG.LP.attributes[k] ?? k);
-    }*/
 
     // Prepare common data
-    //context.system.description.enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.description.value, { async: true });
     context.numbersObj = CONFIG.LP.dropdownNumbers;
-
-    // Prepare hasEffect for use in templates
-    context.hasEffect = {};
-
-    CONFIG.statusEffects.forEach(function (e) {
-      context.hasEffect[e.id] = actorData.statuses.has(e.id);
-    })
 
     if (actorData.type === 'deviant' || actorData.type === 'entity') {
       // Prepare Impatience Array
@@ -274,18 +124,12 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
-
-    // Prepare effect change key-labels
-    context.effectChangeKeys = CONFIG.LP.effectChangeKeys;
-    
-    // Ensure editMode has a value
-    if (this.editMode === undefined) this.editMode = false;
     
     return context;
   }
 
   /** @override */
-  async _preparePartContext(partId, context, options) {
+  /*async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
 
     switch (partId) {
@@ -293,56 +137,10 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       case 'summary':
         context.tab = context.tabs[partId];
       break;
-      
-      // Details tab
-      case 'details':
-        context.tab = context.tabs[partId];
-      break;
-      
-      // Equipment tab
-      case 'equipment':
-        context.tab = context.tabs[partId];
-      break;
-      
-      // Talents tab
-      case 'talents':
-        context.tab = context.tabs[partId];
-      break;
-      
-      // Spells tab
-      case 'spells':
-        context.tab = context.tabs[partId];
-      break;
-      
-      // Description tab
-      case 'description':
-        context.tab = context.tabs[partId];
-        context.system.description.enriched = await TextEditor.enrichHTML(context.system.description.value, { async: true, secrets: this.actor.isOwner });
-      break;
-      
-      // Effects tab
-      case 'effects':
-        context.tab = context.tabs[partId];
-
-        // Prepare all applied active effects
-        context.appliedEffects = await prepareActiveEffectCategories(await this.actor.appliedEffects);
-        
-        for (const c in context.appliedEffects) {
-          context.appliedEffects[c].effects = context.appliedEffects[c].effects.toSorted((a, b) => a.sort - b.sort)
-        }
-
-        // Prepare all embedded active effects
-        context.effects = await prepareActiveEffectCategories(await this.actor.effects);
-
-        for (const c in context.effects) {
-          context.effects[c].effects = context.effects[c].effects.toSorted((a, b) => a.sort - b.sort)
-        };
-        
-      break;
     }
 
     return context;
-  }
+  }*/
 
   _prepareItems(context) {
     // Initialize containers.
@@ -434,6 +232,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     context.system.details.deeds.enriched = await TextEditor.enrichHTML(context.system.details.deeds.value, { async: true })*/
   }
 
+  /* -------------------------------------------- */
+
   _onRender(context, options) {
     const html = this.element;
 
@@ -456,8 +256,14 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       }
     }
     
-    const sys = this.document.system;
-    percents[1] = [convert(sys.cunning), convert(sys.agility), convert(sys.power)]; // Attributes
+    const a = this.document.system.attributes;
+
+    // Attributes
+    percents[1] = [
+      convert(a.cunning.current),
+      convert(a.agility.current),
+      convert(a.power.current)
+    ];
     percents[2] = [100, 80, 30];
     percents[3] = [80, 10, 60];
     
@@ -499,196 +305,6 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     });
   }
 
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    // -------------------------------------------------------------
-    // Everything below here is only needed if the sheet is editable
-    if (!this.isEditable) return;
-
-    /////////// ATTRIBUTES & STATS /////////////
-
-    // Rollable attributes.
-    html.find('.rollable').click(ev => { //this._onRoll.bind(this)
-      // Define variables to be used
-      let system = this.object.system;
-      let label = '';
-      let content = '';
-      let attKey = '';
-      let fixedBoons = 0;
-      
-      if ($(ev.currentTarget).hasClass('item-roll')) { // If it is a roll from an item.
-        let li = $(ev.currentTarget).parents('.item');
-        if (!li.length) { // If parent does not have .item class, set li to current target.
-          li = $(ev.currentTarget);
-        }
-
-        const item = this.actor.items.get(li.data('itemId'));
-
-        label = item.name;
-        fixedBoons = item.system.boons;
-        
-        if (this.actor.type == 'Deviant') content = item.system.description.value;
-        
-        if (this.actor.system.attributes[item.system.attribute]) {
-          attKey = item.system.attribute;
-        }
-
-      }
-      
-      // If the clicked element has a data-label, use it to determine the mod and label
-      switch (ev.target.getAttribute('data-label')) {
-        case 'Strength': {
-          label = i18n('LP.Strength');
-          attKey = 'str';
-          break;
-        }
-        case 'Agility': {
-          label = i18n('LP.Agility');
-          attKey = 'agi';
-          break;
-        }
-        case 'Intellect': {
-          label = i18n('LP.Intellect');
-          attKey = 'int';
-          break;
-        }
-        case 'Will': {
-          label = i18n('LP.Will');
-          attKey = 'wil';
-          break;
-        }
-        case 'Luck': {
-          label = i18n('LP.Luck');
-          attKey = 'luck';
-          break;
-        }
-      }
-
-      let obj = {
-        actor: this.actor,
-        target: ev,
-        label: label,
-        content: content,
-        attKey: attKey,
-        fixedBoons: fixedBoons
-      }
-
-      new RollAttribute(obj).render(true)
-    });
-
-    // Damage Roll
-    html.find('.damage-roll').click(ev => { //this._onRoll.bind(this)
-      // Define variables to be used
-      let li = $(ev.currentTarget).parents('.item');
-
-      if (!li.length) { // If parent does not have .item class, set li to current target.
-        li = $(ev.currentTarget);
-      }
-
-      const item = this.actor.items.get(li.data('itemId'));
-      
-      let obj = {
-        actor: this.actor,
-        target: ev,
-        label: i18n('LP.Damage.Of') + ' ' + item.name,
-        baseDamage: item.system.damage,
-        bonusDamage: this.actor.system.stats.bonusdamage
-      }
-
-      new RollDamage(obj).render(true)
-    });
-
-    // Healing Roll
-    html.find('.healing-roll').click(ev => { //this._onRoll.bind(this)
-      // Define variables to be used
-      let li = $(ev.currentTarget).parents('.item');
-
-      if (!li.length) { // If parent does not have .item class, set li to current target.
-        li = $(ev.currentTarget);
-      }
-
-      const item = this.actor.items.get(li.data('itemId'));
-      
-      let roll = new Roll(item.system.healing, this.actor.system);
-      let label = i18n('LP.HealingOf') + ' ' + item.name;
-
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode')
-      });
-      
-    });
-
-    // Edit Health button
-    html.find('.health-edit').click(ev => {
-      new healthDetails(this.actor).render(true)
-    });
-
-    /////////////////////// ITEMS ////////////////////////
-
-    // Handle item buttons
-    html.find('.item-button').click(this._onItemButtonClicked.bind(this))
-
-    // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
-
-    // Update Progress
-    html.find('.progress input').click(ev => this._onProgressUpdate(ev));
-
-    // Update Progress
-    html.find('.progress input').contextmenu(ev => this._onProgressReset(ev));
-
-    ////////////////// EFFECTS ////////////////////
-
-    // Active Effect management
-    html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.actor));
-
-    // Disable Afflictions
-    html.find('.remove-afflictions').click(async () => {
-      await LPAfflictions.clearAfflictions(this.actor);
-    });
-
-    // Afflictions tab checkboxes
-    html.find('.afflictions input').click(async ev => {
-      const input = ev.currentTarget;
-      const checked = input.checked;
-      const afflictionId = $(ev.currentTarget).data('name');
-
-      if (checked) {
-        const affliction = CONFIG.statusEffects.find(a => a.id === afflictionId);
-        
-        if (!affliction) return false
-        affliction['statuses'] = [affliction.id];
-        
-        await ActiveEffect.create(affliction, {parent: this.actor});
-
-      } else {
-        const affliction = this.actor.effects.find(e => e?.statuses?.has(afflictionId));
-
-        if (!affliction) return false
-
-        await affliction.delete();
-      }
-
-      return true
-    });
-
-    // Drag events for macros.
-    if (this.actor.isOwner) {
-      const handler = ev => this._onDragStart(ev)
-      html.find('.dropitem').each((i, li) => {
-        if (li.classList.contains('inventory-header')) return
-        li.setAttribute('draggable', true)
-        li.addEventListener('dragstart', handler, false)
-      })
-    }
-  }
-
-  /* -------------------------------------------- */
-
   /* -------------------------------------------- */
   /*  Item button actions                         */
   /* -------------------------------------------- */
@@ -699,7 +315,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
    * @private
   */
 
-  _onItemButtonClicked(ev) {
+  static #onItemUse(ev) {
     const button = ev.currentTarget,
       dataset = Object.assign({}, button.dataset),
       item = this.actor.items.get(dataset.itemId);
@@ -737,7 +353,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   // Set progress clock value to the segment clicked
-  _onProgressUpdate(ev) {
+  static #onProgressUpdate(ev) {
     
     const input = ev.currentTarget;
     const segment = input.value;
@@ -761,7 +377,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   // Reset Progress Clock
-  _onProgressReset(ev) {
+  static #onProgressReset(ev) {
     
     const input = ev.currentTarget;
 

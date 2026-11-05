@@ -30,8 +30,7 @@
               <div>
                 <label>{{localize "LP.Resources.Experience"}}</label>
 
-                <input type="number" name="system.experience" value="{{system.experience}}" min="0"
-                  data-dtype="Number" />
+                <input type="number" name="system.experience" value="{{system.experience}}" min="0">
               </div>
 
               {{!-- Profile Image --}}
@@ -51,7 +50,7 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Asset"}}" data-type="Asset"><i
-                class="fas fa-square-plus"></i></a>
+                class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list assets">
@@ -80,8 +79,7 @@
 
               <div>
                 <label>{{localize "LP.Advantage.Scene"}}</label>
-                <input type="number" name="system.advantage.scene" value="{{system.advantage.scene}}" min="0" max="5"
-                  data-dtype="Number" />
+                <input type="number" name="system.advantage.scene" value="{{system.advantage.scene}}" min="0" max="5">
               </div>
 
               <div>
@@ -95,9 +93,8 @@
             <div class="radar-chart-block">
               <div class="labels">
                 {{localize "LP.Attributes.Power"}}
-                <input type="number" name="system.attributes.power" value="{{system.attributes.power}}" min="-2" max="2"
-                  data-dtype="Number" />
-                <i class="fas {{#if (lt system.attributes.power 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+                <input type="number" name="system.attributes.power.current" value="{{system.attributes.power.current}}" min="-2" max="2">
+                <i class="fa-solid {{#if (lt system.attributes.power.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
               </div>
 
               {{!-- Radar Chart --}}
@@ -132,16 +129,14 @@
               <div class="labels-container">
                 <div class="labels">
                   {{localize "LP.Attributes.Agility"}}
-                  <input type="number" name="system.attributes.agility" value="{{system.attributes.agility}}" min="-2" max="2"
-                    data-dtype="Number" />
-                  <i class="fas {{#if (lt system.attributes.agility 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+                  <input type="number" name="system.attributes.agility.current" value="{{system.attributes.agility.current}}" min="-2" max="2">
+                  <i class="fa-solid {{#if (lt system.attributes.agility.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
                 </div>
 
                 <div class="labels">
                   {{localize "LP.Attributes.Cunning"}}
-                  <input type="number" name="system.attributes.cunning" value="{{system.attributes.cunning}}" min="-2" max="2"
-                    data-dtype="Number" />
-                  <i class="fas {{#if (lt system.attributes.cunning 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+                  <input type="number" name="system.attributes.cunning.current" value="{{system.attributes.cunning.current}}" min="-2" max="2">
+                  <i class="fa-solid {{#if (lt system.attributes.cunning.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
                 </div>
 
               </div>
@@ -160,20 +155,17 @@
 
               <div>
                 <label>{{localize "LP.Damage.Stress"}}</label>
-                <input type="number" name="system.damage.stress" value="{{system.damage.stress}}" min="0" max="3"
-                  data-dtype="Number" />
+                <input type="number" name="system.damage.stress" value="{{system.damage.stress}}" min="0" max="3">
               </div>
 
               <div>
                 <label>{{localize "LP.Damage.Fleeting"}}</label>
-                <input type="number" name="system.damage.fleeting" value="{{system.damage.fleeting}}" min="0" max="3"
-                  data-dtype="Number" />
+                <input type="number" name="system.damage.fleeting" value="{{system.damage.fleeting}}" min="0" max="3">
               </div>
 
               <div>
                 <label>{{localize "LP.Damage.Lasting"}}</label>
-                <input type="number" name="system.damage.lasting" value="{{system.damage.lasting}}" min="0" max="3"
-                  data-dtype="Number" />
+                <input type="number" name="system.damage.lasting" value="{{system.damage.lasting}}" min="0" max="3">
               </div>
             </fieldset>
 
@@ -199,7 +191,7 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Strength"}}" data-type="Strength"><i
-                class="fas fa-square-plus"></i></a>
+                class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list strengths">
@@ -217,7 +209,7 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Weakness"}}" data-type="Weakness"><i
-                class="fas fa-square-plus"></i></a>
+                class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list strengths">
@@ -245,7 +237,7 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Challenge"}}" data-type="Challenge"><i
-                class="fas fa-square-plus"></i></a>
+                class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list challenges">
@@ -268,7 +260,7 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Connection"}}" data-type="Connection"><i
-                class="fas fa-square-plus"></i></a>
+                class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list connections">
