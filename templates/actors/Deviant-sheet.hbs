@@ -51,7 +51,7 @@
 
           <ol class="item-list assets">
             {{#each assets as |item id|}}
-            {{> "systems/livingplanet/templates/actors/parts/actor-asset.hbs" item=item id=id}}
+              {{> asset item=item id=id}}
             {{/each}}
           </ol>
 
@@ -69,8 +69,7 @@
             {{!-- Advantage --}}
             <fieldset class="stat stat-box">
               <legend class="flexrow flex-group-left">
-                {{localize "LP.Advantage.Label"}}: {{numberFormat system.advantage.total decimals=0
-                sign=true}}
+                {{localize "LP.Advantage.Label"}}: {{numberFormat system.advantage.total decimals=0 sign=true}}
               </legend>
 
               <div>
@@ -171,7 +170,7 @@
                 {{localize "LP.Progress.Impatience"}}
               </legend>
 
-              {{> "systems/livingplanet/templates/progress-clock.hbs" arr=impatience data=system.impatience}}
+              {{> clock arr=impatience data=system.impatience}}
 
             </fieldset>
 
@@ -192,7 +191,7 @@
 
           <ol class="item-list strengths">
             {{#each strengths as |item id|}}
-            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
+              {{> strength item=item id=id}}
             {{/each}}
           </ol>
 
@@ -210,7 +209,7 @@
 
           <ol class="item-list strengths">
             {{#each weaknesses as |item id|}}
-            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
+              {{> strength item=item id=id}}
             {{/each}}
           </ol>
 
@@ -225,7 +224,6 @@
 
       {{!-- Left Col --}}
       <div class="flexcol">
-
         {{!-- Challenges --}}
         <fieldset class="stat stat-box">
           <legend class="flexrow flex-group-left">
@@ -233,22 +231,20 @@
 
             {{!-- Item Create Button --}}
             <a class="item-create ml-1" title="{{localize "LP.Item.Create.Challenge"}}" data-type="Challenge"><i
-                class="fa-solid fa-square-plus"></i></a>
+              class="fa-solid fa-square-plus"></i></a>
           </legend>
 
           <ol class="item-list challenges">
             {{#each challenges as |item id|}}
-            {{> "systems/livingplanet/templates/actors/parts/actor-challenge.hbs" item=item id=id}}
+              {{> challenge item=item id=id}}
             {{/each}}
           </ol>
 
         </fieldset>
-
       </div>
 
       {{!-- Right Col --}}
       <div class="flexcol">
-
         {{!-- Connections --}}
         <fieldset class="stat stat-box">
           <legend class="flexrow flex-group-left">
@@ -261,14 +257,12 @@
 
           <ol class="item-list connections">
             {{#each connections as |item id|}}
-            {{> "systems/livingplanet/templates/actors/parts/actor-connection.hbs" item=item id=id}}
+            {{> connection item=item id=id}}
             {{/each}}
           </ol>
 
         </fieldset>
-
       </div>
-
     </div>
   </section>
 </section>
