@@ -1,4 +1,6 @@
 {
+    "USER.GM": "Assembler",
+
     "TYPES.Actor.deviant": "Deviant",
     "TYPES.Actor.entity": "Entity",
     "TYPES.Actor.crew": "Crew",
@@ -6,10 +8,11 @@
     "LP.ActorName": "Actor's Name",
 
     "LP.Frame": "Frame",
-    "LP.Power": "Power",
-    "LP.Speed": "Speed",
-    "LP.Strategy": "Strategy",
-    "LP.Experience": "Experience",
+    "LP.Attributes.Power": "Power",
+    "LP.Attributes.Agility": "Agility",
+    "LP.Attributes.Cunning": "Cunning",
+
+    "LP.Resources.Experience": "Experience",
     
     "LP.Damage.Label": "Health",
     "LP.Damage.Total": "Total Damage",

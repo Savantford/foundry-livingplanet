@@ -1,21 +1,26 @@
 import {
-  fields,
-  attributes,
   makeIntField,
-  makeStrField
-} from './common.mjs'
+  makeStrField,
+  makeNumField
+} from '../field-presets.mjs';
 
 export default class DeviantModel extends foundry.abstract.DataModel {
-
   static defineSchema() {
-    const type = 'Deviant';
-    
-    return {
-      /*...description(type),*/
-      ...attributes(type),
-      /*...details(type),*/
+    const fields = foundry.data.fields;
 
+    const makeAttribute = x => new fields.SchemaField({
+      current: makeNumField(0),
+      normal: makeNumField(0)
+    })
+
+    const schema = {
       frame: makeStrField(''),
+
+      attributes: new fields.SchemaField({
+        power: makeAttribute(),
+        agility: makeAttribute(),
+        cunning: makeAttribute()
+      }),
 
       impatience: new fields.SchemaField({
         value: makeIntField(0),
@@ -32,7 +37,9 @@ export default class DeviantModel extends foundry.abstract.DataModel {
         fatigue: makeIntField(0),
         damage: makeIntField(0)
       })
-    }
+    };
+
+    return schema;
   }
 
   /**

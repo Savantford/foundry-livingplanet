@@ -12,10 +12,11 @@ import CrewModel from './data/actors/crew.mjs';
 import AssetModel from './data/items/asset.mjs';
 
 // Import sheet classes
-import DeviantSheet from './sheets/deviant-sheet.mjs';
-//import EntitySheet from './sheets/entity-sheet.mjs';
-//import CrewSheet from './sheets/crew-sheet.mjs';
-//import AssetSheet from './sheets/item/asset-sheet.mjs';
+import DeviantSheet from './sheets/actors/deviant-sheet.mjs';
+//import EntitySheet from './sheets/actors/entity-sheet.mjs';
+//import CrewSheet from './sheets/actors/crew-sheet.mjs';
+//import AssetSheet from './sheets/items/asset-sheet.mjs';
+//import SkillSheet from './sheets/items/skill-sheet.mjs';
 
 // Import helper/utility classes and constants
 import { LP } from './config.mjs';

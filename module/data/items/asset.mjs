@@ -1,9 +1,8 @@
 import {
-  //base,
   makeStrField,
   makeBooField,
   makeHtmlField
-} from './common.mjs'
+} from '../field-presets.mjs';
 
 export default class AssetModel extends foundry.abstract.DataModel {
 

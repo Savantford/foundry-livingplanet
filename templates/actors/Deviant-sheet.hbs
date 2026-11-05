@@ -1,261 +1,286 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
+  {{!-- Sheet Body --}}
+  <section class="sheet-body flexcol gap-10">
+    {{!-- Lists --}}
+    <div class="flexrow gap-10">
+      {{!-- Main Left Col --}}
+      <div class="flexcol gap-10">
 
-    {{!-- Sheet Body --}}
-    <section class="sheet-body flexcol gap-10">
+        {{!-- Sheet Header --}}
+        <header class="sheet-header character-header">
 
-        {{!-- Lists --}}
-        <div class="flexrow gap-10">
+          <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "
+                LP.ActorName"}}" /></h1>
 
-            {{!-- Main Left Col --}}
-            <div class="flexcol gap-10">
+          </div>
 
-                {{!-- Sheet Header --}}
-                <header class="sheet-header character-header">
-                    
-                    <div class="header-fields">
-                        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "LP.ActorName"}}"/></h1>
+          <div class="flexrow gap-10">
 
-                    </div>
+            <div class="stat-box stat">
 
-                    <div class="flexrow gap-10">
+              {{!-- Frame --}}
+              <div>
+                <label>{{localize "LP.Frame"}}</label>
 
-                        <div class="stat-box stat">
-                        
-                            {{!-- Frame --}}    
-                            <div>
-                                <label>{{localize "LP.Frame"}}</label>
-                                
-                                <input type="text" name="system.frame" value="{{system.frame}}" data-dtype="String" />
-                            </div>
+                <input type="text" name="system.frame" value="{{system.frame}}" data-dtype="String" />
+              </div>
 
-                            {{!-- Experience --}}
-                            <div>
-                                <label>{{localize "LP.Experience"}}</label>
+              {{!-- Experience --}}
+              <div>
+                <label>{{localize "LP.Resources.Experience"}}</label>
 
-                                <input type="number" name="system.experience" value="{{system.experience}}" min="0" data-dtype="Number" />
-                            </div>
+                <input type="number" name="system.experience" value="{{system.experience}}" min="0"
+                  data-dtype="Number" />
+              </div>
 
-                            {{!-- Profile Image --}}
-                            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+              {{!-- Profile Image --}}
+              <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100"
+                width="100" />
 
-                        </div>
-
-                    </div>
-
-                </header>
-
-                {{!-- Assets --}}
-                <fieldset class="stat stat-box">
-                    <legend class="flexrow flex-group-left">
-                        {{localize "LP.Asset.Plural"}}
-
-                        {{!-- Item Create Button --}}
-                        <a class="item-create ml-1" title="{{localize "LP.Item.Create.Asset"}}" data-type="Asset"><i class="fas fa-square-plus"></i></a>
-                    </legend>
-            
-                    <ol class="item-list assets">
-                        {{#each assets as |item id|}}
-                            {{> "systems/livingplanet/templates/actors/parts/actor-asset.hbs" item=item id=id}}
-                        {{/each}}
-                    </ol>
-            
-                </fieldset>
-                
             </div>
 
-            {{!-- Main Right Col --}}
-            <div class="flexcol gap-10">
+          </div>
 
-                <div class="statistics">
-                    {{!-- Header Left Col --}}
-                    <div>
+        </header>
 
-                        {{!-- Advantage --}}
-                        <fieldset class="stat stat-box">
-                            <legend class="flexrow flex-group-left">
-                                {{localize "LP.Advantage.Label"}}: {{numberFormat system.advantage.total decimals=0 sign=true}}
-                            </legend>
-                            
-                            <div>
-                                <label>{{localize "LP.Advantage.Scene"}}</label>
-                                <input type="number" name="system.advantage.scene" value="{{system.advantage.scene}}" min="0" max="5" data-dtype="Number"/>
-                            </div>
+        {{!-- Assets --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Asset.Plural"}}
 
-                            <div>
-                                <label>{{localize "LP.Advantage.Disadvantage"}}</label>
-                                <span>{{system.advantage.disadvantage}}</span>
-                            </div>
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Asset"}}" data-type="Asset"><i
+                class="fas fa-square-plus"></i></a>
+          </legend>
 
-                        </fieldset>
+          <ol class="item-list assets">
+            {{#each assets as |item id|}}
+            {{> "systems/livingplanet/templates/actors/parts/actor-asset.hbs" item=item id=id}}
+            {{/each}}
+          </ol>
 
-                        {{!-- Radar Chart Block --}}
-                        <div class="radar-chart-block">
-                            <div class="labels">
-                                {{localize "LP.Power"}} 
-                                <input type="number" name="system.power" value="{{system.power}}" min="-2" max="2" data-dtype="Number"/>
-                                <i class="fas {{#if (lt system.power 0)}}fa-down{{else}}fa-up{{/if}}"></i>
-                            </div>
+        </fieldset>
 
-                            {{!-- Radar Chart --}}
-                            <div class="radar-chart">
-                                <div class="wrapper">
-                                    <div class="grids polygons" style="--grid-line-rgb: var(--highlight-title-rbg)"><div></div></div>
-                                    <div class="grids polygons"><div></div></div>
-                                    <div class="grids polygons" style="--grid-line-rgb: 100, 100, 100"><div></div></div>
-                                    <div class="grids polygons"><div></div></div>
-                                    <div class="grids polygons"><div></div></div>
-                                    <div class="grids polygons"><div></div></div>
-                                </div>
-                                <div class="wrapper">
-                                    <div class="graphs polygons"><div><!-- Set 1 --></div></div>
-                                </div>
-                            </div>
+      </div>
 
-                            <div class="labels-container">
+      {{!-- Main Right Col --}}
+      <div class="flexcol gap-10">
 
-                                <div class="labels">
-                                    {{localize "LP.Speed"}}
-                                    <input type="number" name="system.speed" value="{{system.speed}}" min="-2" max="2" data-dtype="Number"/>
-                                    <i class="fas {{#if (lt system.speed 0)}}fa-down{{else}}fa-up{{/if}}"></i>
-                                </div>
+        <div class="statistics">
+          {{!-- Header Left Col --}}
+          <div>
 
-                                <div class="labels">
-                                    {{localize "LP.Strategy"}}
-                                    <input type="number" name="system.strategy" value="{{system.strategy}}" min="-2" max="2" data-dtype="Number"/>
-                                    <i class="fas {{#if (lt system.strategy 0)}}fa-down{{else}}fa-up{{/if}}"></i>                                    
-                                </div>
+            {{!-- Advantage --}}
+            <fieldset class="stat stat-box">
+              <legend class="flexrow flex-group-left">
+                {{localize "LP.Advantage.Label"}}: {{numberFormat system.advantage.total decimals=0
+                sign=true}}
+              </legend>
 
-                            </div>
+              <div>
+                <label>{{localize "LP.Advantage.Scene"}}</label>
+                <input type="number" name="system.advantage.scene" value="{{system.advantage.scene}}" min="0" max="5"
+                  data-dtype="Number" />
+              </div>
 
-                        </div>
-                        
-                    </div>
+              <div>
+                <label>{{localize "LP.Advantage.Disadvantage"}}</label>
+                <span>{{system.advantage.disadvantage}}</span>
+              </div>
 
-                    <div class="flexcol gap-10">
+            </fieldset>
 
-                        {{!-- Damage Fieldset --}}
-                        <fieldset class="stat stat-box flex-0">
-                            <legend class="flexrow flex-group-left">
-                                {{localize "LP.Damage.Total"}}: {{system.damage.total}}
-                            </legend>
-                            
-                            <div>
-                                <label>{{localize "LP.Damage.Stress"}}</label>
-                                <input type="number" name="system.damage.stress" value="{{system.damage.stress}}" min="0" max="3" data-dtype="Number"/>
-                            </div>
+            {{!-- Radar Chart Block --}}
+            <div class="radar-chart-block">
+              <div class="labels">
+                {{localize "LP.Attributes.Power"}}
+                <input type="number" name="system.attributes.power" value="{{system.attributes.power}}" min="-2" max="2"
+                  data-dtype="Number" />
+                <i class="fas {{#if (lt system.attributes.power 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+              </div>
 
-                            <div>
-                                <label>{{localize "LP.Damage.Fleeting"}}</label>
-                                <input type="number" name="system.damage.fleeting" value="{{system.damage.fleeting}}" min="0" max="3" data-dtype="Number"/>
-                            </div>
+              {{!-- Radar Chart --}}
+              <div class="radar-chart">
+                <div class="wrapper">
+                  <div class="grids polygons" style="--grid-line-rgb: var(--highlight-title-rbg)">
+                    <div></div>
+                  </div>
+                  <div class="grids polygons">
+                    <div></div>
+                  </div>
+                  <div class="grids polygons" style="--grid-line-rgb: 100, 100, 100">
+                    <div></div>
+                  </div>
+                  <div class="grids polygons">
+                    <div></div>
+                  </div>
+                  <div class="grids polygons">
+                    <div></div>
+                  </div>
+                  <div class="grids polygons">
+                    <div></div>
+                  </div>
+                </div>
+                <div class="wrapper">
+                  <div class="graphs polygons">
+                    <div><!-- Set 1 --></div>
+                  </div>
+                </div>
+              </div>
 
-                            <div>
-                                <label>{{localize "LP.Damage.Lasting"}}</label>
-                                <input type="number" name="system.damage.lasting" value="{{system.damage.lasting}}" min="0" max="3" data-dtype="Number"/>
-                            </div>
-                        </fieldset>
-
-                        {{!-- Impatience Clock --}}
-                        <fieldset class="impatience">
-                            <legend class="flexrow flex-group-left">
-                                {{localize "LP.Progress.Impatience"}}
-                            </legend>
-                            
-                            {{> "systems/livingplanet/templates/progress-clock.hbs" arr=impatience data=system.impatience}}
-                            
-                        </fieldset>
-
-                    </div>
-                    
-
+              <div class="labels-container">
+                <div class="labels">
+                  {{localize "LP.Attributes.Agility"}}
+                  <input type="number" name="system.attributes.agility" value="{{system.attributes.agility}}" min="-2" max="2"
+                    data-dtype="Number" />
+                  <i class="fas {{#if (lt system.attributes.agility 0)}}fa-down{{else}}fa-up{{/if}}"></i>
                 </div>
 
-                {{!-- Strengths --}}
-                <fieldset class="stat stat-box">
-                    <legend class="flexrow flex-group-left">
-                        {{localize "LP.Strength.Strengths"}}
+                <div class="labels">
+                  {{localize "LP.Attributes.Cunning"}}
+                  <input type="number" name="system.attributes.cunning" value="{{system.attributes.cunning}}" min="-2" max="2"
+                    data-dtype="Number" />
+                  <i class="fas {{#if (lt system.attributes.cunning 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+                </div>
 
-                        {{!-- Item Create Button --}}
-                        <a class="item-create ml-1" title="{{localize "LP.Item.Create.Strength"}}" data-type="Strength"><i class="fas fa-square-plus"></i></a>
-                    </legend>
-            
-                    <ol class="item-list strengths">
-                        {{#each strengths as |item id|}}
-                            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
-                        {{/each}}
-                    </ol>
-            
-                </fieldset>
-
-                {{!-- Weaknesses --}}
-                <fieldset class="stat stat-box">
-                    <legend class="flexrow flex-group-left">
-                        {{localize "LP.Strength.Weaknesses"}}
-
-                        {{!-- Item Create Button --}}
-                        <a class="item-create ml-1" title="{{localize "LP.Item.Create.Weakness"}}" data-type="Weakness"><i class="fas fa-square-plus"></i></a>
-                    </legend>
-            
-                    <ol class="item-list strengths">
-                        {{#each weaknesses as |item id|}}
-                            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
-                        {{/each}}
-                    </ol>
-            
-                </fieldset>
+              </div>
 
             </div>
-            
+
+          </div>
+
+          <div class="flexcol gap-10">
+
+            {{!-- Damage Fieldset --}}
+            <fieldset class="stat stat-box flex-0">
+              <legend class="flexrow flex-group-left">
+                {{localize "LP.Damage.Total"}}: {{system.damage.total}}
+              </legend>
+
+              <div>
+                <label>{{localize "LP.Damage.Stress"}}</label>
+                <input type="number" name="system.damage.stress" value="{{system.damage.stress}}" min="0" max="3"
+                  data-dtype="Number" />
+              </div>
+
+              <div>
+                <label>{{localize "LP.Damage.Fleeting"}}</label>
+                <input type="number" name="system.damage.fleeting" value="{{system.damage.fleeting}}" min="0" max="3"
+                  data-dtype="Number" />
+              </div>
+
+              <div>
+                <label>{{localize "LP.Damage.Lasting"}}</label>
+                <input type="number" name="system.damage.lasting" value="{{system.damage.lasting}}" min="0" max="3"
+                  data-dtype="Number" />
+              </div>
+            </fieldset>
+
+            {{!-- Impatience Clock --}}
+            <fieldset class="impatience">
+              <legend class="flexrow flex-group-left">
+                {{localize "LP.Progress.Impatience"}}
+              </legend>
+
+              {{> "systems/livingplanet/templates/progress-clock.hbs" arr=impatience data=system.impatience}}
+
+            </fieldset>
+
+          </div>
+
+
         </div>
 
-        {{!-- Challenge/Connection Lists --}}
-        <div class="flexrow gap-10">
+        {{!-- Strengths --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Strength.Strengths"}}
 
-            {{!-- Left Col --}}
-            <div class="flexcol">
-                
-                {{!-- Challenges --}}
-                <fieldset class="stat stat-box">
-                    <legend class="flexrow flex-group-left">
-                        {{localize "LP.Progress.Challenge.Plural"}}
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Strength"}}" data-type="Strength"><i
+                class="fas fa-square-plus"></i></a>
+          </legend>
 
-                        {{!-- Item Create Button --}}
-                        <a class="item-create ml-1" title="{{localize "LP.Item.Create.Challenge"}}" data-type="Challenge"><i class="fas fa-square-plus"></i></a>
-                    </legend>
-            
-                    <ol class="item-list challenges">
-                        {{#each challenges as |item id|}}
-                            {{> "systems/livingplanet/templates/actors/parts/actor-challenge.hbs" item=item id=id}}
-                        {{/each}}
-                    </ol>
-            
-                </fieldset>
+          <ol class="item-list strengths">
+            {{#each strengths as |item id|}}
+            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
+            {{/each}}
+          </ol>
 
-            </div>
-            
-            {{!-- Right Col --}}
-            <div class="flexcol">
+        </fieldset>
 
-                {{!-- Connections --}}
-                <fieldset class="stat stat-box">
-                    <legend class="flexrow flex-group-left">
-                        {{localize "LP.Progress.Connection.Plural"}}
+        {{!-- Weaknesses --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Strength.Weaknesses"}}
 
-                        {{!-- Item Create Button --}}
-                        <a class="item-create ml-1" title="{{localize "LP.Item.Create.Connection"}}" data-type="Connection"><i class="fas fa-square-plus"></i></a>
-                    </legend>
-            
-                    <ol class="item-list connections">
-                        {{#each connections as |item id|}}
-                            {{> "systems/livingplanet/templates/actors/parts/actor-connection.hbs" item=item id=id}}
-                        {{/each}}
-                    </ol>
-            
-                </fieldset>
-                
-            </div>
-            
-        </div>
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Weakness"}}" data-type="Weakness"><i
+                class="fas fa-square-plus"></i></a>
+          </legend>
 
-    </section>
+          <ol class="item-list strengths">
+            {{#each weaknesses as |item id|}}
+            {{> "systems/livingplanet/templates/actors/parts/actor-strength.hbs" item=item id=id}}
+            {{/each}}
+          </ol>
+
+        </fieldset>
+
+      </div>
+
+    </div>
+
+    {{!-- Challenge/Connection Lists --}}
+    <div class="flexrow gap-10">
+
+      {{!-- Left Col --}}
+      <div class="flexcol">
+
+        {{!-- Challenges --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Progress.Challenge.Plural"}}
+
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Challenge"}}" data-type="Challenge"><i
+                class="fas fa-square-plus"></i></a>
+          </legend>
+
+          <ol class="item-list challenges">
+            {{#each challenges as |item id|}}
+            {{> "systems/livingplanet/templates/actors/parts/actor-challenge.hbs" item=item id=id}}
+            {{/each}}
+          </ol>
+
+        </fieldset>
+
+      </div>
+
+      {{!-- Right Col --}}
+      <div class="flexcol">
+
+        {{!-- Connections --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Progress.Connection.Plural"}}
+
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Connection"}}" data-type="Connection"><i
+                class="fas fa-square-plus"></i></a>
+          </legend>
+
+          <ol class="item-list connections">
+            {{#each connections as |item id|}}
+            {{> "systems/livingplanet/templates/actors/parts/actor-connection.hbs" item=item id=id}}
+            {{/each}}
+          </ol>
+
+        </fieldset>
+
+      </div>
+
+    </div>
+  </section>
 </form>

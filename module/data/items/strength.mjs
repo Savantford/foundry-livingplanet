@@ -3,7 +3,7 @@ import {
   makeIntField,
   makeStrField,
   makeHtmlField
-} from './common.mjs'
+} from '../field-presets.mjs';
 
 export default class StrengthData extends foundry.abstract.DataModel {
 

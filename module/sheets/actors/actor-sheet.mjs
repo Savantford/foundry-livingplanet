@@ -1,12 +1,7 @@
-//import { i18n, plusify, sum } from '../../helpers/utils.mjs'
-//import RollAttribute from '../apps/roll-attribute.mjs'
-//import RollDamage from '../apps/roll-damage.mjs'
-//import { onManageActiveEffect, prepareActiveEffectCategories } from '../active-effects/effects.mjs';
-//import { LPAfflictions } from '../active-effects/afflictions.mjs';
-
 // Similar syntax to importing, but note that
 // this is object destructuring rather than an actual import
 const ActorSheetV2 = foundry.applications?.sheets?.ActorSheetV2 ?? (class {});
+const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicationMixin ?? (cls => cls);
 
 /**
  * Extend the basic ActorSheetV2 with modifications tailored for HotLP.

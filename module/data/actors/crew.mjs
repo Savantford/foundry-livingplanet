@@ -1,15 +1,13 @@
 import {
-  fields,
   makeIntField,
   makeStrField
-} from './common.mjs'
+} from '../field-presets.mjs';
 
 export default class CrewModel extends foundry.abstract.DataModel {
-
   static defineSchema() {
-    const type = 'crew';
-    
-    return {
+    const fields = foundry.data.fields;
+
+    const schema = {
       type: makeStrField('bonding',0),
       difficulty: makeIntField(0),
 
@@ -17,8 +15,9 @@ export default class CrewModel extends foundry.abstract.DataModel {
         value: makeIntField(0),
         max: makeIntField(6)
       }),
+    };
 
-    }
+    return schema;
   }
 
   /**

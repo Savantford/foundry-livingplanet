@@ -4,7 +4,7 @@ import {
   makeStrField,
   makeBooField,
   makeHtmlField
-} from './common.mjs'
+} from '../field-presets.mjs';
 
 export default class ChallengeData extends foundry.abstract.DataModel {
 
