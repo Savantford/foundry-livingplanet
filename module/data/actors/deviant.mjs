@@ -1,7 +1,6 @@
 import {
   makeIntField,
-  makeStrField,
-  makeNumField
+  makeStrField
 } from '../field-presets.mjs';
 
 export default class DeviantModel extends foundry.abstract.DataModel {
@@ -9,8 +8,8 @@ export default class DeviantModel extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
 
     const makeAttribute = x => new fields.SchemaField({
-      current: makeNumField(0),
-      normal: makeNumField(0)
+      current: makeIntField({ initial: 0 }),
+      normal: makeIntField({ initial: 0 })
     })
 
     const schema = {
@@ -23,19 +22,19 @@ export default class DeviantModel extends foundry.abstract.DataModel {
       }),
 
       impatience: new fields.SchemaField({
-        value: makeIntField(0),
-        max: makeIntField(6)
+        value: makeIntField({ initial: 0 }),
+        max: makeIntField({ initial: 6 })
       }),
 
       advantage: new fields.SchemaField({
-        scene: makeIntField(0),
+        scene: makeIntField({ initial: 0 }),
       }),
-      experience: makeIntField(0),
+      experience: makeIntField({ initial: 0 }),
 
       harm: new fields.SchemaField({
-        stress: makeIntField(0),
-        fatigue: makeIntField(0),
-        damage: makeIntField(0)
+        stress: makeIntField({ initial: 0 }),
+        fatigue: makeIntField({ initial: 0 }),
+        damage: makeIntField({ initial: 0 })
       })
     };
 

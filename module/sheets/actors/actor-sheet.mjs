@@ -61,9 +61,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-
     // Handled by the subclass
-    
     return options;
   }
 
@@ -77,15 +75,16 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
    * @returns {Promise<ApplicationRenderContext>}   Context data for the render operation
    */
   async _prepareContext(options = {}) {
+    const context = await super._prepareContext(options);
     const actorData = this.actor;
-    console.log('preparing')
     
     // Add the actor's data to context.system for easier access, as well as flags.
-    const context = {
+    foundry.utils.mergeObject(context, {
       actor: actorData,
       system: actorData.system,
-      flags: actorData.flags
-    }
+      flags: actorData.flags,
+      dtypes: ['String', 'Number', 'Boolean']
+    })
 
     // Prepare common data
     context.numbersObj = CONFIG.LP.dropdownNumbers;
@@ -306,6 +305,14 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /* -------------------------------------------- */
+  /*  Form Handling                               */
+  /* -------------------------------------------- */
+  
+  /*_processFormData(event, form, formData) {
+    return foundry.utils.expandObject(formData.object);
+  }*/
+
+  /* -------------------------------------------- */
   /*  Item button actions                         */
   /* -------------------------------------------- */
   
@@ -332,6 +339,60 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       case 'item-collapse': this._onItemCollapse(button); break;
     }
     
+  }
+
+  /**
+   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
+   * @param {Event} event   The originating click event
+   * @private
+  */
+  static async #onItemCreate(event, button) {
+    const dataset = Object.assign({}, button.dataset);
+
+    let type = dataset.type; // Get the type of item to create.
+    
+    let name = i18n('LP.NewItem', { itemType: type.capitalize() }) // Initialize a default name.
+
+    let subtype = '';
+    let source = '';
+    let attribute = '';
+    let damage = '';
+    let against = '';
+    let degree = '';
+    
+    // If Strength or Weakness, set type and degree
+    if (type == 'Strength') {
+      type = 'Strength or Weakness';
+      degree = "1";
+    } else if (type == 'Weakness') {
+      type = 'Strength or Weakness';
+      degree = "-1";
+    }
+
+    // If weapon, set default automated roll
+    if (subtype == 'weapon') {
+      attribute = 'str';
+      against = 'def';
+      damage = '1d6';
+    }
+
+    // If Character's Talent, set source
+    if ((this.actor.type) && (type == 'Trait or Talent')) source = event.currentTarget.dataset.source;
+
+    // Prepare the item object.
+    const itemData = {
+      name: name,
+      type: type,
+      system: { degree }
+    };
+
+    // Create the item
+    const [createdItem] = await this.actor.createEmbeddedDocuments('Item', [itemData]);
+
+    // Render the created item's template
+    createdItem.sheet.render(true);
+
+    return 
   }
 
   // Render the item sheet for viewing/editing prior to the editable check.
@@ -429,10 +490,10 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
         rollMode: game.settings.get('core', 'rollMode')
       });
     }
-  }
+  }*/
 
   /* -------------------------------------------- */
-  /*  Drop item events                             */
+  /*  Drop item events                            */
   /* -------------------------------------------- */
 
   /** @override */
@@ -440,75 +501,5 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     const isAllowed = await this.checkDroppedItem(itemData)
     if (isAllowed) return await super._onDropItemCreate(itemData)
     console.warn('Wrong item type dragged', this.actor, itemData)
-  }
-
-  /* -------------------------------------------- */
-  /** @override */
-  /*async checkDroppedItem(itemData) {
-    const type = itemData.type
-    if (['specialaction', 'endoftheround'].includes(type)) return false
-
-    if (type === 'ancestry') {
-      const currentAncestriesIds = this.actor.items.filter(i => i.type === 'ancestry').map(i => i._id)
-      if (currentAncestriesIds?.length > 0) await this.actor.deleteEmbeddedDocuments('Item', currentAncestriesIds)
-      return true
-    } else if (type === 'path' && this.actor.system.paths?.length >= 3) return false
-
-    return true
-  }
-
-  /**
-   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @private
-  */
-  static async #onItemCreate(event, button) {
-    const dataset = Object.assign({}, button.dataset);
-
-    let type = dataset.type; // Get the type of item to create.
-    
-    let name = i18n('LP.NewItem', { itemType: type.capitalize() }) // Initialize a default name.
-
-    let subtype = '';
-    let source = '';
-    let attribute = '';
-    let damage = '';
-    let against = '';
-    let degree = '';
-    
-    // If Strength or Weakness, set type and degree
-    if (type == 'Strength') {
-      type = 'Strength or Weakness';
-      degree = "1";
-    } else if (type == 'Weakness') {
-      type = 'Strength or Weakness';
-      degree = "-1";
-    }
-
-    // If weapon, set default automated roll
-    if (subtype == 'weapon') {
-      attribute = 'str';
-      against = 'def';
-      damage = '1d6';
-    }
-
-    // If Character's Talent, set source
-    if ((this.actor.type) && (type == 'Trait or Talent')) source = event.currentTarget.dataset.source;
-
-    // Prepare the item object.
-    const itemData = {
-      name: name,
-      type: type,
-      system: { degree }
-    };
-
-    // Create the item
-    const [createdItem] = await this.actor.createEmbeddedDocuments('Item', [itemData]);
-
-    // Render the created item's template
-    createdItem.sheet.render(true);
-
-    return 
-  }
-
+  }*/
 }

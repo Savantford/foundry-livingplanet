@@ -10,7 +10,6 @@ export const makeIntField = (options={}) => {
 
   return new fields.NumberField({
     initial, label,
-    min: 0,
     required: true,
     nullable: true,
     integer: true,

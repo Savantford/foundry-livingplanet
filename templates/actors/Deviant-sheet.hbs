@@ -1,4 +1,4 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
+<section class="{{cssClass}} flexcol">
   {{!-- Sheet Body --}}
   <section class="sheet-body flexcol gap-10">
     {{!-- Lists --}}
@@ -10,9 +10,7 @@
         <header class="sheet-header character-header">
 
           <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "
-                LP.ActorName"}}" /></h1>
-
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "LP.ActorName"}}" /></h1>
           </div>
 
           <div class="flexrow gap-10">
@@ -23,7 +21,7 @@
               <div>
                 <label>{{localize "LP.Frame"}}</label>
 
-                <input type="text" name="system.frame" value="{{system.frame}}" data-dtype="String" />
+                <input type="text" name="system.frame" value="{{system.frame}}">
               </div>
 
               {{!-- Experience --}}
@@ -34,9 +32,7 @@
               </div>
 
               {{!-- Profile Image --}}
-              <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100"
-                width="100" />
-
+              <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100">
             </div>
 
           </div>
@@ -275,4 +271,4 @@
 
     </div>
   </section>
-</form>
+</section>
