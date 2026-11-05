@@ -307,7 +307,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   /* -------------------------------------------- */
   /*  Form Handling                               */
   /* -------------------------------------------- */
-  
+
   /*_processFormData(event, form, formData) {
     return foundry.utils.expandObject(formData.object);
   }*/
@@ -414,38 +414,32 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   // Set progress clock value to the segment clicked
-  static #onProgressUpdate(ev) {
-    
-    const input = ev.currentTarget;
-    const segment = input.value;
+  static #onProgressUpdate(event, button) {
+    const segment = parseInt(button.value);
 
-    const li = $(input).closest('.item');
+    const li = $(button).closest('.item');
 
     if (li.length) { // If the clock is from an item
-      
       const itemId = li.data('itemId');
-
       const item = this.actor.items.get(itemId);
-      
-      item.update({ 'system.progress.value': segment });
+      const current = foundry.utils.getProperty(item, 'system.progress.value');
+
+      item.update({ 'system.progress.value': current === segment ? segment - 1 : segment });
 
     } else { // If not from an item
-      //const ele = $(input).closest('.impatience').length ? 'impatience' : '';
+      //const ele = $(button).closest('.impatience').length ? 'impatience' : '';
 
-      this.actor.update({ 'system.impatience.value': segment });
+      const current = foundry.utils.getProperty(this.actor, 'system.impatience.value');
+      
+      this.actor.update({ 'system.impatience.value': current === segment ? segment - 1 : segment });
     }
-    
   }
 
-  // Reset Progress Clock
-  static #onProgressReset(ev) {
-    
-    const input = ev.currentTarget;
-
-    const li = $(input).closest('.item');
+  // Reset Progress Clock (Luxury, requires right click listener)
+  static #onProgressReset(event, button) {
+    const li = $(button).closest('.item');
 
     if (li.length) { // If the clock is from an item
-      
       const itemId = li.data('itemId');
 
       const item = this.actor.items.get(itemId);
@@ -453,10 +447,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       item.update({ 'system.progress.value': 0 });
 
     } else { // If not from an item
-
       this.actor.update({ 'system.impatience.value': 0 });
     }
-    
   }
 
   /**

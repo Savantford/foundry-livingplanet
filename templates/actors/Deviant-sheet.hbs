@@ -167,9 +167,9 @@
             {{!-- Impatience Clock --}}
             <fieldset class="impatience">
               <legend class="flexrow flex-group-left">
-                {{localize "LP.Progress.Impatience"}}
+                {{localize "LP.Progress.Impatience"}}:
+                {{system.impatience.value}} / {{system.impatience.max}}
               </legend>
-
               {{> clock arr=impatience data=system.impatience}}
 
             </fieldset>
