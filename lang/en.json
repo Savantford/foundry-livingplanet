@@ -40,19 +40,6 @@
       "Hard": "Hard",
       "Epic": "Epic"
     },
-    "Connection": {
-      "Plural": "Connections",
-      "Type": "Type",
-      "Personal": "Personal",
-      "Regional": "Regional",
-      "Cultural": "Cultural",
-      "Level": "Level",
-      "Weak": "Weak",
-      "Relevant": "Relevant",
-      "Strong": "Strong",
-      "Crucial": "Crucial",
-      "Essential": "Essential"
-    },
     "Event": {
       "Duration": "Duration",
       "Brief": "Brief",
@@ -70,36 +57,20 @@
   "TYPES.Item.asset": "Asset",
   "TYPES.Item.connection": "Connection",
 
+    "Remove": {
+      "Label": "Remove",
+      "Title": "Remove Item",
+      "Msg": "You are about to delete",
+      "Msg2": "This action is irreversible.",
+      "Confirm": "Are you sure you want to delete",
+    },
+
   "LP.Item": {
     "Name": "Item's Name",
     "Roll": {
       "Attribute": "Roll Attribute/Luck",
       "Damage": "Roll Damage Dice",
       "Healing": "Roll Healing Dice"
-    },
-    "Create": {
-      "Strength": "New Strength",
-      "Weakness": "New Weakness",
-      "Asset": "New Asset",
-      "Challenge": "New Challenge",
-      "Connection": "New Connection"
-    },
-    "Edit": {
-      "Strength or Weakness": "Edit Strength/Weakness",
-      "Asset": "Edit Asset",
-      "Challenge": "Edit Challenge",
-      "Connection": "Edit Connection"
-    },
-    "Delete": {
-      "Label": "Delete",
-      "Title": "Delete Item",
-      "Msg": "You are about to delete",
-      "Msg2": "This action is irreversible.",
-      "Confirm": "Are you sure you want to delete",
-      "Strength or Weakness": "Delete Strength/Weakness",
-      "Asset": "Delete Asset",
-      "Challenge": "Delete Challenge",
-      "Connection": "Delete Connection"
     },
     "Uses": {
       "TalentSpend": "Spend use/token",
@@ -123,11 +94,44 @@
     "Unequip": "Remove equipment"
   },
 
+  "LP.Skill": {
+    "Plural": "Skills",
+    "Create": "New Skill",
+    "Edit": "Edit Skill",
+    "Remove": "Remove Skill",
+
+    "Source": "Source",
+    "Modification": "Frame",
+    "Knowledge": "Knowledge"
+  },
+
   "LP.Asset": {
     "Plural": "Assets",
+    "Create": "New Asset",
+    "Edit": "Edit Asset",
+    "Remove": "Remove Asset",
+
     "Source": "Source",
     "Modification": "Frame Modification",
     "Knowledge": "Knowledge",
     "Equipment": "Equipment"
+  },
+
+  "LP.Connection": {
+    "Plural": "Connections",
+    "Create": "New Connection",
+    "Edit": "Edit Connection",
+    "Remove": "Remove Connection",
+
+    "Type": "Type",
+    "Personal": "Personal",
+    "Regional": "Regional",
+    "Cultural": "Cultural",
+    "Level": "Level",
+    "Weak": "Weak",
+    "Relevant": "Relevant",
+    "Strong": "Strong",
+    "Crucial": "Crucial",
+    "Essential": "Essential"
   }
 }

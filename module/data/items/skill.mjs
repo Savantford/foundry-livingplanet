@@ -1,4 +1,3 @@
-import { makeStrField } from '../field-presets.mjs';
 import BaseItemModel from './base-item.mjs';
 
 export default class SkillModel extends BaseItemModel {

@@ -1,5 +1,5 @@
-import { makeStrField, makeIntField } from '../field-presets.mjs';
 import BaseItemModel from './base-item.mjs';
+import { makeStrField, makeIntField } from '../field-presets.mjs';
 
 export default class ConnectionModel extends BaseItemModel {
   static defineSchema() {

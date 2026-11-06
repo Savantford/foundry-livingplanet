@@ -94,6 +94,23 @@
           </div>
         </div>
 
+        {{!-- Skills --}}
+        <fieldset class="stat stat-box">
+          <legend class="flexrow flex-group-left">
+            {{localize "LP.Skill.Plural"}}
+
+            {{!-- Item Create Button --}}
+            <a class="item-create ml-1" title="{{localize "LP.Skill.Create"}}" data-type="Asset"><i
+                class="fa-solid fa-square-plus"></i></a>
+          </legend>
+
+          <ol class="item-list assets">
+            {{#each assets as |item id|}}
+              {{> asset item=item id=id}}
+            {{/each}}
+          </ol>
+        </fieldset>
+
         {{!-- Assets --}}
         <fieldset class="stat stat-box">
           <legend class="flexrow flex-group-left">
@@ -109,7 +126,6 @@
               {{> asset item=item id=id}}
             {{/each}}
           </ol>
-
         </fieldset>
 
       </div>
@@ -159,45 +175,7 @@
 
 
         </div>
-
-        {{!-- Strengths --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Strength.Strengths"}}
-
-            {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Strength"}}" data-type="Strength"><i
-                class="fa-solid fa-square-plus"></i></a>
-          </legend>
-
-          <ol class="item-list strengths">
-            {{#each strengths as |item id|}}
-              {{> strength item=item id=id}}
-            {{/each}}
-          </ol>
-
-        </fieldset>
-
-        {{!-- Weaknesses --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Strength.Weaknesses"}}
-
-            {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Weakness"}}" data-type="Weakness"><i
-                class="fa-solid fa-square-plus"></i></a>
-          </legend>
-
-          <ol class="item-list strengths">
-            {{#each weaknesses as |item id|}}
-              {{> strength item=item id=id}}
-            {{/each}}
-          </ol>
-
-        </fieldset>
-
       </div>
-
     </div>
 
     {{!-- Challenge/Connection Lists --}}
