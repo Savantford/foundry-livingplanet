@@ -57,6 +57,9 @@
   "TYPES.Item.asset": "Asset",
   "TYPES.Item.connection": "Connection",
 
+  "LP.Item": {
+    "Name": "Item's Name",
+
     "Remove": {
       "Label": "Remove",
       "Title": "Remove Item",
@@ -65,13 +68,12 @@
       "Confirm": "Are you sure you want to delete"
     },
 
-  "LP.Item": {
-    "Name": "Item's Name",
     "Roll": {
       "Attribute": "Roll Attribute/Luck",
       "Damage": "Roll Damage Dice",
       "Healing": "Roll Healing Dice"
     },
+
     "Uses": {
       "TalentSpend": "Spend use/token",
       "TalentRecover": "Recover use/token",
@@ -85,6 +87,7 @@
       "FuryRecover": "Recover fury token",
       "OnRest": "Recover on rest?"
     },
+    
     "ShowDesc": "Show description",
     "HideDesc": "Hide description",
     "Send": "Send description to chat",

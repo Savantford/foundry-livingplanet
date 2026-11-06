@@ -7,12 +7,12 @@
       <span class="buttons">
 
         {{!-- Edit Button --}}
-        <a class="item-button" data-action="item-edit" data-item-id="{{item._id}}" title="{{localize (concat "
+        <a class="item-button" data-action="itemEdit" data-item-id="{{item._id}}" title="{{localize (concat "
           WW.Item.Edit." item.type)}}">
           <i class="fa-solid fa-edit"></i></a>
 
         {{!-- Delete Button --}}
-        <a class="item-button" data-action="item-delete" data-item-id="{{item._id}}" title="{{localize (concat "
+        <a class="item-button" data-action="itemRemove" data-item-id="{{item._id}}" title="{{localize (concat "
           WW.Item.Delete." item.type)}}">
           <i class="fa-solid fa-trash"></i></a>
 
@@ -20,7 +20,6 @@
     </div>
 
     <div class="nowrap">
-
       {{!-- Type --}}
       {{#if (eq item.system.type "cultural")}}{{localize "LP.Connection.Cultural"}}
       {{else if (eq item.system.type "regional")}}{{localize "LP.Connection.Regional"}}
@@ -36,7 +35,6 @@
       {{else if (eq item.system.progress.max 3)}}{{localize "LP.Connection.Relevant"}}
       {{else}}{{localize "LP.Connection.Weak"}}
       {{/if}}
-
     </div>
   </div>
 

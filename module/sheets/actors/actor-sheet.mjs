@@ -153,7 +153,6 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
         i.progressArr = progressArr.reverse();
       }
-        
 
       // Append items to the correct list
       switch (i.type) {
@@ -308,11 +307,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       case 'item-scroll': this._onItemScroll(item); break;
       case 'item-toggle-effects': this._onItemToggleEffects(item); break;
       case 'item-toggle-reloaded': this._onItemToggleReloaded(item); break;
-      case 'item-edit': this._onItemEdit(item); break;
-      case 'item-delete': this._onItemDelete(item, button); break;
       case 'item-collapse': this._onItemCollapse(button); break;
     }
-    
   }
 
   /**
@@ -370,21 +366,26 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   // Render the item sheet for viewing/editing prior to the editable check.
-  static #onItemEdit(item) {
+  static #onItemEdit(event, button) {
+    const item = this.actor.items.get(button.dataset.itemId);
+
     item.sheet.render(true);
   }
 
   // On item remove
-  static async #onItemRemove(item, button) {
-    const confirm = await Dialog.confirm({
-      title: _loc('LP.Item.Delete.Title'),
-      content: _loc('LP.Item.Delete.Msg') + ' <b>' + item.name + '</b>. ' + _loc('LP.Item.Delete.Msg2') + '<p class="dialog-sure">' + _loc('LP.Item.Delete.Confirm') + " " + item.name + '?</p>'
+  static async #onItemRemove(event, button) {
+    const item = this.actor.items.get(button.dataset.itemId);
+
+    const confirm = await foundry.applications.api.DialogV2.confirm({
+      title: _loc('LP.Item.Remove.Title'),
+      content: `
+        <p>${_loc('LP.Item.Remove.Msg')} <b>${item.name}</b>. ${_loc('LP.Item.Remove.Msg2')}</p>
+        <p class="dialog-sure">${_loc('LP.Item.Remove.Confirm')} ${item.name}?</p>`
     });
 
     if (!confirm) return;
 
     item.delete();
-    $(button).slideUp(200, () => this.render(false));
   }
 
   // Set progress clock value to the segment clicked
