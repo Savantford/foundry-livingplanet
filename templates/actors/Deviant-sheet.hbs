@@ -105,9 +105,9 @@
             </a>
           </legend>
 
-          <ol class="item-list assets">
-            {{#each assets as |item id|}}
-              {{> asset item=item id=id}}
+          <ol class="item-list skills">
+            {{#each skills as |item id|}}
+              {{> itemSimple item=item id=id}}
             {{/each}}
           </ol>
         </fieldset>
@@ -125,7 +125,7 @@
 
           <ol class="item-list assets">
             {{#each assets as |item id|}}
-              {{> asset item=item id=id}}
+              {{> itemSimple item=item id=id}}
             {{/each}}
           </ol>
         </fieldset>
@@ -196,7 +196,7 @@
 
           <ol class="item-list challenges">
             {{#each challenges as |item id|}}
-              {{> challenge item=item id=id}}
+              {{> itemProgress item=item id=id}}
             {{/each}}
           </ol>
 
@@ -218,10 +218,9 @@
 
           <ol class="item-list connections">
             {{#each connections as |item id|}}
-            {{> connection item=item id=id}}
+            {{> itemProgress item=item id=id}}
             {{/each}}
           </ol>
-
         </fieldset>
       </div>
     </div>

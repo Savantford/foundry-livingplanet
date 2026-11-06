@@ -42,7 +42,7 @@ Hooks.once('init', function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = LPActor;
   CONFIG.Actor.defaultType = 'entity';
-  
+
   CONFIG.Item.documentClass = LPItem;
   CONFIG.Item.defaultType = 'asset';
 
@@ -99,10 +99,9 @@ Hooks.once('init', function () {
 
   // Preload common Handlebars partials
   foundry.applications.handlebars.loadTemplates({
-    clock: 'systems/livingplanet/templates/progress-clock.hbs',
-    asset: 'systems/livingplanet/templates/actors/item/asset.hbs',
-    strength: 'systems/livingplanet/templates/actors/parts/actor-strength.hbs',
-    challenge: 'systems/livingplanet/templates/actors/parts/actor-challenge.hbs'
+    clock: 'systems/livingplanet/templates/generic/progress-clock.hbs',
+    itemDisplay: 'systems/livingplanet/templates/generic/item-simple.hbs',
+    itemProgress: 'systems/livingplanet/templates/generic/item-progress.hbs',
   })
 });
 
