@@ -100,7 +100,7 @@ Hooks.once('init', function () {
   // Preload common Handlebars partials
   foundry.applications.handlebars.loadTemplates({
     clock: 'systems/livingplanet/templates/generic/progress-clock.hbs',
-    itemDisplay: 'systems/livingplanet/templates/generic/item-simple.hbs',
+    itemSimple: 'systems/livingplanet/templates/generic/item-simple.hbs',
     itemProgress: 'systems/livingplanet/templates/generic/item-progress.hbs',
   })
 });

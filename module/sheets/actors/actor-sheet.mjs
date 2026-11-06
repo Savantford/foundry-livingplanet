@@ -127,25 +127,12 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     return context;
   }
 
-  /** @override */
-  /*async _preparePartContext(partId, context, options) {
-    await super._preparePartContext(partId, context, options);
-
-    switch (partId) {
-      // Summmary tab
-      case 'summary':
-        context.tab = context.tabs[partId];
-      break;
-    }
-
-    return context;
-  }*/
+  
 
   _prepareItems(context) {
     // Initialize containers.
-    const assets = [];
-    const connections = [];
-
+    const [assets, connections, skills] = [[], [], []];
+    
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       //let item = i;
@@ -172,45 +159,32 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       switch (i.type) {
         case 'asset': assets.push(i); break;
         case 'connection': connections.push(i); break;
+        case 'skill': skills.push(i); break;
       }
 
     }
 
-    // Calculate total Equipment weight.
-    /*function calcWeight(item, id) {
-      item.system.weight = item.system.quantity * item.system.weightUnit;
-    }
-
-    equipment.forEach(calcWeight)
-
-    context.totalWeight = sum(equipment.map(i => i.system.weight))
-
-    // Prepare uses display for talents and spells
-    function updateUses(item, id) {
-      let spent = item.system.uses.value ? item.system.uses.value : 0;
-      let max = item.system.uses.max;
-      let arr = [];
-
-      let i = 0; // fill the Buttons with available traditions
-
-      for (i = 1; i <= max; i++) { // statement 1 = beginning of the block, statement 2 = condition, statement 3 = executed at the end of each loop
-        if (i <= spent) { arr.push('fas') } else { arr.push('far') }; // fa-solid (solid) = unspent, far (regular) = spent
-      };
-
-      item.uses = arr;
-    }
-
-    talents.forEach(updateUses)
-    actions.forEach(updateUses)
-    fury.forEach(updateUses)
-    equipment.forEach(updateUses)
-    spells.forEach(updateUses)*/
-
-    // Assign and return
-    context.assets = assets;
-    context.connections = connections;
-    
+    // Assign lists to context
+    foundry.utils.mergeObject(context, {
+      assets,
+      connections,
+      skills
+    });
   }
+
+  /** @override */
+  /*async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options);
+
+    switch (partId) {
+      // Summmary tab
+      case 'summary':
+        context.tab = context.tabs[partId];
+      break;
+    }
+
+    return context;
+  }*/
 
   /**
    * Organize and classify Items for Deviant sheets.
