@@ -7,6 +7,8 @@
 
   "LP.ActorName": "Actor's Name",
   "LP.Frame": "Frame",
+  "LP.Dream": "Dream",
+  "LP.DreamTip": "Frame",
 
   "LP.Attributes.Power": "Power",
   "LP.Attributes.Agility": "Agility",
@@ -87,7 +89,7 @@
       "FuryRecover": "Recover fury token",
       "OnRest": "Recover on rest?"
     },
-    
+
     "ShowDesc": "Show description",
     "HideDesc": "Hide description",
     "Send": "Send description to chat",

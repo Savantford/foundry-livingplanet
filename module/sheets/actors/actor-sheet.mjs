@@ -105,14 +105,10 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     }
 
     // Prepare Deviant data and items.
-    if (actorData.type == 'deviant') {
-      this._prepareDeviantData(context);  
-    }
+    if (actorData.type == 'deviant') await this._prepareDeviantData(context);
 
     // Prepare Entity data and items.
-    if (actorData.type == 'entity') {
-      
-    }
+    if (actorData.type == 'entity') {};
 
     // Prepare items
     context.items = this.actor.items.contents.toSorted((a, b) => a.sort - b.sort);
@@ -186,22 +182,15 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }*/
 
   /**
-   * Organize and classify Items for Deviant sheets.
-   *
+   * Prepare Deviant specific data.
    * @param {Object} system The actor to prepare.
-   *
-   * @return {undefined}
+   * @return {Promise<null>}
   */
-
   async _prepareDeviantData(context) {
-
+    const textEditor = foundry.applications.ux.TextEditor.implementation;
+    
     // Prepare enriched variables for editor.
-    /*context.system.details.features.enriched = await TextEditor.enrichHTML(context.system.details.features.value, { async: true })
-    context.system.details.personality.enriched = await TextEditor.enrichHTML(context.system.details.personality.value, { async: true })
-    context.system.details.belief.enriched = await TextEditor.enrichHTML(context.system.details.belief.value, { async: true })
-    context.system.details.information.enriched = await TextEditor.enrichHTML(context.system.details.information.value, { async: true })
-    context.system.details.bg_ancestry.enriched = await TextEditor.enrichHTML(context.system.details.bg_ancestry.value, { async: true })
-    context.system.details.deeds.enriched = await TextEditor.enrichHTML(context.system.details.deeds.value, { async: true })*/
+    context.system.dreamEnriched = await textEditor.enrichHTML(context.system.dream, { secrets: this.actor.isOwner });
   }
 
   /* -------------------------------------------- */

@@ -1,4 +1,4 @@
-import { makeIntField, makeStrField } from '../field-presets.mjs';
+import { makeHtmlField, makeIntField, makeStrField } from '../field-presets.mjs';
 
 export default class DeviantModel extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -10,7 +10,8 @@ export default class DeviantModel extends foundry.abstract.DataModel {
     })
 
     const schema = {
-      frame: makeStrField(''),
+      frame: makeStrField(),
+      dream: makeHtmlField(),
 
       attributes: new fields.SchemaField({
         power: makeAttribute(),

@@ -5,6 +5,13 @@
     <h1 class="charname">
       <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize " LP.ActorName"}}" />
     </h1>
+    {{log system.dream}}
+    {{log system.dreamEnriched}}
+    {{!-- Dream --}}
+    <prose-mirror name="system.dream" data-document-u-u-i-d="{{actor.uuid}}" value="{{system.dream}}"
+      toggled collaborate compact owner={{user.isOwner}} editable={{editable}}>
+        {{{system.dreamEnriched}}}
+    </prose-mirror>
 
     {{!-- Image / Radar Box --}}
     <div class="image-box">
