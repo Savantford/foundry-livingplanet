@@ -30,6 +30,18 @@
       "flags": {}
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "deviant": {},
+      "entity": {},
+      "crew": {}
+    },
+    "Item": {
+      "asset": {},
+      "connection": {},
+      "skill": {}
+    }
+  },
   "primaryTokenAttribute": "",
   "secondaryTokenAttribute": "",
   "flags": {
