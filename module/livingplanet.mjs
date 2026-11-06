@@ -9,7 +9,9 @@ import LPItem from './documents/item.mjs';
 import DeviantModel from './data/actors/deviant.mjs';
 import EntityModel from './data/actors/entity.mjs';
 import CrewModel from './data/actors/crew.mjs';
+import SkillModel from './data/items/skill.mjs';
 import AssetModel from './data/items/asset.mjs';
+import ConnectionModel from './data/items/connection.mjs';
 
 // Import sheet classes
 import DeviantSheet from './sheets/actors/deviant-sheet.mjs';
@@ -40,13 +42,17 @@ Hooks.once('init', function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = LPActor;
   CONFIG.Actor.defaultType = 'entity';
+  
   CONFIG.Item.documentClass = LPItem;
+  CONFIG.Item.defaultType = 'asset';
 
   // Register data models
   CONFIG.Actor.dataModels.deviant = DeviantModel;
   CONFIG.Actor.dataModels.entity = EntityModel;
   CONFIG.Actor.dataModels.crew = CrewModel;
   CONFIG.Item.dataModels.asset = AssetModel;
+  CONFIG.Item.dataModels.skill = SkillModel;
+  CONFIG.Item.dataModels.connection = ConnectionModel;
   
   // Register actor Sheet classes
   const Actors = foundry.documents.collections.Actors;

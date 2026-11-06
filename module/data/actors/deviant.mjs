@@ -1,7 +1,4 @@
-import {
-  makeIntField,
-  makeStrField
-} from '../field-presets.mjs';
+import { makeIntField, makeStrField } from '../field-presets.mjs';
 
 export default class DeviantModel extends foundry.abstract.DataModel {
   static defineSchema() {

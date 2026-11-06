@@ -1,149 +1,133 @@
 {
-    "USER.GM": "Assembler",
+  "USER.GM": "Assembler",
 
-    "TYPES.Actor.deviant": "Deviant",
-    "TYPES.Actor.entity": "Entity",
-    "TYPES.Actor.crew": "Crew",
-    
-    "LP.ActorName": "Actor's Name",
+  "TYPES.Actor.deviant": "Deviant",
+  "TYPES.Actor.entity": "Entity",
+  "TYPES.Actor.crew": "Crew",
 
-    "LP.Frame": "Frame",
-    "LP.Attributes.Power": "Power",
-    "LP.Attributes.Agility": "Agility",
-    "LP.Attributes.Cunning": "Cunning",
+  "LP.ActorName": "Actor's Name",
+  "LP.Frame": "Frame",
 
-    "LP.Resources.Experience": "Experience",
-    
-    "LP.Harm.Label": "Harm",
-    "LP.Harm.Total": "Total Harm",
-    "LP.Harm.Damage": "Damage",
-    "LP.Harm.Fatigue": "Fatigue",
-    "LP.Harm.Distress": "Distress",
-    "LP.Harm.Destroyed": "Dead / Destroyed",
-    "LP.Harm.Disabled": "Disabled / Incapacitated",
-    "LP.Harm.Panicked": "Panicked",
+  "LP.Attributes.Power": "Power",
+  "LP.Attributes.Agility": "Agility",
+  "LP.Attributes.Cunning": "Cunning",
 
-    "LP.Advantage.Label": "Advantage",
-    "LP.Advantage.Scene": "Scene Adv.",
-    "LP.Advantage.Disadvantage": "Disadvantage",
+  "LP.Resources.Experience": "Experience",
 
-    "TYPES.Item.asset": "Asset",
+  "LP.Harm.Label": "Harm",
+  "LP.Harm.Total": "Total Harm",
+  "LP.Harm.Damage": "Damage",
+  "LP.Harm.Fatigue": "Fatigue",
+  "LP.Harm.Distress": "Distress",
+  "LP.Harm.Destroyed": "Dead / Destroyed",
+  "LP.Harm.Disabled": "Disabled / Incapacitated",
+  "LP.Harm.Panicked": "Panicked",
 
-    "LP.Item": {
-        "Name": "Item's Name",
-        "Roll": {
-            "Attribute": "Roll Attribute/Luck",
-            "Damage": "Roll Damage Dice",
-            "Healing": "Roll Healing Dice"
-        },
-        "Create": {
-            "Strength": "New Strength",
-            "Weakness": "New Weakness",
-            "Asset": "New Asset",
-            "Challenge": "New Challenge",
-            "Connection": "New Connection"
-        },
-        "Edit": {
-            "Strength or Weakness": "Edit Strength/Weakness",
-            "Asset": "Edit Asset",
-            "Challenge": "Edit Challenge",
-            "Connection": "Edit Connection"
-        },
-        "Delete": {
-            "Label": "Delete",
-            "Title": "Delete Item",
-            "Msg": "You are about to delete",
-            "Msg2": "This action is irreversible.",
-            "Confirm": "Are you sure you want to delete",
-            "Strength or Weakness": "Delete Strength/Weakness",
-            "Asset": "Delete Asset",
-            "Challenge": "Delete Challenge",
-            "Connection": "Delete Connection"
-        },
-        "Uses": {
-            "TalentSpend": "Spend use/token",
-            "TalentRecover": "Recover use/token",
-            "EquipmentSpend": "Spend use/charge/token",
-            "EquipmentRecover": "Recover use/charge/token",
-            "SpellSpend": "Spend casting",
-            "SpellRecover": "Recover casting",
-            "ActionSpend": "Spend use/casting/token",
-            "ActionRecover": "Recover use/casting/token",
-            "FurySpend": "Spend fury token",
-            "FuryRecover": "Recover fury token",
-            "OnRest": "Recover on rest?"
-        },
-        
-        "ShowDesc": "Show description",
-        "HideDesc": "Hide description",
-        "Send": "Send description to chat",
-        "EnableEffects": "Enable passive effects",
-        "DisableEffects": "Disable passive effects",
-        "Equip": "Wear equipment",
-        "Unequip": "Remove equipment"
+  "LP.Progress": {
+    "Clear": "Clear Progress",
+    "Segments": "progress segments",
+    "Hint": "Left click to assign the progress; right click to reset the clock.",
+    "Impatience": "Impatience",
+    "Challenge": {
+      "Plural": "Challenges",
+      "Type": "Type",
+      "Personal": "Personal",
+      "Shared": "Shared",
+      "Difficulty": "Difficulty",
+      "Easy": "Easy",
+      "Significant": "Significant",
+      "Troublesome": "Troublesome",
+      "Hard": "Hard",
+      "Epic": "Epic"
     },
-
-    "LP.Strength": {
-        "Strengths": "Strengths",
-        "Weaknesses": "Weaknesses",
-        "YouAre": "You are",
-        "Good": "Good",
-        "VeryGood": "Very good",
-        "Amazing": "Amazing",
-        "Bad": "Bad",
-        "VeryBad": "Very bad",
-        "Terrible": "Terrible"
+    "Connection": {
+      "Plural": "Connections",
+      "Type": "Type",
+      "Personal": "Personal",
+      "Regional": "Regional",
+      "Cultural": "Cultural",
+      "Level": "Level",
+      "Weak": "Weak",
+      "Relevant": "Relevant",
+      "Strong": "Strong",
+      "Crucial": "Crucial",
+      "Essential": "Essential"
     },
-
-    "LP.Asset": {
-        "Plural": "Assets",
-        "Source": "Source",
-        "Modification": "Frame Modification",
-        "Knowledge": "Knowledge",
-        "Equipment": "Equipment"
-    },
-
-    "LP.Progress": {
-        "Clear": "Clear Progress",
-        "Segments": "progress segments",
-        "Hint": "Left click to assign the progress; right click to reset the clock.",
-        "Impatience": "Impatience",
-
-        "Challenge": {
-            "Plural": "Challenges",
-            "Type": "Type",
-            "Personal": "Personal",
-            "Shared": "Shared",
-            "Difficulty": "Difficulty",
-            "Easy": "Easy",
-            "Significant": "Significant",
-            "Troublesome": "Troublesome",
-            "Hard": "Hard",
-            "Epic": "Epic"
-        },
-
-        "Connection": {
-            "Plural": "Connections",
-            "Type": "Type",
-            "Personal": "Personal",
-            "Regional": "Regional",
-            "Cultural": "Cultural",
-            "Level": "Level",
-            "Weak": "Weak",
-            "Relevant": "Relevant",
-            "Strong": "Strong",
-            "Crucial": "Crucial",
-            "Essential": "Essential"
-        },
-
-        "Event": {
-            "Duration": "Duration",
-            "Brief": "Brief",
-            "Short": "Short",
-            "Moderate": "Moderate",
-            "Long": "Long",
-            "VeryLong": "Very Long"
-        }
-        
+    "Event": {
+      "Duration": "Duration",
+      "Brief": "Brief",
+      "Short": "Short",
+      "Moderate": "Moderate",
+      "Long": "Long",
+      "VeryLong": "Very Long"
     }
+  },
+
+  "LP.Advantage": "Advantage",
+  "LP.Disadvantage": "Disadvantage",
+
+  "TYPES.Item.skill": "Skill",
+  "TYPES.Item.asset": "Asset",
+  "TYPES.Item.connection": "Connection",
+
+  "LP.Item": {
+    "Name": "Item's Name",
+    "Roll": {
+      "Attribute": "Roll Attribute/Luck",
+      "Damage": "Roll Damage Dice",
+      "Healing": "Roll Healing Dice"
+    },
+    "Create": {
+      "Strength": "New Strength",
+      "Weakness": "New Weakness",
+      "Asset": "New Asset",
+      "Challenge": "New Challenge",
+      "Connection": "New Connection"
+    },
+    "Edit": {
+      "Strength or Weakness": "Edit Strength/Weakness",
+      "Asset": "Edit Asset",
+      "Challenge": "Edit Challenge",
+      "Connection": "Edit Connection"
+    },
+    "Delete": {
+      "Label": "Delete",
+      "Title": "Delete Item",
+      "Msg": "You are about to delete",
+      "Msg2": "This action is irreversible.",
+      "Confirm": "Are you sure you want to delete",
+      "Strength or Weakness": "Delete Strength/Weakness",
+      "Asset": "Delete Asset",
+      "Challenge": "Delete Challenge",
+      "Connection": "Delete Connection"
+    },
+    "Uses": {
+      "TalentSpend": "Spend use/token",
+      "TalentRecover": "Recover use/token",
+      "EquipmentSpend": "Spend use/charge/token",
+      "EquipmentRecover": "Recover use/charge/token",
+      "SpellSpend": "Spend casting",
+      "SpellRecover": "Recover casting",
+      "ActionSpend": "Spend use/casting/token",
+      "ActionRecover": "Recover use/casting/token",
+      "FurySpend": "Spend fury token",
+      "FuryRecover": "Recover fury token",
+      "OnRest": "Recover on rest?"
+    },
+    "ShowDesc": "Show description",
+    "HideDesc": "Hide description",
+    "Send": "Send description to chat",
+    "EnableEffects": "Enable passive effects",
+    "DisableEffects": "Disable passive effects",
+    "Equip": "Wear equipment",
+    "Unequip": "Remove equipment"
+  },
+
+  "LP.Asset": {
+    "Plural": "Assets",
+    "Source": "Source",
+    "Modification": "Frame Modification",
+    "Knowledge": "Knowledge",
+    "Equipment": "Equipment"
+  }
 }

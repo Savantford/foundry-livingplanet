@@ -1,20 +1,14 @@
-import {
-  //base,
-  makeIntField,
-  makeStrField,
-  makeHtmlField
-} from '../field-presets.mjs';
+import { makeStrField } from '../field-presets.mjs';
 
-export default class StrengthData extends foundry.abstract.DataModel {
-
+export default class BaseItemModel extends foundry.abstract.DataModel {
   static defineSchema() {
-    
-    return {
-      //...base(type),
-      
-      degree: makeIntField(1,null)
-      
-    }
+    const fields = foundry.data.fields;
+
+    const schema = {
+      source: makeStrField()
+    };
+
+    return schema;
   }
 
   /**
@@ -23,9 +17,6 @@ export default class StrengthData extends foundry.abstract.DataModel {
    * @inheritDoc
    */
   static migrateData(source) {
-    
-    // Make sure Range is a number
-
     return super.migrateData(source);
   }
 
@@ -44,5 +35,4 @@ export default class StrengthData extends foundry.abstract.DataModel {
   // Determine if a item is destroyed.
   game.actors.getName('Character').system.destroyed;
   */
-
 }
