@@ -44,7 +44,7 @@
                 <label class="ml-1" for="health" class="resource-label">{{localize "HotLP.Health.Title"}}</label>
 
                 <a class="health-edit" title="Edit Health">{{system.stats.health.total}}</a>
-                <label class="ml-1" for="damage" class="resource-label">{{localize "HotLP.Damage.Title"}}</label>
+                <label class="ml-1" for="damage" class="resource-label">{{localize "HotLP.Harm.Title"}}</label>
                 {{system.stats.damage.value}}
             </div>
             <div class="stat mt-1">{{!-- Attributes 1 --}}
@@ -91,7 +91,7 @@
         {{!-- Bonus Damage --}}
         {{#if system.stats.bonusdamage}}
         <div class="stat">
-            <label class="" for="bonusdamage" class="resource-label">{{localize "HotLP.Damage.Bonus"}}</label>
+            <label class="" for="bonusdamage" class="resource-label">{{localize "HotLP.Harm.Bonus"}}</label>
             +{{system.stats.bonusdamage}}d6
         </div>
         {{/if}}
