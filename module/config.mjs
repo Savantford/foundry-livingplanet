@@ -1,5 +1,3 @@
-//import { i18n } from './helpers/utils.mjs';
-
 export const LP = {}
 
 // Define Constants

@@ -50,7 +50,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   get title() {
     const {constructor: cls, id, name, type} = this.actor;
     const prefix = cls.hasTypeData && type !== "base" ? CONFIG[cls.documentName].typeLabels[type] : cls.metadata.label;
-    return `${name ?? id} - ${game.i18n.localize(prefix)}`;
+    return `${name ?? id} - ${_loc(prefix)}`;
   }
 
   /* -------------------------------------------- */
@@ -351,7 +351,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
     let type = dataset.type; // Get the type of item to create.
     
-    let name = i18n('LP.NewItem', { itemType: type.capitalize() }) // Initialize a default name.
+    let name = _loc('LP.NewItem', { itemType: type.capitalize() }) // Initialize a default name.
 
     let subtype = '';
     let source = '';
@@ -403,8 +403,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   // On item remove
   static async #onItemRemove(item, button) {
     const confirm = await Dialog.confirm({
-      title: i18n('LP.Item.Delete.Title'),
-      content: i18n('LP.Item.Delete.Msg') + ' <b>' + item.name + '</b>. ' + i18n('LP.Item.Delete.Msg2') + '<p class="dialog-sure">' + i18n('LP.Item.Delete.Confirm') + " " + item.name + '?</p>'
+      title: _loc('LP.Item.Delete.Title'),
+      content: _loc('LP.Item.Delete.Msg') + ' <b>' + item.name + '</b>. ' + _loc('LP.Item.Delete.Msg2') + '<p class="dialog-sure">' + _loc('LP.Item.Delete.Confirm') + " " + item.name + '?</p>'
     });
 
     if (!confirm) return;

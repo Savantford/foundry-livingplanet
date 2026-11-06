@@ -100,8 +100,9 @@
             {{localize "LP.Skill.Plural"}}
 
             {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Skill.Create"}}" data-type="Asset"><i
-                class="fa-solid fa-square-plus"></i></a>
+            <a class="item-create ml-1" title="{{localize "LP.Skill.Create"}}" data-action="itemCreate" data-type="skill">
+              <i class="fa-solid fa-square-plus"></i>
+            </a>
           </legend>
 
           <ol class="item-list assets">
@@ -117,8 +118,9 @@
             {{localize "LP.Asset.Plural"}}
 
             {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Asset"}}" data-type="Asset"><i
-                class="fa-solid fa-square-plus"></i></a>
+            <a class="item-create ml-1" title="{{localize "LP.Asset.Create"}}" data-action="itemCreate" data-type="Asset">
+              <i class="fa-solid fa-square-plus"></i>
+            </a>
           </legend>
 
           <ol class="item-list assets">
@@ -172,8 +174,6 @@
             </fieldset>
 
           </div>
-
-
         </div>
       </div>
     </div>
@@ -189,8 +189,9 @@
             {{localize "LP.Progress.Challenge.Plural"}}
 
             {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Challenge"}}" data-type="Challenge"><i
-              class="fa-solid fa-square-plus"></i></a>
+            <a class="ml-1" title="{{localize "LP.Challenge.Create"}}" data-action="itemCreate" data-type="challenge">
+              <i class="fa-solid fa-square-plus"></i>
+            </a>
           </legend>
 
           <ol class="item-list challenges">
@@ -207,11 +208,12 @@
         {{!-- Connections --}}
         <fieldset class="stat stat-box">
           <legend class="flexrow flex-group-left">
-            {{localize "LP.Progress.Connection.Plural"}}
+            {{localize "LP.Connection.Plural"}}
 
             {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Item.Create.Connection"}}" data-type="Connection"><i
-                class="fa-solid fa-square-plus"></i></a>
+            <a class="ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
+              <i class="fa-solid fa-square-plus"></i>
+            </a>
           </legend>
 
           <ol class="item-list connections">

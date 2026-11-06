@@ -3,7 +3,7 @@
  * @extends {FormApplication}
 */
 
-import { i18n, plusify } from '../helpers/utils.mjs'
+import { plusify } from '../helpers/utils.mjs'
 
 export default class RollAttribute extends FormApplication {
   constructor(obj) {
@@ -79,13 +79,13 @@ export default class RollAttribute extends FormApplication {
       parent.querySelector('.boons-display.total').innerHTML = boonsFinal;
 
       if (boonsFinal > 1) {
-        parent.querySelector('.boons-expression').innerHTML = att + " " + i18n("WW.Boons.With") + " " + parseInt(boonsFinal) + " " + i18n("WW.Boons.Boons");
+        parent.querySelector('.boons-expression').innerHTML = att + " " + _loc("WW.Boons.With") + " " + parseInt(boonsFinal) + " " + _loc("WW.Boons.Boons");
       } else if (boonsFinal > 0) {
-        parent.querySelector('.boons-expression').innerHTML = att + " " + i18n("WW.Boons.With") + " " + parseInt(boonsFinal) + " " + i18n("WW.Boons.Boon");
+        parent.querySelector('.boons-expression').innerHTML = att + " " + _loc("WW.Boons.With") + " " + parseInt(boonsFinal) + " " + _loc("WW.Boons.Boon");
       } else if (boonsFinal < -1 ) {
-        parent.querySelector('.boons-expression').innerHTML = att + " " + i18n("WW.Boons.With") + " " + boonsFinal*-1 + " " + i18n("WW.Boons.Banes");
+        parent.querySelector('.boons-expression').innerHTML = att + " " + _loc("WW.Boons.With") + " " + boonsFinal*-1 + " " + _loc("WW.Boons.Banes");
       } else if (boonsFinal < 0) {
-        parent.querySelector('.boons-expression').innerHTML = att + " " + i18n("WW.Boons.With") + " " + boonsFinal*-1 + " " + i18n("WW.Boons.Bane");
+        parent.querySelector('.boons-expression').innerHTML = att + " " + _loc("WW.Boons.With") + " " + boonsFinal*-1 + " " + _loc("WW.Boons.Bane");
       } else {
         parent.querySelector('.boons-expression').innerHTML = att;
       }

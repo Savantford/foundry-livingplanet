@@ -62,7 +62,7 @@
       "Title": "Remove Item",
       "Msg": "You are about to delete",
       "Msg2": "This action is irreversible.",
-      "Confirm": "Are you sure you want to delete",
+      "Confirm": "Are you sure you want to delete"
     },
 
   "LP.Item": {
