@@ -11,6 +11,7 @@ export default class DeviantModel extends foundry.abstract.DataModel {
 
     const schema = {
       frame: makeStrField(),
+      background: makeStrField(),
       dream: makeHtmlField(),
 
       attributes: new fields.SchemaField({
