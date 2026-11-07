@@ -144,8 +144,26 @@
     "Essential": "Essential"
   },
 
+  "LP.Goal": {
+    "Plural": "Goals",
+    "Create": "New Goal",
+    "Edit": "Edit Goal",
+    "Remove": "Remove Goal"
+  },
+
   "LP.Crew": {
-    "Preparation": "Preparation"
+    "Goal": "Goal",
+    "Preparation": "Preparation",
+
+    "Timeline": {
+      "Label": "Timeline",
+      "Cycle": "Cycle",
+      "Expedition": "Expedition",
+      "BaseEvent": "Base Event",
+      "LocalEvent": "Local Event",
+      "Connections": "Connections",
+      "Other": "Other"
+    }
   },
 
   "LP.Scene": {

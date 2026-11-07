@@ -19,9 +19,6 @@ export default class LPActor extends Actor {
         // Data modifications in this step occur before processing embedded
         // documents (including active effects) or derived data.
         super.prepareBaseData();
-
-        // Initialize dynamic AE-handled variables
-        this.system.ups = 0;
     }
 
     async _preCreate(data, options, user) {

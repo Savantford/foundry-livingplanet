@@ -29,7 +29,12 @@ export default class CrewSheet extends LPActorSheet {
 
   /** @override */
   static PARTS = {
-    main: { template: 'systems/livingplanet/templates/actors/crew-sheet.hbs' }
+    main: {
+      template: 'systems/livingplanet/templates/actors/crew-sheet.hbs',
+      templates: [
+        'systems/livingplanet/templates/actors/parts/timeline-entry.hbs'
+      ]
+    }
   }
 
   /** @override */

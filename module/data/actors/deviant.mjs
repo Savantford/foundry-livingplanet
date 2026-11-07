@@ -24,13 +24,19 @@ export default class DeviantModel extends foundry.abstract.DataModel {
         value: makeIntField({ initial: 0 }),
         max: makeIntField({ initial: 6 })
       }),
-      
+
       experience: makeIntField({ initial: 0 }),
 
       harm: new fields.SchemaField({
         stress: makeIntField({ initial: 0 }),
         fatigue: makeIntField({ initial: 0 }),
         damage: makeIntField({ initial: 0 })
+      }),
+      
+      // Non-persisted fields
+      ups: new fields.NumberField({
+        initial: 0,
+        persisted: false
       })
     };
 
