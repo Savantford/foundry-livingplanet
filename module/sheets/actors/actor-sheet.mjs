@@ -54,18 +54,6 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /* -------------------------------------------- */
-  static PARTS = {
-    // Handled by the subclasses
-  }
-
-  /** @override */
-  _configureRenderOptions(options) {
-    super._configureRenderOptions(options);
-    // Handled by the subclass
-    return options;
-  }
-
-  /* -------------------------------------------- */
   /*  Rendering                                   */
   /* -------------------------------------------- */
 
@@ -123,7 +111,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     return context;
   }
 
-  
+  /* -------------------------------------------- */
 
   _prepareItems(context) {
     // Initialize containers.
@@ -167,6 +155,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     });
   }
 
+  /* -------------------------------------------- */
+
   /** @override */
   /*async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
@@ -180,6 +170,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
     return context;
   }*/
+
+    /* -------------------------------------------- */
 
   /**
    * Prepare Deviant specific data.
@@ -195,7 +187,9 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
   /* -------------------------------------------- */
 
-  _onRender(context, options) {
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
     const html = this.element;
 
     if (this.actor.type !== 'deviant') return;
@@ -449,10 +443,55 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }*/
 
   /* -------------------------------------------- */
-  /*  Drop item events                            */
+  /*  Drag and drop events                        */
   /* -------------------------------------------- */
 
-  /** @override */
+  /**
+   * Return a cached copy of a DragDrop instance, creating one on first access.
+   * @type {DragDrop}
+   * @protected
+   */
+  get _dragDrop() {
+    console.log('test')
+    return this.#dragDrop ??= new DragDrop.implementation({
+      dragSelector: ".draggable",
+      permissions: {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this)
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this)
+      }
+    });
+  }
+
+  /** @type {DragDrop|null} */
+  #dragDrop = null;
+
+  /**
+   * An event that occurs when data is dropped into a drop target.
+   * @override
+   * @param {DragEvent} event
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onDrop(event) {
+    console.log(event)
+    const data = TextEditor.implementation.getDragEventData(event);
+    const actor = this.actor;
+    const allowed = Hooks.call("dropActorSheetData", actor, this, data);
+    if ( allowed === false ) return;
+
+    // Dropped Documents
+    const documentClass = foundry.utils.getDocumentClass(data.type);
+    if ( documentClass ) {
+      const document = await documentClass.fromDropData(data);
+      await this._onDropDocument(event, document);
+    }
+  }
+  
   /*async _onDropItemCreate(itemData) {
     const isAllowed = await this.checkDroppedItem(itemData)
     if (isAllowed) return await super._onDropItemCreate(itemData)
