@@ -5,10 +5,11 @@
   "TYPES.Actor.entity": "Entity",
   "TYPES.Actor.crew": "Crew",
 
-  "LP.ActorName": "Actor's Name",
-  "LP.Frame": "Frame",
-  "LP.Dream": "Dream",
-  "LP.DreamTip": "Frame",
+  "LP.Deviant.Name": "Your Deviant's Name",
+  "LP.Deviant.Frame": "Frame",
+  "LP.Deviant.Background": "Background",
+  "LP.Deviant.Dream": "Dream",
+  "LP.Deviant.DreamTip": "Your dream",
 
   "LP.Attributes.Power": "Power",
   "LP.Attributes.Agility": "Agility",

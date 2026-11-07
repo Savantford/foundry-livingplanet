@@ -3,13 +3,13 @@
   <header class="sheet-header character-header">
     {{!-- Name --}}
     <h1 class="charname">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize " LP.ActorName"}}" />
+      <input name="name" type="text" value="{{ actor.name }}" placeholder="{{localize "LP.Deviant.Name"}}" />
     </h1>
 
     {{!-- Image / Radar Box --}}
     <div class="image-box">
       {{!-- Profile Image --}}
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100">
+      <img class="profile-img" src="{{ actor.img }}" data-edit="img" title="{{ actor.name }}" height="100" width="100">
       
       {{!-- Radar Chart Block --}}
       <div class="radar-chart-block">
@@ -71,9 +71,9 @@
   </header>
 
   {{!-- Dream --}}
-  <prose-mirror name="system.dream" data-document-u-u-i-d="{{actor.uuid}}" value="{{system.dream}}" toggled collaborate
-    compact owner={{user.isOwner}} editable={{editable}}>
-    {{{system.dreamEnriched}}}
+  <prose-mirror name="system.dream" data-document-u-u-i-d="{{ actor.uuid }}" value="{{ system.dream }}" toggled collaborate
+    compact owner={{ user.isOwner }} editable={{ editable }} data-tooltip="{{localize "LP.Deviant.DreamTip"}}">
+    {{{ system.dreamEnriched }}}
   </prose-mirror>
 
   {{!-- Sheet Body --}}
@@ -86,14 +86,14 @@
           <div class="stat-box stat">
             {{!-- Frame --}}
             <div>
-              <label>{{localize "LP.Frame"}}</label>
+              <label>{{localize "LP.Deviant.Frame"}}</label>
         
               <input type="text" name="system.frame" value="{{system.frame}}">
             </div>
 
             {{!-- Background --}}
             <div>
-              <label>{{localize "LP.Background"}}</label>
+              <label>{{localize "LP.Deviant.Background"}}</label>
         
               <input type="text" name="system.background" value="{{system.background}}">
             </div>
