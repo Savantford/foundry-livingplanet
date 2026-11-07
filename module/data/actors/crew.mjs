@@ -1,6 +1,5 @@
 import {
-  makeIntField,
-  makeStrField
+  makeUuidStrField
 } from '../field-presets.mjs';
 
 export default class CrewModel extends foundry.abstract.DataModel {
@@ -13,9 +12,16 @@ export default class CrewModel extends foundry.abstract.DataModel {
         integer: true,
         min: 1,
         max: 5
-      })
+      }),
+
+      members: new fields.SetField(makeUuidStrField())
     };
 
     return schema;
+  }
+
+  get memberDocs() {
+    const map = [...this.members].map(uuid => fromUuidSync(uuid));
+    return map;
   }
 }

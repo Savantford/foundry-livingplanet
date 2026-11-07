@@ -92,10 +92,13 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       context.impatience = context.impatience.reverse();
     }
 
-    // Prepare Deviant data and items.
+    // Prepare Deviant data
     if (actorData.type == 'deviant') await this._prepareDeviantData(context);
+    
+    // Prepare Crew data
+    if (actorData.type == 'crew') await this._prepareCrewData(context);
 
-    // Prepare Entity data and items.
+    // Prepare Entity data
     if (actorData.type == 'entity') {};
 
     // Prepare items
@@ -171,7 +174,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     return context;
   }*/
 
-    /* -------------------------------------------- */
+  /* -------------------------------------------- */
 
   /**
    * Prepare Deviant specific data.
@@ -183,6 +186,22 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     
     // Prepare enriched variables for editor.
     context.system.dreamEnriched = await textEditor.enrichHTML(context.system.dream, { secrets: this.actor.isOwner });
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Prepare Crew specific data.
+   * @param {Object} system The actor to prepare.
+   * @return {Promise<null>}
+  */
+  async _prepareCrewData(context) {
+    const textEditor = foundry.applications.ux.TextEditor.implementation;
+    
+    // Prepare enriched variables for editor.
+    context.members = await Promise.all(
+      [...this.actor.system.memberDocs].map(async doc => await textEditor.enrichHTML(doc.link))
+    )
   }
 
   /* -------------------------------------------- */
@@ -447,54 +466,32 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   /* -------------------------------------------- */
 
   /**
-   * Return a cached copy of a DragDrop instance, creating one on first access.
-   * @type {DragDrop}
+   * Handle a dropped Actor on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event
+   * @param {Actor} actor         The dropped Actor document
+   * @returns {Promise<Actor|null|undefined>} A Promise resolving to an Actor identical or related to the dropped Actor
+   *                                          to indicate success, or a nullish value to indicate failure or no action
+   *                                          being taken
    * @protected
    */
-  get _dragDrop() {
-    console.log('test')
-    return this.#dragDrop ??= new DragDrop.implementation({
-      dragSelector: ".draggable",
-      permissions: {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this)
-      },
-      callbacks: {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this)
-      }
-    });
-  }
+  async _onDropActor(event, actor) {
+    const self = this.document;
+    if ( !self.isOwner || !this.isEditable ) return null;
+    
+    if ((self.type === 'deviant' && actor.type === 'crew') || (self.type === 'crew' && actor.type === 'deviant')) {
+      const [deviant, crew] = self.type === 'deviant' ? [self, actor] : [actor, self];
 
-  /** @type {DragDrop|null} */
-  #dragDrop = null;
+      const members = crew.system.members.add(deviant.uuid);
+      await deviant.update({ 'system.crew': crew.uuid });
+      await crew.update({ 'system.members': members });
 
-  /**
-   * An event that occurs when data is dropped into a drop target.
-   * @override
-   * @param {DragEvent} event
-   * @returns {Promise<void>}
-   * @protected
-   */
-  async _onDrop(event) {
-    console.log(event)
-    const data = TextEditor.implementation.getDragEventData(event);
-    const actor = this.actor;
-    const allowed = Hooks.call("dropActorSheetData", actor, this, data);
-    if ( allowed === false ) return;
-
-    // Dropped Documents
-    const documentClass = foundry.utils.getDocumentClass(data.type);
-    if ( documentClass ) {
-      const document = await documentClass.fromDropData(data);
-      await this._onDropDocument(event, document);
+      ChatMessage.create({
+        content: _loc('LP.Crew.Joined', { deviant: deviant.name, crew: crew.name }),
+        sound: CONFIG.sounds.notify
+      });
     }
+    //if ( [actor.parent, actor.parent?.parent].includes(actor) ) return null;
+    //const result = await ActiveEffect.implementation.create(actor.toObject(), {parent: actor});
+    //return result ?? null;
   }
-  
-  /*async _onDropItemCreate(itemData) {
-    const isAllowed = await this.checkDroppedItem(itemData)
-    if (isAllowed) return await super._onDropItemCreate(itemData)
-    console.warn('Wrong item type dragged', this.actor, itemData)
-  }*/
 }

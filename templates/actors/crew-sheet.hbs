@@ -16,6 +16,14 @@
     <input type="number" name="system.preparation" value="{{ system.preparation }}" min="0">
   </div>
 
+  <div class="stat">
+    <label>{{localize "LP.Crew.Members"}}</label>
+    {{log this}}
+    {{#each members as |member id|}}
+      {{{ member }}}
+    {{/each}}
+  </div>
+
   {{!-- Lists --}}
   <div class="flexrow gap-10">
     {{!-- Goals --}}

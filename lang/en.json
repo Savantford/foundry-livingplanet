@@ -152,8 +152,9 @@
   },
 
   "LP.Crew": {
-    "Goal": "Goal",
     "Preparation": "Preparation",
+    "Members": "Members",
+    "Joined": "{deviant} joined {crew}!",
 
     "Timeline": {
       "Label": "Timeline",
