@@ -52,8 +52,11 @@
     }
   },
 
-  "LP.Advantage": "Advantage",
-  "LP.Disadvantage": "Disadvantage",
+  "LP.Ups.Label": "Ups & Downs",
+  "LP.Ups.Advantage": "Advantage",
+  "LP.Ups.AdvantageHint": "You have the Advantage",
+  "LP.Ups.Disadvantage": "Disadvantage",
+  "LP.Ups.DisadvantageHint": "You have the disadvantage",
 
   "TYPES.Item.skill": "Skill",
   "TYPES.Item.asset": "Asset",
