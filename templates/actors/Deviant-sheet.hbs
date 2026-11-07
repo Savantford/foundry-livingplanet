@@ -3,82 +3,88 @@
   <header class="sheet-header character-header">
     {{!-- Name --}}
     <h1 class="charname">
-      <input name="name" type="text" value="{{ actor.name }}" placeholder="{{localize "LP.Deviant.Name"}}" />
+      <input type="text" name="name" value="{{ actor.name }}" placeholder="{{localize "LP.Deviant.Name"}}" />
     </h1>
 
-    {{!-- Image / Radar Box --}}
-    <div class="image-box">
-      {{!-- Profile Image --}}
-      <img class="profile-img" src="{{ actor.img }}" data-edit="img" title="{{ actor.name }}" height="100" width="100">
-      
-      {{!-- Radar Chart Block --}}
-      <div class="radar-chart-block">
-        <div class="labels">
-          {{localize "LP.Attributes.Power"}}
-          <input type="number" name="system.attributes.power.current" value="{{system.attributes.power.current}}" min="-2"
-            max="2">
-          <i class="fa-solid {{#if (lt system.attributes.power.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
-        </div>
-      
-        {{!-- Radar Chart --}}
-        <div class="radar-chart">
-          <div class="wrapper">
-            <div class="grids polygons" style="--grid-line-rgb: var(--highlight-title-rbg)">
-              <div></div>
-            </div>
-            <div class="grids polygons">
-              <div></div>
-            </div>
-            <div class="grids polygons" style="--grid-line-rgb: 100, 100, 100">
-              <div></div>
-            </div>
-            <div class="grids polygons">
-              <div></div>
-            </div>
-            <div class="grids polygons">
-              <div></div>
-            </div>
-            <div class="grids polygons">
-              <div></div>
-            </div>
-          </div>
-          <div class="wrapper">
-            <div class="graphs polygons">
-              <div><!-- Set 1 --></div>
-            </div>
-          </div>
-        </div>
-      
-        <div class="labels-container">
-          <div class="labels">
-            {{localize "LP.Attributes.Agility"}}
-            <input type="number" name="system.attributes.agility.current" value="{{system.attributes.agility.current}}"
-              min="-2" max="2">
-            <i class="fa-solid {{#if (lt system.attributes.agility.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
-          </div>
-      
-          <div class="labels">
-            {{localize "LP.Attributes.Cunning"}}
-            <input type="number" name="system.attributes.cunning.current" value="{{system.attributes.cunning.current}}"
-              min="-2" max="2">
-            <i class="fa-solid {{#if (lt system.attributes.cunning.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
-          </div>
-      
-        </div>
-      
-      </div>
-    </div>
+    {{!-- Dream --}}
+    <input type="text" name="system.dream" value="{{ system.dream }}" placeholder="{{localize "LP.Deviant.DreamTip"}}">
   </header>
 
-  {{!-- Dream --}}
-  <prose-mirror name="system.dream" data-document-u-u-i-d="{{ actor.uuid }}" value="{{ system.dream }}" toggled collaborate
-    compact owner={{ user.isOwner }} editable={{ editable }} data-tooltip="{{localize "LP.Deviant.DreamTip"}}">
-    {{{ system.dreamEnriched }}}
-  </prose-mirror>
+  {{!-- Image / Radar Box --}}
+  <div class="images-row">
+    {{!-- Profile Image --}}
+    <div class="profile-img-wrapper">
+      <img class="profile-img" src="{{ actor.img }}" data-edit="img" title="{{ actor.name }}">
+    </div>
+  
+    {{!-- Radar Chart Block --}}
+    <div class="radar-chart-block">
+      <div class="labels">
+        {{localize "LP.Attributes.Power"}}
+        <input type="number" name="system.attributes.power.current" value="{{system.attributes.power.current}}" min="-2"
+          max="2">
+        <i class="fa-solid {{#if (lt system.attributes.power.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+      </div>
+  
+      {{!-- Radar Chart --}}
+      <div class="radar-chart">
+        <div class="wrapper">
+          <div class="grids polygons" style="--grid-line-rgb: var(--highlight-title-rbg)">
+            <div></div>
+          </div>
+          <div class="grids polygons">
+            <div></div>
+          </div>
+          <div class="grids polygons" style="--grid-line-rgb: 100, 100, 100">
+            <div></div>
+          </div>
+          <div class="grids polygons">
+            <div></div>
+          </div>
+          <div class="grids polygons">
+            <div></div>
+          </div>
+          <div class="grids polygons">
+            <div></div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="graphs polygons">
+            <div><!-- Set 1 --></div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="labels-container">
+        <div class="labels">
+          {{localize "LP.Attributes.Agility"}}
+          <input type="number" name="system.attributes.agility.current" value="{{system.attributes.agility.current}}"
+            min="-2" max="2">
+          <i class="fa-solid {{#if (lt system.attributes.agility.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+        </div>
+  
+        <div class="labels">
+          {{localize "LP.Attributes.Cunning"}}
+          <input type="number" name="system.attributes.cunning.current" value="{{system.attributes.cunning.current}}"
+            min="-2" max="2">
+          <i class="fa-solid {{#if (lt system.attributes.cunning.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
+        </div>
+  
+      </div>
+  
+    </div>
+
+    {{!-- Impatience Clock --}}
+    <div class="impatience stat">
+      <label>{{localize "LP.Progress.Impatience"}}: {{system.impatience.value}}/{{system.impatience.max}}</label>
+
+      {{> clock arr=impatience data=system.impatience}}
+    </div>
+  </div>
 
   {{!-- Info & Status Row --}}
   <div class="status flexrow gap-10">
-    {{!-- Frame / Background / Experience --}}
+    {{!-- Frame / Background --}}
     <div class="stat-box stat">
       {{!-- Frame --}}
       <div>
@@ -121,13 +127,6 @@
       {{localize "LP.Ups.DisadvantageHint"}}
       {{/if}}
     </fieldset>
-  
-    {{!-- Impatience Clock --}}
-    <div class="impatience stat">
-      <label>{{localize "LP.Progress.Impatience"}}: {{system.impatience.value}}/{{system.impatience.max}}</label>
-
-      {{> clock arr=impatience data=system.impatience}}
-    </div>
   </div>
 
   {{!-- Lists --}}
@@ -138,7 +137,7 @@
         {{localize "LP.Skill.Plural"}}
   
         {{!-- Item Create Button --}}
-        <a class="item-create ml-1" title="{{localize " LP.Skill.Create"}}" data-action="itemCreate" data-type="skill">
+        <a class="item-create ml-1" title="{{localize "LP.Skill.Create"}}" data-action="itemCreate" data-type="skill">
           <i class="fa-solid fa-square-plus"></i>
         </a>
       </legend>
@@ -156,7 +155,7 @@
         {{localize "LP.Asset.Plural"}}
   
         {{!-- Item Create Button --}}
-        <a class="item-create ml-1" title="{{localize " LP.Asset.Create"}}" data-action="itemCreate" data-type="asset">
+        <a class="item-create ml-1" title="{{localize "LP.Asset.Create"}}" data-action="itemCreate" data-type="asset">
           <i class="fa-solid fa-square-plus"></i>
         </a>
       </legend>
@@ -179,7 +178,7 @@
           {{localize "LP.Progress.Challenge.Plural"}}
   
           {{!-- Item Create Button --}}
-          <a class="ml-1" title="{{localize " LP.Challenge.Create"}}" data-action="itemCreate" data-type="challenge">
+          <a class="ml-1" title="{{localize "LP.Challenge.Create"}}" data-action="itemCreate" data-type="challenge">
             <i class="fa-solid fa-square-plus"></i>
           </a>
         </legend>
@@ -201,7 +200,7 @@
           {{localize "LP.Connection.Plural"}}
   
           {{!-- Item Create Button --}}
-          <a class="ml-1" title="{{localize " LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
+          <a class="ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
             <i class="fa-solid fa-square-plus"></i>
           </a>
         </legend>

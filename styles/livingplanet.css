@@ -548,21 +548,6 @@
     flex-flow: column;
     align-items: normal;
 
-    .image-box {
-      display: flex;
-      flex-flow: wrap;
-      justify-content: space-around;
-      gap: 1em 2em;
-    }
-
-    .profile-img {
-      width: auto;
-      max-width: 150px;
-      height: auto;    
-      max-height: 150px;
-      border: 3px solid var(--highlight-title);
-    }
-
     h1.charname {
       height: 50px;
       padding: 0px;
@@ -577,9 +562,44 @@
       }
     }
   }
+
+  .images-row {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    gap: 0.5em;
+
+    .profile-img-wrapper {
+      --cut: 25px;
+      --border-width: 3px;
+      width: auto;
+      max-width: 150px;
+      height: auto;    
+      max-height: 150px;
+      background: var(--highlight-title);
+      padding: var(--border-width);
+      
+      clip-path: polygon(
+        var(--cut) 0%, calc(100% - var(--cut)) 0%, 
+        100% var(--cut), 100% calc(100% - var(--cut)), 
+        calc(100% - var(--cut)) 100%, var(--cut) 100%, 
+        0% calc(100% - var(--cut)), 0% var(--cut)
+      );
+
+      .profile-img {
+        --offset-cut: calc(var(--cut) - var(--border-width));
+        height: 100%;
+
+        clip-path: polygon(
+          var(--offset-cut) 0%, calc(100% - var(--offset-cut)) 0%, 
+          100% var(--offset-cut), 100% calc(100% - var(--offset-cut)), 
+          calc(100% - var(--offset-cut)) 100%, var(--offset-cut) 100%, 
+          0% calc(100% - var(--offset-cut)), 0% var(--offset-cut)
+        );
+      }
+    }
+  }
 }
-
-
 
 .livingplanet .character-header {
   margin-bottom: 0px;
