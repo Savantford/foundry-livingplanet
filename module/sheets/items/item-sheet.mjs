@@ -1,13 +1,11 @@
-//import { rollAttribute } from './apps/roll-attribute.mjs' NOT NEEDED
+const ItemSheetV2 = foundry.applications?.sheets?.ItemSheetV2 ?? (class {});
+const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicationMixin ?? (cls => cls);
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
 */
-
-import { onManageActiveEffect, prepareActiveEffectCategories } from '../active-effects/effects.mjs';
-
-export class LPItemSheet extends ItemSheet {
+export default class LPItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
 
   /** @override */
   static get defaultOptions() {
@@ -80,20 +78,5 @@ export class LPItemSheet extends ItemSheet {
     const bodyHeight = position.height - 192;
     sheetBody.css("height", bodyHeight);
     return position;
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
-    ////////////////// EFFECTS ////////////////////
-
-    // Active Effect management
-    html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.object));
   }
 }

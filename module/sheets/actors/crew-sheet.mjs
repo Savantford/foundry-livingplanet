@@ -29,12 +29,7 @@ export default class CrewSheet extends LPActorSheet {
 
   /** @override */
   static PARTS = {
-    main: { template: 'systems/livingplanet/templates/actors/crew-sheet.hbs' },
-
-    // Partials
-    clock: { template: 'systems/livingplanet/templates/progress-clock.hbs' },
-    asset: { template: 'systems/livingplanet/templates/actors/item/asset.hbs' },
-    connection: { template: 'systems/livingplanet/templates/actors/item/connection.hbs' }
+    main: { template: 'systems/livingplanet/templates/actors/crew-sheet.hbs' }
   }
 
   /** @override */

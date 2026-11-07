@@ -22,15 +22,9 @@ export default class AssetSheet extends LPItemSheet {
   }
 
   /** @override */
-  /*static PARTS = {
-    main: { template: 'systems/livingplanet/templates/actors/deviant-sheet.hbs' },
-
-    // Partials
-    clock: { template: 'systems/livingplanet/templates/progress-clock.hbs' },
-    asset: { template: 'systems/livingplanet/templates/actors/item/asset.hbs' },
-    strength: { template: 'systems/livingplanet/templates/actors/parts/actor-strength.hbs' },
-    challenge: { template: 'systems/livingplanet/templates/actors/parts/actor-challenge.hbs' }
-  }*/
+  static PARTS = {
+    main: { template: 'systems/livingplanet/templates/items/asset-sheet.hbs' }
+  }
 
   /** @override */
   /*_configureRenderOptions(options) {

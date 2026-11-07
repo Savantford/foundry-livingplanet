@@ -15,10 +15,10 @@ import ConnectionModel from './data/items/connection.mjs';
 
 // Import sheet classes
 import DeviantSheet from './sheets/actors/deviant-sheet.mjs';
-//import EntitySheet from './sheets/actors/entity-sheet.mjs';
-//import CrewSheet from './sheets/actors/crew-sheet.mjs';
-//import AssetSheet from './sheets/items/asset-sheet.mjs';
-//import SkillSheet from './sheets/items/skill-sheet.mjs';
+import EntitySheet from './sheets/actors/entity-sheet.mjs';
+import CrewSheet from './sheets/actors/crew-sheet.mjs';
+import AssetSheet from './sheets/items/asset-sheet.mjs';
+import SkillSheet from './sheets/items/skill-sheet.mjs';
 
 // Import helper/utility classes and constants
 import { LP } from './config.mjs';
@@ -62,25 +62,25 @@ Hooks.once('init', function () {
     makeDefault: true,
     label: 'WW.System.Sheet.Deviant'
   });
-  /*Actors.registerSheet('livingplanet', EntitySheet, {
-    types: ['entity'],
-    makeDefault: true,
-    label: 'WW.System.Sheet.Entity'
-  });*/
-  /*Actors.registerSheet('livingplanet', CrewSheet, {
+  Actors.registerSheet('livingplanet', CrewSheet, {
     types: ['crew'],
     makeDefault: true,
     label: 'WW.System.Sheet.Crew'
-  });*/
+  });
+  Actors.registerSheet('livingplanet', EntitySheet, {
+    types: ['entity'],
+    makeDefault: true,
+    label: 'WW.System.Sheet.Entity'
+  });
 
   // Register item Sheet classes
   const Items = foundry.documents.collections.Items;
 
-  /*Items.registerSheet('livingplanet', AssetSheet, {
+  Items.registerSheet('livingplanet', AssetSheet, {
     types: ['asset'],
     makeDefault: true,
     label: 'WW.System.Sheet.Asset'
-  });*/
+  });
 
   // Register custom Object classes (placeables)
   //CONFIG.Token.objectClass = LPToken;
