@@ -22,8 +22,8 @@ export default class DeviantSheet extends LPActorSheet {
       ]
     },
     position: {
-      width: 400,
-      height: 600
+      width: 475,
+      height: "auto"
     }
   }
 

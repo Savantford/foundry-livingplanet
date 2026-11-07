@@ -76,162 +76,142 @@
     {{{ system.dreamEnriched }}}
   </prose-mirror>
 
-  {{!-- Sheet Body --}}
-  <section class="sheet-body flexcol gap-10">
-    {{!-- Lists --}}
-    <div class="flexrow gap-10">
-      {{!-- Main Left Col --}}
-      <div class="flexcol gap-10">
-        <div class="flexrow gap-10">
-          <div class="stat-box stat">
-            {{!-- Frame --}}
-            <div>
-              <label>{{localize "LP.Deviant.Frame"}}</label>
-        
-              <input type="text" name="system.frame" value="{{system.frame}}">
-            </div>
-
-            {{!-- Background --}}
-            <div>
-              <label>{{localize "LP.Deviant.Background"}}</label>
-        
-              <input type="text" name="system.background" value="{{system.background}}">
-            </div>
-        
-            {{!-- Experience --}}
-            <div>
-              <label>{{localize "LP.Resources.Experience"}}</label>
-        
-              <input type="number" name="system.experience" value="{{system.experience}}" min="0">
-            </div>
-          </div>
-        </div>
-
-        {{!-- Skills --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Skill.Plural"}}
-
-            {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Skill.Create"}}" data-action="itemCreate" data-type="skill">
-              <i class="fa-solid fa-square-plus"></i>
-            </a>
-          </legend>
-
-          <ol class="item-list skills">
-            {{#each skills as |item id|}}
-              {{> itemSimple item=item id=id}}
-            {{/each}}
-          </ol>
-        </fieldset>
-
-        {{!-- Assets --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Asset.Plural"}}
-
-            {{!-- Item Create Button --}}
-            <a class="item-create ml-1" title="{{localize "LP.Asset.Create"}}" data-action="itemCreate" data-type="asset">
-              <i class="fa-solid fa-square-plus"></i>
-            </a>
-          </legend>
-
-          <ol class="item-list assets">
-            {{#each assets as |item id|}}
-              {{> itemSimple item=item id=id}}
-            {{/each}}
-          </ol>
-        </fieldset>
-
+  {{!-- Info & Status Row --}}
+  <div class="status flexrow gap-10">
+    {{!-- Frame / Background / Experience --}}
+    <div class="stat-box stat">
+      {{!-- Frame --}}
+      <div>
+        <label>{{localize "LP.Deviant.Frame"}}</label>
+  
+        <input type="text" name="system.frame" value="{{system.frame}}">
       </div>
-
-      {{!-- Main Right Col --}}
-      <div class="flexcol gap-10">
-
-        <div class="statistics">
-          {{!-- Header Left Col --}}
-          <div>
-            {{!-- Advantage --}}
-            <fieldset class="stat stat-box">
-              <legend class="flexrow flex-group-left">
-                {{localize "LP.Ups.Label"}}: {{numberFormat system.ups decimals=0 sign=true}}
-              </legend>
-
-              {{!-- Preparation --}}
-              <div>{{localize "LP.Crew.Preparation"}}: {{ system.crewPreparation }}</div>
-
-              {{!-- Scene Difficulty --}}
-              <div>{{localize "LP.Scene.Complexity"}}: {{ system.sceneComplexity }}</div>
-
-              {{!-- Advatange Hint --}}
-              {{#if (gt system.ups 0)}}
-                {{localize "LP.Ups.AdvantageHint"}}
-              {{else if (lt system.ups 0)}}
-                {{localize "LP.Ups.DisadvantageHint"}}
-              {{/if}}
-            </fieldset>
-          </div>
-
-          <div class="flexcol gap-10">
-            {{!-- Impatience Clock --}}
-            <fieldset class="impatience">
-              <legend class="flexrow flex-group-left">
-                {{localize "LP.Progress.Impatience"}}:
-                {{system.impatience.value}} / {{system.impatience.max}}
-              </legend>
-              {{> clock arr=impatience data=system.impatience}}
-
-            </fieldset>
-          </div>
-        </div>
+  
+      {{!-- Background --}}
+      <div>
+        <label>{{localize "LP.Deviant.Background"}}</label>
+  
+        <input type="text" name="system.background" value="{{system.background}}">
+      </div>
+  
+      {{!-- Experience --}}
+      <div>
+        <label>{{localize "LP.Resources.Experience"}}</label>
+  
+        <input type="number" name="system.experience" value="{{system.experience}}" min="0">
       </div>
     </div>
+  
+    {{!-- Advantage --}}
+    <fieldset class="stat stat-box">
+      <legend class="flexrow flex-group-left">
+        {{localize "LP.Ups.Label"}}: {{numberFormat system.ups decimals=0 sign=true}}
+      </legend>
+  
+      {{!-- Preparation --}}
+      <div>{{localize "LP.Crew.Preparation"}}: {{ system.crewPreparation }}</div>
+  
+      {{!-- Scene Difficulty --}}
+      <div>{{localize "LP.Scene.Complexity"}}: {{ system.sceneComplexity }}</div>
+  
+      {{!-- Advatange Hint --}}
+      {{#if (gt system.ups 0)}}
+      {{localize "LP.Ups.AdvantageHint"}}
+      {{else if (lt system.ups 0)}}
+      {{localize "LP.Ups.DisadvantageHint"}}
+      {{/if}}
+    </fieldset>
+  
+    {{!-- Impatience Clock --}}
+    <div class="impatience stat">
+      <label>{{localize "LP.Progress.Impatience"}}: {{system.impatience.value}}/{{system.impatience.max}}</label>
 
-    {{!-- Challenge/Connection Lists --}}
-    <div class="flexrow gap-10">
-
-      {{!-- Left Col --}}
-      <div class="flexcol">
-        {{!-- Challenges --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Progress.Challenge.Plural"}}
-
-            {{!-- Item Create Button --}}
-            <a class="ml-1" title="{{localize "LP.Challenge.Create"}}" data-action="itemCreate" data-type="challenge">
-              <i class="fa-solid fa-square-plus"></i>
-            </a>
-          </legend>
-
-          <ol class="item-list challenges">
-            {{#each challenges as |item id|}}
-              {{> itemProgress item=item id=id}}
-            {{/each}}
-          </ol>
-
-        </fieldset>
-      </div>
-
-      {{!-- Right Col --}}
-      <div class="flexcol">
-        {{!-- Connections --}}
-        <fieldset class="stat stat-box">
-          <legend class="flexrow flex-group-left">
-            {{localize "LP.Connection.Plural"}}
-
-            {{!-- Item Create Button --}}
-            <a class="ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
-              <i class="fa-solid fa-square-plus"></i>
-            </a>
-          </legend>
-
-          <ol class="item-list connections">
-            {{#each connections as |item id|}}
-            {{> itemProgress item=item id=id}}
-            {{/each}}
-          </ol>
-        </fieldset>
-      </div>
+      {{> clock arr=impatience data=system.impatience}}
     </div>
-  </section>
+  </div>
+
+  {{!-- Lists --}}
+  <div class="flexcol gap-10">
+    {{!-- Skills --}}
+    <fieldset class="stat stat-box">
+      <legend class="flexrow flex-group-left">
+        {{localize "LP.Skill.Plural"}}
+  
+        {{!-- Item Create Button --}}
+        <a class="item-create ml-1" title="{{localize " LP.Skill.Create"}}" data-action="itemCreate" data-type="skill">
+          <i class="fa-solid fa-square-plus"></i>
+        </a>
+      </legend>
+  
+      <ol class="item-list skills">
+        {{#each skills as |item id|}}
+        {{> itemSimple item=item id=id}}
+        {{/each}}
+      </ol>
+    </fieldset>
+  
+    {{!-- Assets --}}
+    <fieldset class="stat stat-box">
+      <legend class="flexrow flex-group-left">
+        {{localize "LP.Asset.Plural"}}
+  
+        {{!-- Item Create Button --}}
+        <a class="item-create ml-1" title="{{localize " LP.Asset.Create"}}" data-action="itemCreate" data-type="asset">
+          <i class="fa-solid fa-square-plus"></i>
+        </a>
+      </legend>
+  
+      <ol class="item-list assets">
+        {{#each assets as |item id|}}
+        {{> itemSimple item=item id=id}}
+        {{/each}}
+      </ol>
+    </fieldset>
+  </div>
+  
+  {{!-- Challenge/Connection Lists --}}
+  <div class="flexrow gap-10">
+    {{!-- Left Col --}}
+    <div class="flexcol">
+      {{!-- Challenges --}}
+      <fieldset class="stat stat-box">
+        <legend class="flexrow flex-group-left">
+          {{localize "LP.Progress.Challenge.Plural"}}
+  
+          {{!-- Item Create Button --}}
+          <a class="ml-1" title="{{localize " LP.Challenge.Create"}}" data-action="itemCreate" data-type="challenge">
+            <i class="fa-solid fa-square-plus"></i>
+          </a>
+        </legend>
+  
+        <ol class="item-list challenges">
+          {{#each challenges as |item id|}}
+          {{> itemProgress item=item id=id}}
+          {{/each}}
+        </ol>
+  
+      </fieldset>
+    </div>
+  
+    {{!-- Right Col --}}
+    <div class="flexcol">
+      {{!-- Connections --}}
+      <fieldset class="stat stat-box">
+        <legend class="flexrow flex-group-left">
+          {{localize "LP.Connection.Plural"}}
+  
+          {{!-- Item Create Button --}}
+          <a class="ml-1" title="{{localize " LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
+            <i class="fa-solid fa-square-plus"></i>
+          </a>
+        </legend>
+  
+        <ol class="item-list connections">
+          {{#each connections as |item id|}}
+          {{> itemProgress item=item id=id}}
+          {{/each}}
+        </ol>
+      </fieldset>
+    </div>
+  </div>
 </section>
