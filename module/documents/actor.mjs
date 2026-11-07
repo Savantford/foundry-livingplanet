@@ -20,36 +20,8 @@ export default class LPActor extends Actor {
         // documents (including active effects) or derived data.
         super.prepareBaseData();
 
-        // Create boons variables
-        /*this.system.boons = {
-            attributes: {
-                luck: {
-                    global: 0,
-                    conditional: 0
-                }
-            },
-            attacks: {
-                global: 0,
-                conditional: 0
-            }
-        };
-
-        // Attributes
-        const attributes = this.system.boons.attributes;
-
-        ['str', 'agi', 'int', 'wil'].forEach(function (attribute){
-            attributes[attribute] = {
-                global: 0,
-                conditional: 0
-            }
-        })
-
-        // Make a copy of the raw Speed value to use in Active Effects later
-        this.system.stats.speed.raw = this.system.stats.speed.value;
-
-        // Reset Natural Defense and Defense before Active Effects
-        this.system.stats.defense.natural = 10;
-        this.system.stats.defense.total = 0;*/
+        // Initialize dynamic AE-handled variables
+        this.system.ups = 0;
     }
 
     async _preCreate(data, options, user) {

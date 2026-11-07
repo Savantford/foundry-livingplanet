@@ -141,5 +141,13 @@
     "Strong": "Strong",
     "Crucial": "Crucial",
     "Essential": "Essential"
+  },
+
+  "LP.Crew": {
+    "Preparation": "Preparation"
+  },
+
+  "LP.Scene": {
+    "Complexity": "Complexity"
   }
 }

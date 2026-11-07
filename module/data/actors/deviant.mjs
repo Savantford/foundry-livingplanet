@@ -24,10 +24,7 @@ export default class DeviantModel extends foundry.abstract.DataModel {
         value: makeIntField({ initial: 0 }),
         max: makeIntField({ initial: 6 })
       }),
-
-      advantage: new fields.SchemaField({
-        scene: makeIntField({ initial: 0 }),
-      }),
+      
       experience: makeIntField({ initial: 0 }),
 
       harm: new fields.SchemaField({
