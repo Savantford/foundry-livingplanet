@@ -7,7 +7,7 @@ export class healthDetails extends FormApplication {
     static get defaultOptions() {
         const options = super.defaultOptions;
         options.id = "health-details";
-        options.template = "systems/weirdwizard/templates/apps/health-details.hbs";
+        options.template = "systems/livingplanet/templates/apps/health-details.hbs";
         options.height = "auto";
         options.width = 400;
         options.title = "Health Details";

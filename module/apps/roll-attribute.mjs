@@ -28,7 +28,7 @@ export default class RollAttribute extends FormApplication {
   static get defaultOptions() {
     const options = super.defaultOptions;
     options.id = "roll-attribute";
-    options.template = "systems/weirdwizard/templates/apps/roll-attribute.hbs";
+    options.template = "systems/livingplanet/templates/apps/roll-attribute.hbs";
     options.height = "auto";
     options.width = 400;
     options.title = "Roll Details";

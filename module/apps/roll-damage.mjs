@@ -19,7 +19,7 @@ export default class RollDamage extends FormApplication {
   static get defaultOptions() {
     const options = super.defaultOptions;
     options.id = 'roll-damage';
-    options.template = 'systems/weirdwizard/templates/apps/roll-damage.hbs';
+    options.template = 'systems/livingplanet/templates/apps/roll-damage.hbs';
     options.height = 'auto';
     options.width = 400;
     options.title = 'Damage Dice';

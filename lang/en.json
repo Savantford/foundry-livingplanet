@@ -168,6 +168,11 @@
     }
   },
 
+  "TYPES.JournalEntry.expedition": "Expedition",
+
+  "TYPES.JournalEntryPage.expeditionSummary": "Expedition Summary",
+  "TYPES.JournalEntryPage.expeditionScene": "Expedition Scene",
+
   "LP.Scene": {
     "Complexity": "Complexity"
   }

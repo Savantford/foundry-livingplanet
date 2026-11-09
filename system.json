@@ -40,6 +40,10 @@
       "asset": {},
       "connection": {},
       "skill": {}
+    },
+    "JournalEntryPage": {
+      "expeditionSummary": {},
+      "expeditionScene": {}
     }
   },
   "primaryTokenAttribute": "",

@@ -3,7 +3,7 @@ import {
   makeStrField
 } from '../field-presets.mjs';
 
-export default class SceneModel extends foundry.abstract.DataModel {
+export default class ExpeditionSummaryModel extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 

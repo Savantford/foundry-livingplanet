@@ -72,7 +72,7 @@ export default class LPActor extends Actor {
 
     prepareDerivedData() {
         const system = this.system;
-        const flags = this.flags.weirdwizard || {};
+        const flags = this.flags.livingplanet || {};
 
         /*// Make sure Speed is a float after Active Effects reduce it
         system.stats.speed.value = Math.floor(system.stats.speed.value);

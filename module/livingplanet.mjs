@@ -22,6 +22,12 @@ import SkillSheet from './sheets/items/skill-sheet.mjs';
 
 // Import helper/utility classes and constants
 import { LP } from './config.mjs';
+import LPJournalEntryPage from './documents/journal-page.mjs';
+import LPJournalEntry from './documents/journal-entry.mjs';
+import ExpeditionSummaryModel from './data/journal/expedition-summary.mjs';
+import ExpeditionSceneModel from './data/journal/expedition-scene.mjs';
+import ExpeditionSummarySheet from './sheets/journal/exp-summary-sheet.mjs';
+import ExpeditionSceneSheet from './sheets/journal/exp-scene-sheet.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -46,6 +52,9 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = LPItem;
   CONFIG.Item.defaultType = 'asset';
 
+  CONFIG.JournalEntry.documentClass = LPJournalEntry;
+  CONFIG.JournalEntryPage.documentClass = LPJournalEntryPage;
+
   // Register data models
   CONFIG.Actor.dataModels.deviant = DeviantModel;
   CONFIG.Actor.dataModels.entity = EntityModel;
@@ -53,6 +62,8 @@ Hooks.once('init', function () {
   CONFIG.Item.dataModels.asset = AssetModel;
   CONFIG.Item.dataModels.skill = SkillModel;
   CONFIG.Item.dataModels.connection = ConnectionModel;
+  CONFIG.JournalEntryPage.dataModels.expeditionSummary = ExpeditionSummaryModel;
+  CONFIG.JournalEntryPage.dataModels.expeditionScene = ExpeditionSceneModel;
   
   // Register actor Sheet classes
   const Actors = foundry.documents.collections.Actors;
@@ -80,6 +91,27 @@ Hooks.once('init', function () {
     types: ['asset'],
     makeDefault: true,
     label: 'WW.System.Sheet.Asset'
+  });
+
+  Items.registerSheet('livingplanet', AssetSheet, {
+    types: ['asset'],
+    makeDefault: true,
+    label: 'WW.System.Sheet.Asset'
+  });
+
+  // Register Journal Page Sheet classes
+  const DocumentSheetConfig = foundry.applications.apps.DocumentSheetConfig;
+
+  DocumentSheetConfig.registerSheet(JournalEntryPage, 'livingplanet', ExpeditionSummarySheet, {
+    types: ['expeditionSummary'],
+    makeDefault: true,
+    label: 'WW.System.Sheet.ExpeditionSummary'
+  });
+
+  DocumentSheetConfig.registerSheet(JournalEntryPage, 'livingplanet', ExpeditionSceneSheet, {
+    types: ['expeditionScene'],
+    makeDefault: true,
+    label: 'WW.System.Sheet.ExpeditionScene'
   });
 
   // Register custom Object classes (placeables)

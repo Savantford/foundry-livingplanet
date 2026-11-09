@@ -120,6 +120,10 @@
     border: none;
     align-items: center;
     gap: 8px;
+
+    button.header-control {
+      font-size: x-large;
+    }
   }
 
   .window-content {
@@ -937,10 +941,6 @@ input[type="checkbox"].checkbox-reloaded {
 .livingplanet .details-list {
   list-style: none;
   padding: 0;
-  /*margin: 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  color: #444;*/
 }
 .livingplanet .detail {
   margin-bottom: 10px;
@@ -962,41 +962,6 @@ input[type="checkbox"].checkbox-reloaded {
   background-color: #606060;
 }
 
-.livingplanet .health-levels {
-  text-align: center;
-  width: 20px;
-}
-.livingplanet .health-display {
-  text-align: center;
-  font-weight: bold;
-  width: 30px;
-}
-
-.livingplanet .def-list {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  overflow-y: auto;
-}
-.livingplanet .def-list li {
-  align-items: center;
-  gap: 5px;
-}
-.livingplanet .def-list input[type="number"] {
-  text-align: center;
-  width: 30px;
-}
-/*.livingplanet .def-name {
-  flex: 1;
-}*/
-.livingplanet .def-bonus {
-  flex: 0 50px;
-  text-align: center;
-}
-.livingplanet .def-remove {
-  flex: 0 16px;
-  text-align: center;
-}
 .livingplanet .boons-display, .livingplanet .damage-display {
   text-align: center;
   width: 30px;
@@ -1004,6 +969,12 @@ input[type="checkbox"].checkbox-reloaded {
 
 .livingplanet .boons-expression, .livingplanet .damage-expression {
   font-size: 1.5em;
+}
+
+.journal-entry-page.livingplanet {
+  .journal-header .title {
+    height: 50px;
+  }
 }
 
 /* Tooltips Customization */
@@ -1029,15 +1000,4 @@ input[type="checkbox"].checkbox-reloaded {
 
 #tooltip > p {
   margin: 0;
-}
-
-/* Foundry UI Overrides */
-
-/* Header Buttons */
-.livingplanet a.header-button.control {
-  font-size: 0;
-}
-
-.livingplanet a.header-button.control i {
-  font-size: x-large;
 }
