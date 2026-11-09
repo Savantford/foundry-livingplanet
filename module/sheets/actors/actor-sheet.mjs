@@ -183,9 +183,10 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   */
   async _prepareDeviantData(context) {
     const textEditor = foundry.applications.ux.TextEditor.implementation;
+    const crew = context.system.crewDoc;
     
     // Prepare enriched variables for editor.
-    context.system.dreamEnriched = await textEditor.enrichHTML(context.system.dream, { secrets: this.actor.isOwner });
+    context.system.crewEnriched = crew ? await textEditor.enrichHTML(crew.link) : null;
   }
 
   /* -------------------------------------------- */

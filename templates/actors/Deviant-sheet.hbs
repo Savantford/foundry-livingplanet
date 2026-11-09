@@ -7,7 +7,7 @@
     </h1>
 
     {{!-- Dream --}}
-    <input type="text" name="system.dream" value="{{ system.dream }}" placeholder="{{localize "LP.Deviant.DreamTip"}}">
+    <input type="text" class="dream" name="system.dream" value="{{ system.dream }}" placeholder="{{localize "LP.Deviant.DreamTip"}}">
   </header>
 
   {{!-- Image / Radar Box --}}
@@ -86,6 +86,13 @@
   <div class="status flexrow gap-10">
     {{!-- Frame / Background --}}
     <div class="stat-box stat">
+      {{!-- Crew --}}
+      <div>
+        <label>{{localize "LP.Crew.Label"}}</label>
+  
+        <div>{{{ system.crewEnriched }}}</div>
+      </div>
+
       {{!-- Frame --}}
       <div>
         <label>{{localize "LP.Deviant.Frame"}}</label>

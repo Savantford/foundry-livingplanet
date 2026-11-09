@@ -1,4 +1,4 @@
-import { makeHtmlField, makeIntField, makeStrField, makeUuidStrField } from '../field-presets.mjs';
+import { makeIntField, makeStrField, makeUuidStrField } from '../field-presets.mjs';
 
 export default class DeviantModel extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -12,7 +12,7 @@ export default class DeviantModel extends foundry.abstract.DataModel {
     const schema = {
       frame: makeStrField(),
       background: makeStrField(),
-      dream: makeHtmlField(),
+      dream: makeStrField(),
       crew: makeUuidStrField(),
 
       attributes: new fields.SchemaField({
@@ -56,6 +56,16 @@ export default class DeviantModel extends foundry.abstract.DataModel {
 
   /* -------------------------------------------- */
   /*  Properties (Getters)                        */
+  /* -------------------------------------------- */
+
+  /**
+   * Determine whether the character is injured.
+   * @type {boolean}
+   */
+  get crewDoc() {
+    return fromUuidSync(this.crew);
+  }
+
   /* -------------------------------------------- */
 
   /**

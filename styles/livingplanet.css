@@ -561,6 +561,10 @@
         font-weight: bold;
       }
     }
+
+    .dream {
+      font-style: italic;
+    }
   }
 
   .images-row {
