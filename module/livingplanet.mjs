@@ -3,6 +3,7 @@ console.log('HotLP | Initializing...');
 // Import document classes
 import LPActor from './documents/actor.mjs';
 import LPItem from './documents/item.mjs';
+import LPJournalEntryPage from './documents/journal-page.mjs';
 //import { LPToken } from './documents/token.mjs';
 
 // Import data models
@@ -12,6 +13,8 @@ import CrewModel from './data/actors/crew.mjs';
 import SkillModel from './data/items/skill.mjs';
 import AssetModel from './data/items/asset.mjs';
 import ConnectionModel from './data/items/connection.mjs';
+import ExpeditionSummaryModel from './data/journal/expedition-summary.mjs';
+import ExpeditionSceneModel from './data/journal/expedition-scene.mjs';
 
 // Import sheet classes
 import DeviantSheet from './sheets/actors/deviant-sheet.mjs';
@@ -19,15 +22,12 @@ import EntitySheet from './sheets/actors/entity-sheet.mjs';
 import CrewSheet from './sheets/actors/crew-sheet.mjs';
 import AssetSheet from './sheets/items/asset-sheet.mjs';
 import SkillSheet from './sheets/items/skill-sheet.mjs';
+import ExpeditionSummarySheet from './sheets/journal/exp-summary-sheet.mjs';
+import ExpeditionSceneSheet from './sheets/journal/exp-scene-sheet.mjs';
 
 // Import helper/utility classes and constants
 import { LP } from './config.mjs';
-import LPJournalEntryPage from './documents/journal-page.mjs';
-import LPJournalEntry from './documents/journal-entry.mjs';
-import ExpeditionSummaryModel from './data/journal/expedition-summary.mjs';
-import ExpeditionSceneModel from './data/journal/expedition-scene.mjs';
-import ExpeditionSummarySheet from './sheets/journal/exp-summary-sheet.mjs';
-import ExpeditionSceneSheet from './sheets/journal/exp-scene-sheet.mjs';
+
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -51,8 +51,7 @@ Hooks.once('init', function () {
 
   CONFIG.Item.documentClass = LPItem;
   CONFIG.Item.defaultType = 'asset';
-
-  CONFIG.JournalEntry.documentClass = LPJournalEntry;
+  
   CONFIG.JournalEntryPage.documentClass = LPJournalEntryPage;
 
   // Register data models

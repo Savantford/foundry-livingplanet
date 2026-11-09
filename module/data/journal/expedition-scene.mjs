@@ -8,7 +8,9 @@ export default class ExpeditionSceneModel extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
 
     const schema = {
-      type: makeStrField({ initial: 'bonding' }),
+      type: makeStrField({
+        initial: 'bonding'
+      }),
 
       complexity: new fields.SchemaField({
         value: makeIntField({ initial: 0 }),
