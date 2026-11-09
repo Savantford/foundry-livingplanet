@@ -1,4 +1,12 @@
+<section>
+  {{!-- Scene Type --}}
+  {{formGroup sysFields.sceneType value=source.system.sceneType blank=false}}
 
-<prose-mirror name="text.content" class="journal-page-content"
-  value="{{ text.content }}" data-document-uuid="{{ uuid }}" collaborate relative>
-</prose-mirror>
+  {{!-- Scene Complexity --}}
+  {{formGroup sysFields.complexity value=source.system.complexity}}
+
+  {{!-- Content --}}
+  <prose-mirror name="text.content" class="journal-page-content"
+    value="{{ text.content }}" data-document-uuid="{{ uuid }}" collaborate relative>
+  </prose-mirror>
+</section>

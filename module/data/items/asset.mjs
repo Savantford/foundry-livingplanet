@@ -11,7 +11,7 @@ export default class AssetModel extends foundry.abstract.DataModel {
     return {
       //...base(type),
       
-      source: makeStrField('frame',0,1)
+      source: makeStrField({ initial: 'frame' })
       
     }
   }

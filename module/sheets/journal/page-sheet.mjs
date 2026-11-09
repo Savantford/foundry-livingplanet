@@ -43,6 +43,8 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
    */
   async _prepareContext(options = {}) {
     const context = await super._prepareContext(options);
+
+    context.sysFields = context.document.system.schema.fields;
     
     return context;
   }
