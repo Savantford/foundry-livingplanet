@@ -11,13 +11,14 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
   static tabName = "narrativeTracker";
 
   static DEFAULT_OPTIONS = {
-    classes: ['livingplanet'],
+    classes: ['livingplanet', 'narrative-tracker'],
     window: {
       title: "LP.Narrative.Title",
       icon: "fa-solid fa-sitemap"
     },
     position: {
-      top: 20
+      top: 20,
+      width: 600
     },
     actions: {
       //cancel: this.#cancel
@@ -28,7 +29,8 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
 
   static PARTS = {
     main: {
-      template: 'systems/livingplanet/templates/apps/narrative-tracker.hbs'
+      template: 'systems/livingplanet/templates/apps/narrative-tracker.hbs',
+      classes: ['main']
     }
   }
 
@@ -83,11 +85,29 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
 
   async _prepareContext(options = {}) {
     const settings = game.settings.get('livingplanet', 'narrativeSettings');
+    const expedition = await fromUuid(settings.expedition);
     const scene = await fromUuid(settings.scene);
+    const entry = scene.parent;
+    const enrichHTML = async x => await foundry.applications.ux.TextEditor.implementation.enrichHTML(x);
+
+    // Prepare Scene Pages
+    const sceneDocs = entry.pages.contents.filter(p => p.type === 'expeditionScene');
+    const scenes = await Promise.all(sceneDocs.map(async p => {
+      return {
+        id: p.id,
+        name: p.name,
+        type: p.system.sceneType,
+        link: await enrichHTML(p.link),
+        sort: p.sort
+      }
+    }))
     
     const context = {
-      scene
-    };
+      expedition, scene, entry, scenes,
+      sceneTypes: CONFIG.LP.SCENE_TYPES,
+      sceneTypeLabels: CONFIG.LP.SCENE_TYPE_LABELS,
+      sysFields: foundry.utils.getProperty(scene, 'system.schema.fields')
+    }
 
     return context;
   }

@@ -5,6 +5,7 @@ export default class NarrativeModel extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
 
     const schema = {
+      expedition: makeUuidStrField(),
       scene: makeUuidStrField()
     };
 

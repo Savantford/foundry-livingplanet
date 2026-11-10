@@ -974,7 +974,8 @@ input[type="checkbox"].checkbox-reloaded {
 }
 
 .journal-entry-page.livingplanet,
-.journal-entry-page.expeditionScene {
+.journal-entry-page.expeditionScene,
+.narrative-tracker {
   .journal-header .title {
     height: 50px;
   }
@@ -983,6 +984,51 @@ input[type="checkbox"].checkbox-reloaded {
     .scene-type {
       float: right;
       font-size: 0.75em;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-flow: wrap;
+    gap: 1em;
+
+    > * {
+      flex: 1;
+      min-width: 150px;
+    }
+  }
+
+  .card {
+    background: var(--background-color-shadow);
+    padding: 5px;
+  }
+
+  details {
+    background: var(--background-color-shadow);
+    padding: 2px 5px;
+
+    summary {
+      cursor: pointer;
+    }
+  }
+
+  details[open] {
+    summary {
+      margin-bottom: 5px;
+    }
+  }
+
+  .scene-title {
+    margin-bottom: 5px;
+  }
+
+  .scenes-list {
+    list-style: upper-latin;
+    margin: 0;
+
+    li.active::marker {
+      color: var(--highlight-title);
+      text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black;
     }
   }
 

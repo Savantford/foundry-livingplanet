@@ -28,9 +28,11 @@
       <li class="obstacle {{#if obstacle.done}}done{{/if}}">
         <input type="checkbox" name="system.obstacles.{{idx}}.done" {{checked obstacle.done}}>
 
-        <span>{{obstacle.text}}</span>
-
-        <span>({{#if (gt obstacle.cost 1)}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+        <span>
+          <span>{{obstacle.text}}</span>
+          
+          <span>({{#if (gt obstacle.cost 1)}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+        </span>
       </li>
       {{/each}}
     </ol>
