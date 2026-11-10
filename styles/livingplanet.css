@@ -973,9 +973,17 @@ input[type="checkbox"].checkbox-reloaded {
   font-size: 1.5em;
 }
 
-.journal-entry-page.livingplanet {
+.journal-entry-page.livingplanet,
+.journal-entry-page.expeditionScene {
   .journal-header .title {
     height: 50px;
+  }
+  
+  .journal-page-header {
+    .scene-type {
+      float: right;
+      font-size: 0.75em;
+    }
   }
 
   .obstacles {

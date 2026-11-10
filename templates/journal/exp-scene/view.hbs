@@ -1,13 +1,43 @@
 <div>
+  {{#if title.show}}
+  <header class="journal-page-header">
+    <h{{ title.level }}>
+      {{!-- Name --}}
+      {{ name }}
+      
+      {{!-- Scene Type --}}
+      <span class="scene-type">
+        {{localize (lookup sceneTypeLabels source.system.sceneType)}},
+        {{sysFields.complexity.label}} {{source.system.complexity}}
+      </span>
+    </h{{ title.level }}>
+  </header>
+  {{/if}}
 
-    {{#if title.show}}
-    <header class="journal-page-header">
-        <h{{ title.level }}>{{ name }}</h{{ title.level }}>
-    </header>
-    {{/if}}
+  {{!-- Scene Objective --}}
+  <h3>{{source.system.objective}}</h3>
 
-    <section class="journal-page-content">
-        {{{ text.enriched }}}
-    </section>
+  {{!-- Obstacles --}}
+  <fieldset class="obstacles">
+    <legend class="flexrow gap-5">
+      {{localize "LP.Scene.Obstacle.Plural"}}
+    </legend>
+
+    <ol>
+      {{#each source.system.obstacles as |obstacle idx|}}
+      <li class="obstacle {{#if obstacle.done}}done{{/if}}">
+        <input type="checkbox" name="system.obstacles.{{idx}}.done" {{checked obstacle.done}}>
+
+        <span>{{obstacle.text}}</span>
+
+        <span>({{#if (gt obstacle.cost 1)}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+      </li>
+      {{/each}}
+    </ol>
+  </fieldset>
+
+  <section class="journal-page-content">
+    {{{ text.enriched }}}
+  </section>
 
 </div>

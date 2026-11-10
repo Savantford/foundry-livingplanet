@@ -17,6 +17,13 @@
 
   "LP.Resources.Experience": "Experience",
 
+  "LP.Truth": {
+    "Label": "Truth",
+    "Plural": "Truths",
+    "Soft": "Soft Truth",
+    "Hard": "Hard Truth"
+  },
+
   "LP.Harm.Label": "Harm",
   "LP.Harm.Total": "Total Harm",
   "LP.Harm.Damage": "Damage",
@@ -178,8 +185,11 @@
     "Type": {
       "Label": "Scene Type",
       "Bonding": "Bonding",
+      "BondingLabel": "Bonding Scene",
       "Exploration": "Exploration",
-      "Action": "Action"
+      "ExplorationLabel": "Exploration Scene",
+      "Action": "Action",
+      "ActionLabel": "Action Scene"
     },
     "Objective": {
       "Label": "Scene Objective",
