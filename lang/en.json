@@ -180,6 +180,12 @@
   "TYPES.JournalEntryPage.expeditionSummary": "Expedition Summary",
   "TYPES.JournalEntryPage.expeditionScene": "Expedition Scene",
 
+  "LP.Narrative": {
+    "Title": "Narrative Tracker",
+    "HideSidebarTab": "Hide Narrative Tracker from Sidebar",
+    "HideSidebarTabHint": "Whether you want to hide the narrative tracker from the sidebar."
+  },
+
   "LP.Scene": {
     "Complexity": "Complexity",
     "Type": {

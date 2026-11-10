@@ -27,6 +27,8 @@ import ExpeditionSceneSheet from './sheets/journal/exp-scene-sheet.mjs';
 
 // Import helper/utility classes and constants
 import { LP } from './config.mjs';
+import NarrativeModel from './data/apps/narrative.mjs';
+import NarrativeTracker from './apps/narrative-tracker.mjs';
 
 
 /* -------------------------------------------- */
@@ -134,6 +136,47 @@ Hooks.once('init', function () {
     itemSimple: 'systems/livingplanet/templates/generic/item-simple.hbs',
     itemProgress: 'systems/livingplanet/templates/generic/item-progress.hbs',
   })
+
+  // Narrative Tracker
+  game.settings.register("livingplanet", "narrativeHideTab", {
+    name: "LP.Narrative.HideSidebarTab",
+    title: "LP.Narrative.HideSidebarTabTitle",
+    hint: "LP.Narrative.HideSidebarTabHint",
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: true,
+    restricted: false
+  });
+
+  game.settings.register("livingplanet", "narrativeSettings", {
+    name: "LP.Narrative.Settings",
+    title: "LP.Narrative.SettingsTitle",
+    hint: "LP.Narrative.SettingsHint",
+    scope: "world",
+    type: NarrativeModel,
+    restricted: false
+  });
+
+  // Register sidebar tab unless GM disabled it
+  if (!game.settings.get("livingplanet", "narrativeHideTab")) {
+    CONFIG.ui["narrative-tracker"] = NarrativeTracker;
+    const sidebarClass = CONFIG.ui.sidebar;
+
+    if (sidebarClass?.TABS) {
+      const narrativeTab = { icon: "fa-solid fa-sitemap", tooltip: "LP.Narrative.Title" };
+      const settingsTab = sidebarClass.TABS.settings;
+
+      if (settingsTab) {
+        delete sidebarClass.TABS.settings;
+        sidebarClass.TABS["narrative-tracker"] = narrativeTab;
+        sidebarClass.TABS.settings = settingsTab;
+      } else {
+        sidebarClass.TABS["narrative-tracker"] = narrativeTab;
+      }
+    }
+  }
 });
 
 console.log('HotLP | Initialization done.');
