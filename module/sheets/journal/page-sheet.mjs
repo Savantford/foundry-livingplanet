@@ -48,7 +48,7 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
 
     context.sysFields = context.document.system.schema.fields;
     context.sceneTypeLabels = CONFIG.LP.SCENE_TYPE_LABELS;
-    console.log(context.source.system)
+    
     return context;
   }
 

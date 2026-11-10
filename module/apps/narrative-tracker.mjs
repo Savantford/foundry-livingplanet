@@ -8,13 +8,16 @@ const HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicatio
  * @extends {AbstractSidebarTab}
 */
 export default class NarrativeTracker extends HandlebarsApplicationMixin(AbstractSidebarTab) {
-  static tabName = "narrative-tracker";
+  static tabName = "narrativeTracker";
 
   static DEFAULT_OPTIONS = {
     classes: ['livingplanet'],
     window: {
       title: "LP.Narrative.Title",
       icon: "fa-solid fa-sitemap"
+    },
+    position: {
+      top: 20
     },
     actions: {
       //cancel: this.#cancel
@@ -92,7 +95,7 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
   /** @inheritDoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    console.log('rendering')
+    
     this._dragDrop.bind(this.element);
   }
 
@@ -187,7 +190,6 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
    * @protected
    */
   async _onDragStart(event) {
-    console.log('start')
     const target = event.currentTarget;
     if ( "link" in event.target.dataset ) return;
 
@@ -211,7 +213,6 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
    * @protected
    */
   _onDragOver(event) {
-    console.log('over')
   }
 
   /* -------------------------------------------- */

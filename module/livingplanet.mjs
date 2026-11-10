@@ -161,7 +161,7 @@ Hooks.once('init', function () {
 
   // Register sidebar tab unless GM disabled it
   if (!game.settings.get("livingplanet", "narrativeHideTab")) {
-    CONFIG.ui["narrative-tracker"] = NarrativeTracker;
+    CONFIG.ui.narrativeTracker = NarrativeTracker;
     const sidebarClass = CONFIG.ui.sidebar;
 
     if (sidebarClass?.TABS) {
@@ -170,13 +170,33 @@ Hooks.once('init', function () {
 
       if (settingsTab) {
         delete sidebarClass.TABS.settings;
-        sidebarClass.TABS["narrative-tracker"] = narrativeTab;
+        sidebarClass.TABS.narrativeTracker = narrativeTab;
         sidebarClass.TABS.settings = settingsTab;
       } else {
-        sidebarClass.TABS["narrative-tracker"] = narrativeTab;
+        sidebarClass.TABS.narrativeTracker = narrativeTab;
       }
     }
   }
+});
+
+Hooks.once('ready', function (app, html) {
+  // Include steps that need to happen after Foundry has fully loaded here.
+
+  // Register Tours
+  //registerWWTours();
+
+  // Append data migration functions to game.system.migrations so tye can be used for manual forced migrations
+  /*const { fullMigration, ...migrations} = migrationsReference;
+  game.system.migrations = migrations;*/
+
+  // Check and run full data migration if needed
+  //fullMigration();
+
+  // Post a welcome message if needed
+  //utils.handleWelcomeMessage();
+
+  // Pop out the narrative tracker
+  ui.narrativeTracker.renderPopout();
 });
 
 console.log('HotLP | Initialization done.');
