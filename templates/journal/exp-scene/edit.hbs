@@ -9,11 +9,27 @@
   {{formGroup sysFields.complexity name="system.complexity" value=source.system.complexity}}
 
   {{!-- Obstacles --}}
-  <button data-action="obstacleAdd">Add Obstacle</button>
-  {{#each source.system.obstacles as |obstacle key|}}
-    {{log obstacle}}
-  {{/each}}
+  <fieldset class="obstacles">
+    <legend class="flexrow gap-5">
+      {{localize "LP.Scene.Obstacle.Plural"}}
+      <button data-action="obstacleAdd"><i class="fa-solid fa-plus"></i></button>
+    </legend>
 
+    <ol>
+      {{#each source.system.obstacles as |obstacle idx|}}
+      <li class="obstacle">
+        <input type="checkbox" name="system.obstacles.{{idx}}.done" {{checked obstacle.done}}>
+        <input type="text" name="system.obstacles.{{idx}}.text" value="{{obstacle.text}}">
+        <div class="cost">
+          <strong>{{localize "LP.Scene.Obstacle.Cost"}}:</strong>
+          <input type="number" name="system.obstacles.{{idx}}.cost" value={{obstacle.cost}}>
+        </div>
+        <button data-action="obstacleRemove" data-obstacle-index="{{idx}}"><i class="fa-solid fa-trash"></i></button>
+      </li>
+      {{/each}}
+    </ol>
+  </fieldset>
+  
   {{!-- Content --}}
   <prose-mirror name="text.content" class="journal-page-content"
     value="{{ text.content }}" data-document-uuid="{{ uuid }}" collaborate relative>

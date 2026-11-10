@@ -184,6 +184,13 @@
     "Objective": {
       "Label": "Scene Objective",
       "PH": "The main scene's objective."
+    },
+    "Obstacle": {
+      "Label": "Obstacle",
+      "Plural": "Obstacles",
+      "Add": "Add new obstacle",
+      "Remove": "Remove obstacle",
+      "Cost": "Cost"
     }
   }
 }

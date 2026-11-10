@@ -15,7 +15,9 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
   static DEFAULT_OPTIONS = {
     classes: ['livingplanet'],
     actions: {
-      updateProgress: this.#onProgressUpdate
+      updateProgress: this.#onProgressUpdate,
+
+      obstacleAdd: this.#onObstacleAdd
     },
     form: {
       submitOnChange: true,
@@ -45,7 +47,7 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
     const context = await super._prepareContext(options);
 
     context.sysFields = context.document.system.schema.fields;
-    
+    console.log(context.source.system)
     return context;
   }
 
@@ -59,13 +61,12 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
   /*  Form Handling                               */
   /* -------------------------------------------- */
 
-  _processFormData(event, form, formData) {
-    console.log(formData.object)
+  /*_processFormData(event, form, formData) {
     return foundry.utils.expandObject(formData.object);
-  }
+  }*/
 
   /* -------------------------------------------- */
-  /*  Item button actions                         */
+  /*  General actions                             */
   /* -------------------------------------------- */
 
   // Set progress clock value to the segment clicked
@@ -104,5 +105,16 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
     } else { // If not from an item
       this.actor.update({ 'system.impatience.value': 0 });
     }
+  }
+
+  /* -------------------------------------------- */
+  /*  Subtype specific actions                    */
+  /* -------------------------------------------- */
+
+  static #onObstacleAdd(event, button) {
+    const arr = [... this.page.system.obstacles];
+    arr.push({});
+
+    this.page.update({ 'system.obstacles': arr });
   }
 }
