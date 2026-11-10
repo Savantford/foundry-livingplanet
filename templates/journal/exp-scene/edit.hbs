@@ -1,9 +1,18 @@
 <section>
   {{!-- Scene Type --}}
-  {{formGroup sysFields.sceneType value=source.system.sceneType blank=false}}
+  {{formGroup sysFields.sceneType name="system.sceneType" value=source.system.sceneType blank=false}}
+
+  {{!-- Scene Objective --}}
+  {{formGroup sysFields.objective name="system.objective" value=source.system.objective}}
 
   {{!-- Scene Complexity --}}
-  {{formGroup sysFields.complexity value=source.system.complexity}}
+  {{formGroup sysFields.complexity name="system.complexity" value=source.system.complexity}}
+
+  {{!-- Obstacles --}}
+  <button data-action="obstacleAdd">Add Obstacle</button>
+  {{#each source.system.obstacles as |obstacle key|}}
+    {{log obstacle}}
+  {{/each}}
 
   {{!-- Content --}}
   <prose-mirror name="text.content" class="journal-page-content"

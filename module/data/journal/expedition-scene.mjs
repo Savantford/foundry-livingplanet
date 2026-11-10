@@ -1,7 +1,9 @@
 import {
+  makeBooField,
   makeIntField,
   makePosIntField,
-  makeRequiredStrField
+  makeRequiredStrField,
+  makeStrField
 } from '../field-presets.mjs';
 
 export default class ExpeditionSceneModel extends foundry.abstract.DataModel {
@@ -19,12 +21,25 @@ export default class ExpeditionSceneModel extends foundry.abstract.DataModel {
         }
       }),
 
+      objective: makeStrField({
+        label: _loc('LP.Scene.Objective.Label'),
+        placeholder: _loc('LP.Scene.Objective.PH'),
+      }),
+
       complexity: makePosIntField({
         label: _loc('LP.Scene.Complexity'),
         initial: 1,
         max: 5,
-        min: 0
+        min: 1
       }),
+
+      obstacles: new fields.SetField(
+        new fields.SchemaField({
+          text: makeStrField(),
+          cost: makePosIntField(),
+          done: makeBooField()
+        })
+      ),
 
       clocks: new fields.SchemaField({
         complexity: new fields.SchemaField({

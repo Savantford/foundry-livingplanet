@@ -59,9 +59,10 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
   /*  Form Handling                               */
   /* -------------------------------------------- */
 
-  /*_processFormData(event, form, formData) {
+  _processFormData(event, form, formData) {
+    console.log(formData.object)
     return foundry.utils.expandObject(formData.object);
-  }*/
+  }
 
   /* -------------------------------------------- */
   /*  Item button actions                         */

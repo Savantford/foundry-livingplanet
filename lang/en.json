@@ -180,6 +180,10 @@
       "Bonding": "Bonding",
       "Exploration": "Exploration",
       "Action": "Action"
+    },
+    "Objective": {
+      "Label": "Scene Objective",
+      "PH": "The main scene's objective."
     }
   }
 }
