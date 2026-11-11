@@ -1,13 +1,35 @@
 <div>
+  {{#if title.show}}
+  <header class="journal-page-header">
+    <h{{ title.level }}>
+      {{!-- Name --}}
+      {{ name }}
+    </h{{ title.level }}>
+  </header>
+  {{/if}}
 
-    {{#if title.show}}
-    <header class="journal-page-header">
-        <h{{ title.level }}>{{ name }}</h{{ title.level }}>
-    </header>
-    {{/if}}
+  {{!-- Objectives --}}
+  <fieldset class="obstacles">
+    <legend class="flexrow gap-5">
+      {{localize "LP.Expedition.Objective.Plural"}}
+    </legend>
 
-    <section class="journal-page-content">
-        {{{ text.enriched }}}
-    </section>
+    <ol>
+      {{#each source.system.objectives as |objective idx|}}
+      <li class="obstacle {{#if objective.done}}done{{/if}}">
+        {{formInput @root.objectiveFields.done name=(concat 'system.objectives.' idx '.done') value=objective.done checked=objective.done}}
 
+        <span>
+          <span>{{objective.text}}</span>
+          
+          <span>({{#if (eq objective.type "main")}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+        </span>
+      </li>
+      {{/each}}
+    </ol>
+  </fieldset>
+
+  <section class="journal-page-content">
+    {{{ text.enriched }}}
+  </section>
 </div>

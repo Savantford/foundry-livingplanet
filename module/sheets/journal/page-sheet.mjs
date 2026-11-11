@@ -17,6 +17,10 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
     actions: {
       updateProgress: this.#onProgressUpdate,
 
+      // Expedition
+      objectiveAdd: this.#onObjectiveAdd,
+
+      // Scene
       obstacleAdd: this.#onObstacleAdd
     },
     form: {
@@ -48,6 +52,11 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
 
     context.sysFields = context.document.system.schema.fields;
     context.sceneTypeLabels = CONFIG.LP.SCENE_TYPE_LABELS;
+
+    switch (this.page.type) {
+      case 'expeditionSummary': context.objectiveFields = context.sysFields.objectives.element.fields; break;
+      case 'expeditionScene': context.obstacleFields = context.sysFields.obstacles.element.fields; break;
+    }
     
     return context;
   }
@@ -110,6 +119,15 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
 
   /* -------------------------------------------- */
   /*  Subtype specific actions                    */
+  /* -------------------------------------------- */
+
+  static #onObjectiveAdd(event, button) {
+    const arr = [... this.page.system.objectives];
+    arr.push({});
+
+    this.page.update({ 'system.objectives': arr });
+  }
+
   /* -------------------------------------------- */
 
   static #onObstacleAdd(event, button) {

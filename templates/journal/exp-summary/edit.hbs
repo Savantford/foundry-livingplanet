@@ -1,2 +1,38 @@
-<prose-mirror name="text.content" class="journal-page-content" value="{{ text.content }}"
-              data-document-uuid="{{ uuid }}" collaborate relative></prose-mirror>
+<section>
+  {{!-- Objectives --}}
+  <fieldset class="obstacles">
+    <legend class="flexrow gap-5">
+      {{localize "LP.Expedition.Objective.Plural"}}
+
+      <button data-action="objectiveAdd"><i class="fa-solid fa-plus"></i></button>
+    </legend>
+
+    {{!-- Objective List --}}
+    <ol>
+      {{#each source.system.objectives as |objective idx|}}
+      <li class="obstacle">
+        {{!-- Objective Done --}}
+        {{formInput @root.objectiveFields.done name=(concat 'system.objectives.' idx '.done') value=objective.done checked=objective.done}}
+
+        {{!-- Objective Text --}}
+        {{formInput @root.objectiveFields.text name=(concat 'system.objectives.' idx '.text') value=objective.text}}
+
+        {{!-- Objective Type --}}
+        <div class="type">
+          <strong>{{localize @root.objectiveFields.type.label}}:</strong>
+
+          {{formInput @root.objectiveFields.type name=(concat 'system.objectives.' idx '.type') value=objective.type blank=false}}
+        </div>
+
+        {{!-- Objective Remove --}}
+        <button data-action="objectiveRemove" data-objective-index="{{idx}}"><i class="fa-solid fa-trash"></i></button>
+      </li>
+      {{/each}}
+    </ol>
+  </fieldset>
+  
+  {{!-- Content --}}
+  <prose-mirror name="text.content" class="journal-page-content"
+    value="{{ text.content }}" data-document-uuid="{{ uuid }}" collaborate relative>
+  </prose-mirror>
+</section>

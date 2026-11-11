@@ -18,12 +18,20 @@
     <ol>
       {{#each source.system.obstacles as |obstacle idx|}}
       <li class="obstacle">
-        <input type="checkbox" name="system.obstacles.{{idx}}.done" {{checked obstacle.done}}>
-        <input type="text" name="system.obstacles.{{idx}}.text" value="{{obstacle.text}}">
+        {{!-- Obstacle Done --}}
+        {{formInput @root.obstacleFields.done name=(concat 'system.obstacles.' idx '.done') value=obstacle.done checked=obstacle.done}}
+
+        {{!-- Obstacle Text --}}
+        {{formInput @root.obstacleFields.text name=(concat 'system.obstacles.' idx '.text') value=obstacle.text}}
+
+        {{!-- Obstacle Type --}}
         <div class="cost">
-          <strong>{{localize "LP.Scene.Obstacle.Cost"}}:</strong>
-          <input type="number" name="system.obstacles.{{idx}}.cost" value={{obstacle.cost}}>
+          <strong>{{localize @root.obstacleFields.cost.label}}:</strong>
+
+          {{formInput @root.obstacleFields.cost name=(concat 'system.obstacles.' idx '.cost') value=obstacle.cost}}
         </div>
+
+        {{!-- Obstacle Remove --}}
         <button data-action="obstacleRemove" data-obstacle-index="{{idx}}"><i class="fa-solid fa-trash"></i></button>
       </li>
       {{/each}}

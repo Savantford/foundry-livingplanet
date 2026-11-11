@@ -974,6 +974,7 @@ input[type="checkbox"].checkbox-reloaded {
 }
 
 .journal-entry-page.livingplanet,
+.journal-entry-page.expeditionSummary,
 .journal-entry-page.expeditionScene,
 .narrative-tracker {
   .journal-header .title {
@@ -989,7 +990,7 @@ input[type="checkbox"].checkbox-reloaded {
 
   .main {
     display: flex;
-    flex-flow: wrap;
+    flex-flow: column;
     gap: 1em;
 
     > * {
@@ -1022,6 +1023,12 @@ input[type="checkbox"].checkbox-reloaded {
     margin-bottom: 5px;
   }
 
+  .scene-objective {
+    margin-top: 1em;
+    font-size: larger;
+    font-weight: bold;
+  }
+
   .scenes-list {
     list-style: upper-latin;
     margin: 0;
@@ -1049,7 +1056,7 @@ input[type="checkbox"].checkbox-reloaded {
       padding: 0;
 
       .obstacle,
-      .cost {
+      .obstacle > div {
         display: flex;
         gap: 0 5px;
         align-items: center;
@@ -1060,9 +1067,13 @@ input[type="checkbox"].checkbox-reloaded {
         }
       }
 
-      .cost {
+      .obstacle > div {
         color: var(--text);
         flex: 0;
+
+        select {
+          width: auto;
+        }
       }
     }
   }

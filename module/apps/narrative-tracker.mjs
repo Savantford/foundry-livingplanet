@@ -18,7 +18,7 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
     },
     position: {
       top: 20,
-      width: 600
+      width: 400
     },
     actions: {
       //cancel: this.#cancel
@@ -107,7 +107,7 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
           sort: p.sort
         }
       }))
-      
+
       context.scenes = scenes;
     }
 

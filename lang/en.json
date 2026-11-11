@@ -176,7 +176,6 @@
   },
 
   "TYPES.JournalEntry.expedition": "Expedition",
-
   "TYPES.JournalEntryPage.expeditionSummary": "Expedition Summary",
   "TYPES.JournalEntryPage.expeditionScene": "Expedition Scene",
 
@@ -184,6 +183,17 @@
     "Title": "Narrative Tracker",
     "HideSidebarTab": "Hide Narrative Tracker from Sidebar",
     "HideSidebarTabHint": "Whether you want to hide the narrative tracker from the sidebar."
+  },
+
+  "LP.Expedition": {
+    "Label": "Expedition",
+    "Objective": {
+      "Label": "Objective",
+      "Plural": "Objectives",
+      "Type": "Type",
+      "Main": "Main",
+      "Secondary": "Secondary"
+    }
   },
 
   "LP.Scene": {

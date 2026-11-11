@@ -36,7 +36,7 @@ export default class ExpeditionSceneModel extends foundry.abstract.DataModel {
       obstacles: new fields.SetField(
         new fields.SchemaField({
           text: makeStrField(),
-          cost: makePosIntField(),
+          cost: makePosIntField({ label: 'LP.Scene.Obstacle.Cost' }),
           done: makeBooField()
         })
       ),
