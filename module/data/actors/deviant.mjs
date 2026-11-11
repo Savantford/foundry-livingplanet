@@ -59,7 +59,7 @@ export default class DeviantModel extends foundry.abstract.DataModel {
   /* -------------------------------------------- */
 
   /**
-   * Determine whether the character is injured.
+   * Get the Crew's document.
    * @type {boolean}
    */
   get crewDoc() {
@@ -69,11 +69,32 @@ export default class DeviantModel extends foundry.abstract.DataModel {
   /* -------------------------------------------- */
 
   /**
-   * Determine whether the character is injured.
+   * Get the Crew's Preparation score.
    * @type {boolean}
    */
   get crewPreparation() {
     return fromUuidSync(this.crew).system.preparation;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Get the current Expedition Scene's Complexity score.
+   * @type {boolean}
+   */
+  get sceneComplexity() {
+    const setting = game.settings.get('livingplanet', 'narrativeSettings');
+    return setting.scene.system.complexity;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Get the current Expedition Scene's Complexity score.
+   * @type {boolean}
+   */
+  get baseUps() {
+    return this.crewPreparation - this.sceneComplexity;
   }
 
 }

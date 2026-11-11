@@ -60,11 +60,18 @@
     }
   },
 
-  "LP.Ups.Label": "Ups & Downs",
-  "LP.Ups.Advantage": "Advantage",
-  "LP.Ups.AdvantageHint": "You have the Advantage",
-  "LP.Ups.Disadvantage": "Disadvantage",
-  "LP.Ups.DisadvantageHint": "You have the disadvantage",
+  "LP.Ups": {
+    "Base": {
+      "Label": "Base Ups & Downs",
+      "CrewPreparation": "Crew's Preparation",
+      "SceneComplexity": "Current Scene's Complexity",
+      "Advantage": "Advantage",
+      "AdvantageHint": "You have the <strong>Advantage</strong>.",
+      "Disadvantage": "Disadvantage",
+      "DisadvantageHint": "You have the <strong>disadvantage</strong>.",
+      "NeitherHint": "You neither the advantage or disadvantage."
+    }
+  },
 
   "TYPES.Item.skill": "Skill",
   "TYPES.Item.asset": "Asset",

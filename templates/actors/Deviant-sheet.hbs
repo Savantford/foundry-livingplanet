@@ -115,24 +115,30 @@
       </div>
     </div>
   
-    {{!-- Advantage --}}
+    {{!-- Base Ups --}}
     <fieldset class="stat stat-box">
       <legend class="flexrow flex-group-left">
-        {{localize "LP.Ups.Label"}}: {{numberFormat system.ups decimals=0 sign=true}}
+        {{localize "LP.Ups.Base.Label"}}:
+        {{numberFormat system.baseUps decimals=0 sign=true}}
+        <i class="fa-solid {{#if (lt system.baseUps 0)}}fa-down{{else}}fa-up{{/if}} smaller"></i>
       </legend>
   
       {{!-- Preparation --}}
-      <div>{{localize "LP.Crew.Preparation"}}: {{ system.crewPreparation }}</div>
+      <div><label>{{localize "LP.Ups.Base.CrewPreparation"}}:</label> {{ system.crewPreparation }}</div>
   
       {{!-- Scene Difficulty --}}
-      <div>{{localize "LP.Scene.Complexity"}}: {{ system.sceneComplexity }}</div>
+      <div><label>{{localize "LP.Ups.Base.SceneComplexity"}}:</label> {{ system.sceneComplexity }}</div>
   
       {{!-- Advatange Hint --}}
-      {{#if (gt system.ups 0)}}
-        {{localize "LP.Ups.AdvantageHint"}}
-      {{else if (lt system.ups 0)}}
-        {{localize "LP.Ups.DisadvantageHint"}}
-      {{/if}}
+      <span>
+        {{#if (gt system.baseUps 0)}}
+          {{{localize "LP.Ups.Base.AdvantageHint"}}}
+        {{else if (lt system.baseUps 0)}}
+          {{{localize "LP.Ups.Base.DisadvantageHint"}}}
+        {{else}}
+          {{{localize "LP.Ups.Base.NeitherHint"}}}
+        {{/if}}
+      </span>
     </fieldset>
   </div>
 

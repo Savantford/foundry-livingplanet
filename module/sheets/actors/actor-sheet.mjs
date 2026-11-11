@@ -1,4 +1,7 @@
 // Similar syntax to importing, but note that
+
+import { prepareClockArr } from "../../helpers/utils.mjs";
+
 // this is object destructuring rather than an actual import
 const ActorSheetV2 = foundry.applications?.sheets?.ActorSheetV2 ?? (class {});
 const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicationMixin ?? (cls => cls);
@@ -79,20 +82,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
     if (actorData.type === 'deviant' || actorData.type === 'entity') {
       // Prepare Impatience Array
-      context.impatience = [];
-      const imp = context.system.impatience;
-
-      for (let i = 0; i < imp.max; i++) {
-        context.impatience.push({
-          id: i+1,
-          checked: (parseInt(imp.value) === (i+1)) ? true : false
-        });
-      }
-
-      context.impatience = context.impatience.reverse();
+      context.impatience = prepareClockArr(context.system.impatience);
     }
-    console.log(context.system.impatience)
-    console.log(context.impatience)
 
     // Prepare Deviant data
     if (actorData.type == 'deviant') await this._prepareDeviantData(context);
@@ -129,18 +120,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       
       // Prepare progress clock array
       if (i.type === 'challenge' || i.type === 'connection') {
-        const progressArr = [];
-        
-        const progress = i.system.progress ? i.system.progress : { value: 0, max: 2 };
-
-        for (let i = 0; i < progress.max; i++) {
-          progressArr.push({
-            id: i+1,
-            checked: (parseInt(progress.value) === (i+1)) ? true : false
-          });
-        }
-
-        i.progressArr = progressArr.reverse();
+        i.progressArr = prepareClockArr(i.system.progress);
       }
 
       // Append items to the correct list
@@ -149,7 +129,6 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
         case 'connection': connections.push(i); break;
         case 'skill': skills.push(i); break;
       }
-
     }
 
     // Assign lists to context
