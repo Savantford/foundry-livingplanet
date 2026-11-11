@@ -31,11 +31,11 @@
     </fieldset>
 
     {{!-- Countdown Clock --}}
-    <fieldset class="clock-wrapper">
-      <legend>{{localize "LP.Expedition.Countdown"}}</legend>
+    <div class="clock-wrapper">
+      <strong>{{localize "LP.Expedition.Countdown"}}</strong>
 
       {{> clock arr=system.countdownArr data=system.countdown}}
-    </fieldset>
+    </div>
   </div>
 
   <section class="journal-page-content">

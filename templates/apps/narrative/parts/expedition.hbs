@@ -1,0 +1,36 @@
+<div class="card expedition">
+  {{#with expedition}}
+  {{!-- Name --}}
+  <h2 class="scene-title">{{ name }}</h2>
+
+  <div class="flexrow gap-10">
+    {{!-- Objectives --}}
+    <fieldset class="obstacles mt-1">
+      <legend class="flexrow gap-5">
+        {{localize "LP.Expedition.Objective.Plural"}}
+      </legend>
+
+      <ol>
+        {{#each system.objectives as |objective idx|}}
+        <li class="obstacle {{#if objective.done}}done{{/if}}">
+          <input type="checkbox" name="system.objectives.{{idx}}.done" {{checked objective.done}}>
+
+          <span>
+            <span>{{objective.text}}</span>
+
+            <span>({{#if (eq objective.type "main")}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+          </span>
+        </li>
+        {{/each}}
+      </ol>
+    </fieldset>
+
+    {{!-- Countdown Clock --}}
+    <div class="clock-wrapper">
+      <strong>{{localize "LP.Expedition.Countdown"}}</strong>
+
+      {{> clock arr=system.countdownArr data=system.countdown}}
+    </div>
+    {{/with}}
+  </div>
+</div>

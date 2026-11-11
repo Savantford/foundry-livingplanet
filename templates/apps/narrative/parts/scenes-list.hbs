@@ -1,0 +1,12 @@
+<details>
+  <summary>{{entry.name}}'s Scenes</summary>
+
+  <ol class="scenes-list">
+    {{#each scenes as |scene|}}
+    <li {{#if (eq scene.id @root.scene.id)}}class="active" {{/if}}>
+      {{{ scene.link }}}
+      ({{localize (lookup @root.sceneTypes scene.type)}})
+    </li>
+    {{/each}}
+  </ol>
+</details>

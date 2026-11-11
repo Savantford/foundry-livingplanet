@@ -1002,9 +1002,15 @@ input[type="checkbox"].checkbox-reloaded {
     }
   }
 
-  .card {
-    background: var(--background-color-shadow);
-    padding: 5px;
+  .cards {
+    gap: 1em;
+    display: flex;
+    flex-flow: wrap;
+
+    .card {
+      background: var(--background-color-shadow);
+      padding: 5px;
+    }
   }
 
   details {
@@ -1043,6 +1049,8 @@ input[type="checkbox"].checkbox-reloaded {
   }
 
   .obstacles {
+    padding: 0.25em;
+
     button {
       --button-size: auto;
       padding: 0.25rem;
@@ -1081,12 +1089,11 @@ input[type="checkbox"].checkbox-reloaded {
     }
   }
 
-  fieldset.clock-wrapper {
+  .clock-wrapper {
     display: flex;
     flex-flow: column;
     align-items: center;
     flex: 0;
-    padding: 0 5px;
   }
 }
 

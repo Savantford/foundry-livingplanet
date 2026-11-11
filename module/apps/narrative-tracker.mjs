@@ -17,8 +17,9 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
       icon: "fa-solid fa-sitemap"
     },
     position: {
-      top: 20,
-      width: 400
+      top: 350,
+      left: 20,
+      width: 350
     },
     actions: {
       //cancel: this.#cancel
@@ -29,8 +30,13 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
 
   static PARTS = {
     main: {
-      template: 'systems/livingplanet/templates/apps/narrative-tracker.hbs',
-      classes: ['main']
+      template: 'systems/livingplanet/templates/apps/narrative/tracker.hbs',
+      classes: ['main'],
+      templates: [
+        'systems/livingplanet/templates/apps/narrative/parts/scenes-list.hbs',
+        'systems/livingplanet/templates/apps/narrative/parts/expedition.hbs',
+        'systems/livingplanet/templates/apps/narrative/parts/scene.hbs'
+      ]
     }
   }
 
