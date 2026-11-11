@@ -1,12 +1,12 @@
 <section>
   {{!-- Scene Type --}}
-  {{formGroup sysFields.sceneType name="system.sceneType" value=source.system.sceneType blank=false}}
+  {{formGroup sysFields.sceneType name="system.sceneType" value=system.sceneType blank=false}}
 
   {{!-- Scene Objective --}}
-  {{formGroup sysFields.objective name="system.objective" value=source.system.objective}}
+  {{formGroup sysFields.objective name="system.objective" value=system.objective}}
 
   {{!-- Scene Complexity --}}
-  {{formGroup sysFields.complexity name="system.complexity" value=source.system.complexity}}
+  {{formGroup sysFields.complexity name="system.complexity" value=system.complexity}}
 
   {{!-- Obstacles --}}
   <fieldset class="obstacles">
@@ -16,7 +16,7 @@
     </legend>
 
     <ol>
-      {{#each source.system.obstacles as |obstacle idx|}}
+      {{#each system.obstacles as |obstacle idx|}}
       <li class="obstacle">
         {{!-- Obstacle Done --}}
         {{formInput @root.obstacleFields.done name=(concat 'system.obstacles.' idx '.done') value=obstacle.done checked=obstacle.done}}

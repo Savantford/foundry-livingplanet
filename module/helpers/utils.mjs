@@ -1,5 +1,5 @@
 /* -------------------------------------------- */
-/*  Global Functions
+/*  Global Functions                            */
 /* -------------------------------------------- */
 
 export const Global = {}
@@ -18,7 +18,7 @@ export function plusify(x) {
 }
 
 /* -------------------------------------------- */
-/*  Math Functions
+/*  Math Functions                              */
 /* -------------------------------------------- */
 
 export function sum(array) {
@@ -26,3 +26,20 @@ export function sum(array) {
   return sum;
 }
 
+/* -------------------------------------------- */
+/*  Progression Clocks                          */
+/* -------------------------------------------- */
+
+export function prepareClockArr(data) {
+  const { value, max } = data;
+  const arr = [];
+
+  for (let i = 0; i < max; i++) {
+    arr.push({
+      id: i + 1,
+      checked: (parseInt(value) === (i + 1)) ? true : false
+    });
+  }
+
+  return arr.reverse();
+}

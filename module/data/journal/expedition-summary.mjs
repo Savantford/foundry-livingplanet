@@ -1,3 +1,4 @@
+import { prepareClockArr } from '../../helpers/utils.mjs';
 import {
   makeBooField,
   makeIntField,
@@ -21,16 +22,20 @@ export default class ExpeditionSummaryModel extends foundry.abstract.DataModel {
               'main': _loc('LP.Expedition.Objective.Main'),
               'secondary': _loc('LP.Expedition.Objective.Secondary')
             }
-          }),
+          })
         })
       ),
 
       countdown: new fields.SchemaField({
-        value: makeIntField({ initial: 0 }),
+        value: makeIntField({ initial: 6 }),
         max: makeIntField({ initial: 6 })
       }),
     };
 
     return schema;
+  }
+
+  get countdownArr () {
+    return prepareClockArr(this.countdown);
   }
 }

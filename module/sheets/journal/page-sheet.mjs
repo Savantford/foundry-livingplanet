@@ -50,7 +50,8 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
   async _prepareContext(options = {}) {
     const context = await super._prepareContext(options);
 
-    context.sysFields = context.document.system.schema.fields;
+    context.system = context.document.system;
+    context.sysFields = context.system.schema.fields;
     context.sceneTypeLabels = CONFIG.LP.SCENE_TYPE_LABELS;
 
     switch (this.page.type) {
@@ -83,21 +84,10 @@ export default class LPJournalPageSheet extends JournalEntryPageHandlebarsSheet 
   static #onProgressUpdate(event, button) {
     const segment = parseInt(button.value);
 
-    const li = $(button).closest('.item');
+    if (this.page.type === 'expeditionSummary') { // If the clock is from an Expedition
+      const current = foundry.utils.getProperty(this.actor, 'system.countdown.value');
 
-    if (li.length) { // If the clock is from an item
-      const itemId = li.data('itemId');
-      const item = this.actor.items.get(itemId);
-      const current = foundry.utils.getProperty(item, 'system.progress.value');
-
-      item.update({ 'system.progress.value': current === segment ? segment - 1 : segment });
-
-    } else { // If not from an item
-      //const ele = $(button).closest('.impatience').length ? 'impatience' : '';
-
-      const current = foundry.utils.getProperty(this.actor, 'system.impatience.value');
-      
-      this.actor.update({ 'system.impatience.value': current === segment ? segment - 1 : segment });
+      this.page.update({ 'system.countdown.value': current === segment ? segment - 1 : segment });
     }
   }
 

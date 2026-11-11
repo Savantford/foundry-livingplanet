@@ -8,26 +8,35 @@
   </header>
   {{/if}}
 
-  {{!-- Objectives --}}
-  <fieldset class="obstacles">
-    <legend class="flexrow gap-5">
-      {{localize "LP.Expedition.Objective.Plural"}}
-    </legend>
+  <div class="flexrow gap-10">
+    {{!-- Objectives --}}
+    <fieldset class="obstacles">
+      <legend class="flexrow gap-5">
+        {{localize "LP.Expedition.Objective.Plural"}}
+      </legend>
 
-    <ol>
-      {{#each source.system.objectives as |objective idx|}}
-      <li class="obstacle {{#if objective.done}}done{{/if}}">
-        {{formInput @root.objectiveFields.done name=(concat 'system.objectives.' idx '.done') value=objective.done checked=objective.done}}
+      <ol>
+        {{#each system.objectives as |objective idx|}}
+        <li class="obstacle {{#if objective.done}}done{{/if}}">
+          {{formInput @root.objectiveFields.done name=(concat 'system.objectives.' idx '.done') value=objective.done checked=objective.done}}
 
-        <span>
-          <span>{{objective.text}}</span>
-          
-          <span>({{#if (eq objective.type "main")}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
-        </span>
-      </li>
-      {{/each}}
-    </ol>
-  </fieldset>
+          <span>
+            <span>{{objective.text}}</span>
+            
+            <span>({{#if (eq objective.type "main")}}{{localize "LP.Truth.Hard"}}{{else}}{{localize "LP.Truth.Soft"}}{{/if}})</span>
+          </span>
+        </li>
+        {{/each}}
+      </ol>
+    </fieldset>
+
+    {{!-- Countdown Clock --}}
+    <fieldset class="clock-wrapper">
+      <legend>{{localize "LP.Expedition.Countdown"}}</legend>
+
+      {{> clock arr=system.countdownArr data=system.countdown}}
+    </fieldset>
+  </div>
 
   <section class="journal-page-content">
     {{{ text.enriched }}}

@@ -91,6 +91,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
       context.impatience = context.impatience.reverse();
     }
+    console.log(context.system.impatience)
+    console.log(context.impatience)
 
     // Prepare Deviant data
     if (actorData.type == 'deviant') await this._prepareDeviantData(context);
@@ -428,39 +430,6 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       this.actor.update({ 'system.impatience.value': 0 });
     }
   }
-
-  /**
-   * Handle clickable rolls.
-   * @param {Event} event   The originating click event
-   * @private
-  */
-
-  /*_onRoll(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-
-    // Handle _onRoll events that has a defined rollType.
-    if (dataset.rollType) {
-      if (dataset.rollType == 'item') {       // Handle item rolls.
-        const itemId = element.closest('.item').dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
-      }
-    }
-
-    // Handle rolls that supply the formula
-    if (dataset.roll) {
-      let roll = new Roll(dataset.roll, this.actor.system);
-      let label = dataset.label ? `Rolling ${dataset.label}` : '';
-
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode')
-      });
-    }
-  }*/
 
   /* -------------------------------------------- */
   /*  Drag and drop events                        */

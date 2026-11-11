@@ -187,6 +187,7 @@
 
   "LP.Expedition": {
     "Label": "Expedition",
+    "Countdown": "Countdown",
     "Objective": {
       "Label": "Objective",
       "Plural": "Objectives",
