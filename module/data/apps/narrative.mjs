@@ -5,10 +5,21 @@ export default class NarrativeModel extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
 
     const schema = {
-      expedition: makeUuidStrField(),
-      scene: makeUuidStrField()
+      sceneUuid: makeUuidStrField()
     };
 
     return schema;
+  }
+
+  get scene() {
+    return fromUuidSync(this.sceneUuid);
+  }
+
+  get entry() {
+    return this.scene?.parent;
+  }
+
+  get expedition() {
+    return this.entry ? this.entry.pages.find(p => p.type === 'expeditionSummary') : null;
   }
 }

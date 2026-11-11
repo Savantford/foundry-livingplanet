@@ -85,28 +85,30 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
 
   async _prepareContext(options = {}) {
     const settings = game.settings.get('livingplanet', 'narrativeSettings');
-    const expedition = await fromUuid(settings.expedition);
-    const scene = await fromUuid(settings.scene);
-    const entry = scene.parent;
+    const { scene, entry, expedition } = settings;
     const enrichHTML = async x => await foundry.applications.ux.TextEditor.implementation.enrichHTML(x);
 
-    // Prepare Scene Pages
-    const sceneDocs = entry.pages.contents.filter(p => p.type === 'expeditionScene');
-    const scenes = await Promise.all(sceneDocs.map(async p => {
-      return {
-        id: p.id,
-        name: p.name,
-        type: p.system.sceneType,
-        link: await enrichHTML(p.link),
-        sort: p.sort
-      }
-    }))
-    
     const context = {
-      expedition, scene, entry, scenes,
+      expedition, entry, scene,
       sceneTypes: CONFIG.LP.SCENE_TYPES,
       sceneTypeLabels: CONFIG.LP.SCENE_TYPE_LABELS,
       sysFields: foundry.utils.getProperty(scene, 'system.schema.fields')
+    }
+    
+    if (scene) {
+      // Prepare Scene Pages
+      const sceneDocs = entry.pages.contents.filter(p => p.type === 'expeditionScene');
+      const scenes = await Promise.all(sceneDocs?.map(async p => {
+        return {
+          id: p.id,
+          name: p.name,
+          type: p.system.sceneType,
+          link: await enrichHTML(p.link),
+          sort: p.sort
+        }
+      }))
+      
+      context.scenes = scenes;
     }
 
     return context;
@@ -289,8 +291,15 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
   async _onDropJournalEntry(event, entry) {
     for (const page of entry.pages) {
       if (page.type === 'expeditionScene') {
-        const setting = await game.settings.set('livingplanet', 'narrativeSettings', { scene: page.uuid })
+        const obj = foundry.utils.mergeObject(
+          {...game.settings.get('livingplanet', 'narrativeSettings')},
+          { sceneUuid: page.uuid }
+        );
+        
+        const setting = await game.settings.set('livingplanet', 'narrativeSettings', obj);
+
         this.render();
+        ui.notifications.success(_loc('LP.Narrative.EntryAdded'), { entry: entry.name });
 
         return setting;
       }
@@ -299,10 +308,19 @@ export default class NarrativeTracker extends HandlebarsApplicationMixin(Abstrac
     return null;
   }
 
+  /* -------------------------------------------- */
+
   async _onDropJournalEntryPage(event, page) {
-    if (page.type === 'expeditionScene') {
-      const setting = await game.settings.set('livingplanet', 'narrativeSettings', { scene: page.uuid });
+    if (page.type === 'expeditionSummary' || page.type === 'expeditionScene') {
+      const obj = foundry.utils.mergeObject(
+        {...game.settings.get('livingplanet', 'narrativeSettings')},
+        { sceneUuid: page.uuid }
+      );
+      
+      const setting = await game.settings.set('livingplanet', 'narrativeSettings', obj);
+      
       this.render();
+      ui.notifications.success(_loc('LP.Narrative.SceneAdded'), { page: page.name });
 
       return setting;
     }
