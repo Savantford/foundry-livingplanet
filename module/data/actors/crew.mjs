@@ -1,4 +1,5 @@
 import {
+  makeStrField,
   makeUuidStrField
 } from '../field-presets.mjs';
 
@@ -15,7 +16,18 @@ export default class CrewModel extends foundry.abstract.DataModel {
         max: 5
       }),
 
-      members: new fields.SetField(makeUuidStrField())
+      members: new fields.SetField(makeUuidStrField()),
+
+      goals: new fields.SetField(makeStrField()),
+
+      timeline: new fields.SetField(
+        new fields.SchemaField({
+          expedition: makeUuidStrField(),
+          baseEvent: makeUuidStrField(),
+          localEvent: makeUuidStrField(),
+          other: makeStrField()
+        })
+      )
     };
 
     return schema;

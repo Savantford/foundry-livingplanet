@@ -33,6 +33,8 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       itemEdit: this.#onItemEdit,
       itemRemove: this.#onItemRemove,
 
+      timelineCreate: this.#onTimelineCreate,
+
       updateProgress: this.#onProgressUpdate,
 
       itemUse: this.#onItemUse
@@ -372,6 +374,23 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
     item.delete();
   }
+
+  /* -------------------------------------------- */
+  /*  Item button actions                         */
+  /* -------------------------------------------- */
+
+  static async #onTimelineCreate(event, button) {
+    const arr = [... foundry.utils.getProperty(this.actor, 'system.timeline')];
+    console.log(arr)
+
+    arr.push({});
+
+    await this.actor.update({ 'system.timeline': arr });
+  }
+
+  /* -------------------------------------------- */
+  /*  Other actions                               */
+  /* -------------------------------------------- */
 
   // Set progress clock value to the segment clicked
   static #onProgressUpdate(event, button) {

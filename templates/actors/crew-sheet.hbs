@@ -30,14 +30,18 @@
       <legend class="flexrow flex-group-left">
         {{localize "LP.Goal.Plural"}}
 
-        {{!-- Item Create Button --}}
-        <a class="item-create ml-1" title="{{localize "LP.Goal.Create"}}" data-action="itemCreate"
-          data-type="goal"><i class="fa-solid fa-square-plus"></i></a>
+        {{!-- Goal Create Button --}}
+        <button class="mini ml-1" title="{{localize "LP.Goal.Create"}}" data-action="goalCreate">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </legend>
 
-      <ol class="item-list assets">
-        {{#each assets as |item id|}}
-          {{> itemSimple item=item id=id}}
+      <ol class="item-list">
+        {{#each goals as |goal idx|}}
+          {{goal}}
+          <button class="mini" title="{{localize "LP.Goal.Remove"}}" data-action="goalremove" data-index="idx">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         {{/each}}
       </ol>
     </fieldset>
@@ -47,9 +51,10 @@
       <legend class="flexrow flex-group-left">
         {{localize "LP.Connection.Plural"}}
 
-        {{!-- Item Create Button --}}
-        <a class="item-create ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate"
-          data-type="connection"><i class="fa-solid fa-square-plus"></i></a>
+        {{!-- Connection Create Button --}}
+        <button class="mini ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </legend>
 
       <ol class="item-list connections">
@@ -66,9 +71,10 @@
       <legend class="flexrow flex-group-left">
         {{localize "LP.Asset.Plural"}}
 
-        {{!-- Item Create Button --}}
-        <a class="item-create ml-1" title="{{localize "LP.Asset.Create"}}" data-action="itemCreate"
-          data-type="asset"><i class="fa-solid fa-square-plus"></i></a>
+        {{!-- Asset Create Button --}}
+        <button class="mini ml-1" title="{{localize "LP.Asset.Create"}}" data-action="itemCreate" data-type="asset">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </legend>
 
       <ol class="item-list assets">
@@ -85,22 +91,23 @@
     <legend class="flexrow flex-group-left">
       {{localize "LP.Crew.Timeline.Label"}}
 
-      {{!-- Timline Entry Create Button --}}
-      <a class="item-create ml-1" title="{{localize "LP.Timeline.Create"}}" data-action="timelineCreate"><i class="fa-solid fa-square-plus"></i></a>
+      {{!-- Timeline Entry Create Button --}}
+      <button class="mini ml-1" title="{{localize "LP.Timeline.Create"}}" data-action="timelineCreate">
+        <i class="fa-solid fa-plus"></i>
+      </button>
     </legend>
 
-    <ol class="item-list timeline-entries">
+    <ol class="timeline-entries">
       <li class="timeline-entry timeline-header">
         <div class="cycle">{{localize "LP.Crew.Timeline.Cycle"}}</div>
         <div class="expedition">{{localize "LP.Crew.Timeline.Expedition"}}</div>
         <div class="base-event">{{localize "LP.Crew.Timeline.BaseEvent"}}</div>
         <div class="local-event">{{localize "LP.Crew.Timeline.LocalEvent"}}</div>
-        <div class="connections">{{localize "LP.Crew.Timeline.Connections"}}</div>
         <div class="other">{{localize "LP.Crew.Timeline.Other"}}</div>
       </li>
 
-      {{#each timeline as |item id|}}
-        {{> "systems/livingplanet/templates/actors/item/timeline-entry.hbs" item=item id=id}}
+      {{#each system.timeline as |entry idx|}}
+        {{> "systems/livingplanet/templates/actors/parts/timeline-entry.hbs" entry=entry idx=idx}}
       {{/each}}
     </ol>
   </fieldset>

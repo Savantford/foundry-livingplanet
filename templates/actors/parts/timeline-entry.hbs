@@ -1,8 +1,7 @@
-<li class="item timeline-entry">
-    <div class="cycle">{{item.cycle}}</div>
-    <div class="expedition">{{item.expedition.name}}</div>
-    <div class="base-event">{{item.baseEvent}}</div>
-    <div class="local-event">{{item.localEvent}}</div>
-    <div class="connections">{{item.connections}}</div>
-    <div class="other">{{item.other}}</div>
+<li class="timeline-entry">
+    <div class="cycle">#{{idx}}</div>
+    <div class="expedition">{{#if entry.expedition}}{{entry.expedition}}{{else}}—{{/if}}</div>
+    <div class="base-event">{{#if entry.baseEvent}}{{entry.baseEvent}}{{else}}—{{/if}}</div>
+    <div class="local-event">{{#if entry.localEvent}}{{entry.localEvent}}{{else}}—{{/if}}</div>
+    <div class="other"><input type="text" name="system.timeline.{{idx}}.other" value="{{entry.other}}"></div>
 </li>

@@ -982,14 +982,38 @@ input[type="checkbox"].checkbox-reloaded {
   font-size: 1.5em;
 }
 
+button.mini {
+  --button-size: auto;
+  padding: 0.25rem;
+
+  i {
+    width: 1lh;
+    height: 1lh;
+    font-size: 0.5em;
+  }
+}
+
 .livingplanet.sheet.crew {
   .timeline ol {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
     li {
       display: flex;
 
       > * {
         flex: 1;
       }
+
+      .cycle {
+        flex: 0.3;
+      }
+    }
+
+    .timeline-header {
+      color: var(--text);
+      font-weight: bold;
     }
   }
 }
@@ -1068,16 +1092,6 @@ input[type="checkbox"].checkbox-reloaded {
 
   .obstacles {
     padding: 0.25em;
-
-    button {
-      --button-size: auto;
-      padding: 0.25rem;
-
-      i {
-        width: 1lh;
-        height: 1lh;
-      }
-    }
 
     ol {
       list-style: none;
