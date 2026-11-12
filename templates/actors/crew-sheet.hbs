@@ -1,5 +1,4 @@
 <section class="sheet-body flexcol gap-10">
-
   {{!-- Sheet Header --}}
   <header class="sheet-header crew-header">
     <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "LP.ActorName"}}" /></h1>
@@ -10,10 +9,10 @@
   </header>
 
   {{!-- Experience --}}
-  <div class="stat">
-    <label>{{localize "LP.Crew.Preparation"}}</label>
-  
-    <input type="number" name="system.preparation" value="{{ system.preparation }}" min="0">
+  <div class="stat-inline">
+    {{formGroup sysFields.preparation name="system.preparation" value=system.preparation}}
+
+    ({{localize (concat "LP.Crew.Preparation.Lv" system.preparation)}})
   </div>
 
   <div class="stat">
@@ -83,7 +82,12 @@
 
   {{!-- Timeline --}}
   <fieldset class="timeline stat stat-box">
-    <legend class="flexrow flex-group-left">{{localize "LP.Crew.Timeline.Label"}}</legend>
+    <legend class="flexrow flex-group-left">
+      {{localize "LP.Crew.Timeline.Label"}}
+
+      {{!-- Timline Entry Create Button --}}
+      <a class="item-create ml-1" title="{{localize "LP.Timeline.Create"}}" data-action="timelineCreate"><i class="fa-solid fa-square-plus"></i></a>
+    </legend>
 
     <ol class="item-list timeline-entries">
       <li class="timeline-entry timeline-header">

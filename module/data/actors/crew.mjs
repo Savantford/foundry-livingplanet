@@ -8,9 +8,10 @@ export default class CrewModel extends foundry.abstract.DataModel {
 
     const schema = {
       preparation: new fields.NumberField({
+        label: _loc("LP.Crew.Preparation.Label"),
         initial: 0,
         integer: true,
-        min: 1,
+        min: 0,
         max: 5
       }),
 

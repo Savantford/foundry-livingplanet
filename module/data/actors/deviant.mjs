@@ -14,6 +14,7 @@ export default class DeviantModel extends foundry.abstract.DataModel {
       background: makeStrField(),
       dream: makeStrField(),
       crew: makeUuidStrField(),
+      experience: makeIntField({ initial: 0 }),
 
       attributes: new fields.SchemaField({
         power: makeAttribute(),
@@ -24,14 +25,6 @@ export default class DeviantModel extends foundry.abstract.DataModel {
       impatience: new fields.SchemaField({
         value: makeIntField({ initial: 0 }),
         max: makeIntField({ initial: 6 })
-      }),
-
-      experience: makeIntField({ initial: 0 }),
-
-      harm: new fields.SchemaField({
-        stress: makeIntField({ initial: 0 }),
-        fatigue: makeIntField({ initial: 0 }),
-        damage: makeIntField({ initial: 0 })
       }),
       
       // Non-persisted fields

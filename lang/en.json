@@ -38,25 +38,22 @@
     "Segments": "progress segments",
     "Hint": "Left click to assign the progress; right click to reset the clock.",
     "Impatience": "Impatience",
-    "Challenge": {
-      "Plural": "Challenges",
-      "Type": "Type",
-      "Personal": "Personal",
-      "Shared": "Shared",
-      "Difficulty": "Difficulty",
-      "Easy": "Easy",
-      "Significant": "Significant",
-      "Troublesome": "Troublesome",
-      "Hard": "Hard",
-      "Epic": "Epic"
-    },
-    "Event": {
-      "Duration": "Duration",
+    "Duration": {
+      "Label": "Duration",
       "Brief": "Brief",
       "Short": "Short",
       "Moderate": "Moderate",
       "Long": "Long",
       "VeryLong": "Very Long"
+    },
+    "Challenge": {
+      "Label": "Challenge",
+      "Plural": "Challenges",
+      "Easy": "Easy",
+      "Significant": "Significant",
+      "Troublesome": "Troublesome",
+      "Hard": "Hard",
+      "Epic": "Epic"
     }
   },
 
@@ -167,10 +164,18 @@
 
   "LP.Crew": {
     "Label": "Crew",
-    "Preparation": "Preparation",
     "Members": "Members",
     "Joined": "{deviant} joined {crew}!",
 
+    "Preparation": {
+      "Label": "Preparation",
+      "Lv0": "Unprepared",
+      "Lv1": "Slightly prepared",
+      "Lv2": "Prepared",
+      "Lv3": "Very prepared",
+      "Lv4": "Extremely prepared",
+      "Lv5": "Fully prepared"
+    },
     "Timeline": {
       "Label": "Timeline",
       "Cycle": "Cycle",

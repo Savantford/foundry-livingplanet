@@ -411,6 +411,11 @@
   flex-wrap: nowrap;
   align-items: center;
   gap: 5px;
+
+  .form-group {
+    display: flex;
+    gap: 0 5px;
+  }
 }
 
 .livingplanet .statbox .stat {
@@ -689,7 +694,8 @@
 .livingplanet .stat-inline, .stat-stretch {
   display: flex;
 }
-.livingplanet .stat label {
+.livingplanet .stat label,
+.livingplanet .stat-inline label {
   font-weight: bold;
   white-space: nowrap;
   color: black;
@@ -974,6 +980,18 @@ input[type="checkbox"].checkbox-reloaded {
 
 .livingplanet .boons-expression, .livingplanet .damage-expression {
   font-size: 1.5em;
+}
+
+.livingplanet.sheet.crew {
+  .timeline ol {
+    li {
+      display: flex;
+
+      > * {
+        flex: 1;
+      }
+    }
+  }
 }
 
 .journal-entry-page.livingplanet,

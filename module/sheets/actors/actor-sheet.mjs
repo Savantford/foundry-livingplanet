@@ -67,39 +67,40 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
    */
   async _prepareContext(options = {}) {
     const context = await super._prepareContext(options);
-    const actorData = this.actor;
+    const actor = this.actor;
     
     // Add the actor's data to context.system for easier access, as well as flags.
     foundry.utils.mergeObject(context, {
-      actor: actorData,
-      system: actorData.system,
-      flags: actorData.flags,
+      actor: actor,
+      system: actor.system,
+      sysFields: foundry.utils.getProperty(actor, 'system.schema.fields'),
+      flags: actor.flags,
       dtypes: ['String', 'Number', 'Boolean']
     })
 
     // Prepare common data
     context.numbersObj = CONFIG.LP.dropdownNumbers;
 
-    if (actorData.type === 'deviant' || actorData.type === 'entity') {
+    if (actor.type === 'deviant' || actor.type === 'entity') {
       // Prepare Impatience Array
       context.impatience = prepareClockArr(context.system.impatience);
     }
 
     // Prepare Deviant data
-    if (actorData.type == 'deviant') await this._prepareDeviantData(context);
+    if (actor.type == 'deviant') await this._prepareDeviantData(context);
     
     // Prepare Crew data
-    if (actorData.type == 'crew') await this._prepareCrewData(context);
+    if (actor.type == 'crew') await this._prepareCrewData(context);
 
     // Prepare Entity data
-    if (actorData.type == 'entity') {};
+    if (actor.type == 'entity') {};
 
     // Prepare items
     context.items = this.actor.items.contents.toSorted((a, b) => a.sort - b.sort);
     this._prepareItems(context);
 
     // Add roll data for TinyMCE editors.
-    context.rollData = actorData.getRollData();
+    context.rollData = actor.getRollData();
 
     // Prepare active effects
     //context.effects = prepareActiveEffectCategories(this.actor.effects);
