@@ -22,7 +22,7 @@ export default class DeviantSheet extends LPActorSheet {
       ]
     },
     position: {
-      width: 475,
+      width: 460,
       height: "auto"
     }
   }
@@ -30,7 +30,8 @@ export default class DeviantSheet extends LPActorSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: 'systems/livingplanet/templates/actors/deviant-sheet.hbs' 
+      template: 'systems/livingplanet/templates/actors/deviant-sheet.hbs',
+      scrollable: ['']
     }
   }
 

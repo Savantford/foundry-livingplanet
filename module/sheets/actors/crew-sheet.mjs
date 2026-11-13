@@ -22,8 +22,8 @@ export default class CrewSheet extends LPActorSheet {
       ]
     },
     position: {
-      width: 650,
-      height: 600
+      width: 500,
+      height: 'auto'
     }
   }
 
@@ -31,6 +31,7 @@ export default class CrewSheet extends LPActorSheet {
   static PARTS = {
     main: {
       template: 'systems/livingplanet/templates/actors/crew-sheet.hbs',
+      scrollable: [''],
       templates: [
         'systems/livingplanet/templates/actors/parts/timeline-entry.hbs'
       ]

@@ -208,7 +208,7 @@
   width: 180px;
   color: black;
   font-weight: bold;
-  margin-top: 10px;
+  margin-right: -2em;
 
   input {
     width: 20px;
@@ -1001,13 +1001,14 @@ button.mini {
 
     li {
       display: flex;
+      gap: 0.25em;
 
       > * {
         flex: 1;
       }
 
       .cycle {
-        flex: 0.3;
+        flex: 0 2.5em;
       }
     }
 

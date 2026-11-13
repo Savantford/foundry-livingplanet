@@ -1,4 +1,4 @@
-<section class="sheet-body">
+<section class="sheet-body scrollable">
   {{!-- Sheet Header --}}
   <header class="sheet-header character-header">
     {{!-- Name --}}
@@ -19,14 +19,15 @@
   
     {{!-- Radar Chart Block --}}
     <div class="radar-chart-block">
+      {{!-- Top Label --}}
       <div class="labels">
         {{localize "LP.Attributes.Power"}}
         <input type="number" name="system.attributes.power.current" value="{{system.attributes.power.current}}" min="-2"
           max="2">
         <i class="fa-solid {{#if (lt system.attributes.power.current 0)}}fa-down{{else}}fa-up{{/if}}"></i>
       </div>
-  
-      {{!-- Radar Chart --}}
+
+      {{!-- Chart Layer --}}
       <div class="radar-chart">
         <div class="wrapper">
           <div class="grids polygons" style="--grid-line-rgb: var(--highlight-title-rbg)">
@@ -54,7 +55,8 @@
           </div>
         </div>
       </div>
-  
+
+      {{!-- Bottom Labels --}}  
       <div class="labels-container">
         <div class="labels">
           {{localize "LP.Attributes.Agility"}}
@@ -71,7 +73,6 @@
         </div>
   
       </div>
-  
     </div>
 
     {{!-- Impatience Clock --}}
