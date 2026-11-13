@@ -23,47 +23,48 @@
     {{/each}}
   </div>
 
-  {{!-- Lists --}}
-  <div class="flexrow gap-10">
-    {{!-- Goals --}}
-    <fieldset class="stat stat-box">
-      <legend class="flexrow flex-group-left">
-        {{localize "LP.Goal.Plural"}}
-
-        {{!-- Goal Create Button --}}
-        <button class="mini ml-1" title="{{localize "LP.Goal.Create"}}" data-action="goalCreate">
-          <i class="fa-solid fa-plus"></i>
+  {{!-- Goals --}}
+  <fieldset class="goals stat stat-box">
+    <legend class="flexrow flex-group-left">
+      {{localize "LP.Goal.Plural"}}
+  
+      {{!-- Goal Create Button --}}
+      <button class="mini ml-1" title="{{localize "LP.Goal.Create"}}" data-action="goalCreate">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </legend>
+  
+    <ol class="item-list">
+      {{#each system.goals as |goal idx|}}
+      <li>
+        <input type="text" name="system.goals.{{idx}}" value="{{goal}}">
+  
+        <button class="mini" title="{{localize "LP.Goal.Remove"}}" data-action="goalremove" data-index="idx">
+          <i class="fa-solid fa-trash"></i>
         </button>
-      </legend>
-
-      <ol class="item-list">
-        {{#each goals as |goal idx|}}
-          {{goal}}
-          <button class="mini" title="{{localize "LP.Goal.Remove"}}" data-action="goalremove" data-index="idx">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        {{/each}}
-      </ol>
-    </fieldset>
-
-    {{!-- Connections --}}
-    <fieldset class="stat stat-box">
-      <legend class="flexrow flex-group-left">
-        {{localize "LP.Connection.Plural"}}
-
-        {{!-- Connection Create Button --}}
-        <button class="mini ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate" data-type="connection">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </legend>
-
-      <ol class="item-list connections">
-        {{#each connections as |item id|}}
-          {{> itemProgress item=item id=id}}
-        {{/each}}
-      </ol>
-    </fieldset>
-  </div>
+      </li>
+      {{/each}}
+    </ol>
+  </fieldset>
+  
+  {{!-- Connections --}}
+  <fieldset class="stat stat-box">
+    <legend class="flexrow flex-group-left">
+      {{localize "LP.Connection.Plural"}}
+  
+      {{!-- Connection Create Button --}}
+      <button class="mini ml-1" title="{{localize "LP.Connection.Create"}}" data-action="itemCreate"
+        data-type="connection">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </legend>
+  
+    <ol class="item-list connections">
+      {{#each connections as |item id|}}
+      {{> itemProgress item=item id=id}}
+      {{/each}}
+    </ol>
+  </fieldset>
 
   {{!-- Assets --}}
   <div class="flexrow gap-10">

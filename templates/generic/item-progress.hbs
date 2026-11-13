@@ -35,6 +35,23 @@
       {{else if (eq item.system.progress.max 3)}}{{localize "LP.Connection.Relevant"}}
       {{else}}{{localize "LP.Connection.Weak"}}
       {{/if}}
+
+      {{!-- Degree --}}
+      {{#if (eq item.system.progress.max 3)}}{{localize "LP.Strength.Amazing"}}
+      {{else if (eq item.system.progress.max 2)}}{{localize "LP.Strength.VeryGood"}}
+      {{else if (eq item.system.progress.max 1)}}{{localize "LP.Strength.Good"}}
+      {{else if (eq item.system.progress.max -1)}}{{localize "LP.Strength.Bad"}}
+      {{else if (eq item.system.progress.max -2)}}{{localize "LP.Strength.VeryBad"}}
+      {{else if (eq item.system.progress.max -3)}}{{localize "LP.Strength.Terrible"}}
+      {{/if}}
+
+      {{!-- Difficulty --}}
+      {{#if (eq item.system.progress.max 8)}}{{localize "LP.Progress.Challenge.Epic"}}
+      {{else if (eq item.system.progress.max 6)}}{{localize "LP.Progress.Challenge.Hard"}}
+      {{else if (eq item.system.progress.max 4)}}{{localize "LP.Progress.Challenge.Troublesome"}}
+      {{else if (eq item.system.progress.max 3)}}{{localize "LP.Progress.Challenge.Significant"}}
+      {{else}}{{localize "LP.Progress.Challenge.Easy"}}
+      {{/if}}
     </div>
   </div>
 

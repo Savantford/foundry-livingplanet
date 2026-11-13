@@ -994,6 +994,13 @@ button.mini {
 }
 
 .livingplanet.sheet.crew {
+  .goals ol {
+    li {
+      display: flex;
+      gap: 5px;
+    }
+  }
+
   .timeline ol {
     width: 100%;
     margin: 0;

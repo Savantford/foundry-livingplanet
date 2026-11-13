@@ -33,6 +33,7 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       itemEdit: this.#onItemEdit,
       itemRemove: this.#onItemRemove,
 
+      goalCreate: this.#onGoalCreate,
       timelineCreate: this.#onTimelineCreate,
 
       updateProgress: this.#onProgressUpdate,
@@ -376,8 +377,16 @@ export default class LPActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /* -------------------------------------------- */
-  /*  Item button actions                         */
+  /*  Entry button actions                        */
   /* -------------------------------------------- */
+
+  static async #onGoalCreate(event, button) {1
+    const arr = [... foundry.utils.getProperty(this.actor, 'system.goals')];
+
+    arr.push('');
+
+    await this.actor.update({ 'system.goals': arr });
+  }
 
   static async #onTimelineCreate(event, button) {
     const arr = [... foundry.utils.getProperty(this.actor, 'system.timeline')];
